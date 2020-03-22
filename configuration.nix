@@ -62,6 +62,11 @@
     tmux
     git
     gnupg1
+    htop
+    firefox
+    dmenu
+    xclip
+    pass
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
