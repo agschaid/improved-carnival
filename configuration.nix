@@ -56,6 +56,8 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
     wget 
     vim
@@ -72,6 +74,11 @@
     busybox
     tree
     zip
+    jdk11
+    jetbrains.idea-ultimate
+    maven
+    google-chrome
+    openvpn
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
