@@ -72,10 +72,10 @@
     pass
     atom
     syncthing
-    # busybox
     tree
     zip
     jdk11
+    jdk8
     jetbrains.idea-ultimate
     maven
     google-chrome
@@ -83,7 +83,14 @@
     feh
     curl
     jq
+    vscode
   ];
+
+  environment.etc = with pkgs; {
+    "jdk".source = jdk;
+    "jdk8".source = jdk8;
+    "jdk11".source = jdk11;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -127,14 +134,13 @@
         haskellPackages.xmonad
       ];
     };
+
   };
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.displayManager.ly.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.agl = {
