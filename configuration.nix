@@ -69,6 +69,9 @@
     pass
     atom
     syncthing
+    busybox
+    tree
+    zip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
