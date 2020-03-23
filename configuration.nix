@@ -67,6 +67,8 @@
     dmenu
     xclip
     pass
+    atom
+    syncthing
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -80,8 +82,12 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 
+    22000 # syncthing
+  ];
+  networking.firewall.allowedUDPPorts = [ 
+    21025 # syncthing
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
