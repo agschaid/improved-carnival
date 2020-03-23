@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./vpn-configuration.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -71,14 +72,17 @@
     pass
     atom
     syncthing
-    busybox
+    # busybox
     tree
     zip
     jdk11
     jetbrains.idea-ultimate
     maven
     google-chrome
-    openvpn
+    thunderbird
+    feh
+    curl
+    jq
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
