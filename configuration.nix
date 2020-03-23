@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./vpn-configuration.nix
+      ./user-configuration.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -142,11 +143,6 @@
 
   # services.xserver.displayManager.ly.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.agl = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
