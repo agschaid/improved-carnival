@@ -34,6 +34,26 @@ in
       };
 
     };
+
+    programs.vim = {
+      enable = true;
+
+      plugins = [];
+
+      settings = {
+        ignorecase = true;
+        smartcase = true;
+        number = true;
+        background = "dark";
+        mouse = "a";
+      };
+
+      extraConfig = ''
+        set incsearch
+      '';
+    };
+
+
     
   };
 }

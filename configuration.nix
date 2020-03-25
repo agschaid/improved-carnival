@@ -60,33 +60,39 @@
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    wget 
-    (import ./vim-configuration.nix)
-    tmux
-    git
-    gnupg1
-    htop
-    firefox
-    dmenu
-    xclip
-    pass
-    atom
-    syncthing
-    tree
-    zip
-    jdk11
-    jdk8
-    jetbrains.idea-ultimate
-    maven
-    google-chrome
-    thunderbird
-    feh
-    curl
-    jq
-    vscode
-    kitty
-  ];
+  environment.systemPackages = with pkgs; 
+    let 
+      vim_configurable_py3 = vim_configurable.override {
+        python = python36Full;
+      };
+
+    in [
+      wget 
+      vim_configurable_py3
+      tmux
+      git
+      gnupg1
+      htop
+      firefox
+      dmenu
+      xclip
+      pass
+      atom
+      syncthing
+      tree
+      zip
+      jdk11
+      jdk8
+      jetbrains.idea-ultimate
+      maven
+      google-chrome
+      thunderbird
+      feh
+      curl
+      jq
+      vscode
+      kitty
+    ];
 
   environment.etc = with pkgs; {
     "jdk".source = jdk;
