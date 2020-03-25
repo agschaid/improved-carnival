@@ -18,14 +18,6 @@ in
 
   home-manager.users.agl = {
 
-    programs.vim = {
-      enable = true;
-      # plugins = ["spacevim"];
-      settings = {
-	ignorecase = true;
-      };
-    };
-
     programs.git = {
       enable = true;
       userName = "Axel Gschaider";

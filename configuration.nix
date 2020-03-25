@@ -62,7 +62,7 @@
 
   environment.systemPackages = with pkgs; [
     wget 
-    vim
+    (import ./vim-configuration.nix)
     tmux
     git
     gnupg1
