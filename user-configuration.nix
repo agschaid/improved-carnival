@@ -18,6 +18,14 @@ in
 
   home-manager.users.agl = {
 
+    programs.vim = {
+      enable = true;
+      # plugins = ["spacevim"];
+      settings = {
+	ignorecase = true;
+      };
+    };
+
     programs.git = {
       enable = true;
       userName = "Axel Gschaider";
@@ -25,6 +33,8 @@ in
 
       aliases = {
         wolf = "clean -i";
+        tree = "log --all --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'";
+        pruned-tree = "log --graph --abbrev-commit --decorate --date=relative --all --simplify-by-decoration";
       };
 
       extraConfig = {
