@@ -7,7 +7,8 @@
   ];
 
   services.openvpn.servers = {
-    rise = {
+
+    office = {
       # create /etc/VPN/rise and put vpn.rz01.riseops.at-linux.ovpn there
       #  * delete the lines defining up and down
       #  * insert: auth-user-pass /etc/VPN/rise/cred
@@ -17,6 +18,16 @@
       autoStart = false;
       updateResolvConf = true;
     };
+
+    private = {
+      # add line and file:
+      # auth-user-pass /etc/VPN/expressVPN/cred
+      config = ''config /etc/VPN/expressVPN/my_expressvpn_austria_udp.ovpn'';
+      autoStart = false;
+      updateResolvConf = true;
+    };
+
   };
+
 
 }
