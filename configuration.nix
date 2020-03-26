@@ -65,6 +65,9 @@
       vim_configurable_py3 = vim_configurable.override {
         python = python36Full;
       };
+      maven_jdk11 = maven.override {
+        jdk = jdk11;
+      };
 
     in [
       wget 
@@ -81,10 +84,11 @@
       syncthing
       tree
       zip
+      unzip
       jdk11
       jdk8
       jetbrains.idea-ultimate
-      maven
+      maven_jdk11
       google-chrome
       thunderbird
       feh
