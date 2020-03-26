@@ -95,7 +95,8 @@
       curl
       jq
       vscode
-      kitty
+      kitty   # terminal
+      zathura # pdf
     ];
 
   environment.etc = with pkgs; {
@@ -150,7 +151,13 @@
   };
 
   # Enable touchpad support.
-  services.xserver.libinput.enable = true;
+  services.xserver.synaptics = {
+    enable = true;
+    twoFingerScroll = true;
+    tapButtons = false;
+    palmDetect = true;
+
+  };
 
   # services.xserver.displayManager.ly.enable = true;
 
