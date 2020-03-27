@@ -97,6 +97,8 @@
       vscode
       kitty   # terminal
       zathura # pdf
+      unclutter
+      hsetroot
     ];
 
   environment.etc = with pkgs; {
@@ -157,6 +159,13 @@
     tapButtons = false;
     palmDetect = true;
 
+  };
+
+  services.xserver.displayManager = {
+    sessionCommands = ''
+      hsetroot -solid '#002b36' &
+    '';
+      # unclutter &
   };
 
   # services.xserver.displayManager.ly.enable = true;
