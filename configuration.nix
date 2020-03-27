@@ -164,6 +164,7 @@
   services.xserver.displayManager = {
     sessionCommands = ''
       hsetroot -solid '#002b36' &
+      setxkbmap de
     '';
       # unclutter &
   };
