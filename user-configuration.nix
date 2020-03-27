@@ -18,6 +18,16 @@ in
 
   home-manager.users.agl = {
 
+    xsession = {
+      enable = true;
+
+      windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        config = ./dotfiles/xmonad.hs;
+      };
+    };
+
     programs.git = {
       enable = true;
       userName = "Axel Gschaider";
