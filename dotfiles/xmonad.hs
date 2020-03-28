@@ -39,8 +39,8 @@ main = do
  
 
 
-keysToAdd  = [ ((mod4Mask, xK_a), sequence_ $ [windows $ copy i | i <- XMonad.workspaces defaultConfig]) -- copy window to all workspaces
-              ,  ((mod4Mask .|. shiftMask, xK_a), windows $ kill8) -- remove window from all workspaces except the current one
+keysToAdd  = [ ((mod4Mask, xK_g), sequence_ $ [windows $ copy i | i <- XMonad.workspaces defaultConfig]) -- copy window to all workspaces (aka 'global')
+              ,  ((mod4Mask .|. shiftMask, xK_g), windows $ kill8) -- remove window from all workspaces except the current one
               ,  ((mod4Mask, xK_u), sendMessage ShrinkSlave)
               ,  ((mod4Mask, xK_i), sendMessage ExpandSlave)
 	      ,  ((mod4Mask, xK_r), broadcastMessage ToggleMonitor >> refresh)
