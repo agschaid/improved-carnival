@@ -58,11 +58,11 @@ quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")
 
 
 
-myLayouts = avoidStruts $ ( smartBorders $ (
+myLayouts = smartBorders $ (
                             tiled1 |||
                             tiled2 |||
                             fullscreen |||
-			    floating1 )
+			    floating1 
                           )
 
 floating1 = borderResize $ positionStoreFloat 

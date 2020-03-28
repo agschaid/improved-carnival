@@ -21,6 +21,10 @@ in
     xsession = {
       enable = true;
 
+      profileExtra = "
+      hsetroot -solid '#002b36' &
+      setxkbmap de &";
+
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;

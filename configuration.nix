@@ -99,6 +99,8 @@
       zathura # pdf
       unclutter
       hsetroot
+      gmrun   # run dialog für xmonad
+      # gksudo  # graphical sudo
     ];
 
   environment.etc = with pkgs; {
@@ -159,14 +161,6 @@
     tapButtons = false;
     palmDetect = true;
 
-  };
-
-  services.xserver.displayManager = {
-    sessionCommands = ''
-      hsetroot -solid '#002b36' &
-      setxkbmap de
-    '';
-      # unclutter &
   };
 
   # services.xserver.displayManager.ly.enable = true;
