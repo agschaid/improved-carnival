@@ -35,11 +35,14 @@ main = do
         , borderWidth = 2
         , terminal = "kitty"
         }
-        `removeKeys` [(mod4Mask .|. shiftMask ,xK_q)] 
+        `removeKeys` keysToRemove
         `additionalKeys` keysToAdd
         
  
 
+keysToRemove = [ (mod4Mask .|. shiftMask ,xK_q) -- suppress original quit
+               , (mod4Mask, xK_space)           -- suppress layout cycling
+	       ] 
 
 keysToAdd  = [ ((mod4Mask, xK_g), sequence_ $ [windows $ copy i | i <- XMonad.workspaces defaultConfig]) -- copy window to all workspaces (aka 'global')
               ,  ((mod4Mask .|. shiftMask, xK_g), windows $ kill8) -- remove window from all workspaces except the current one
