@@ -20,6 +20,8 @@ import XMonad.Layout.LayoutCombinators as LC
 import System.IO
 import qualified Data.Map as M
 import XMonad.Layout.Monitor
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 
 
 
@@ -64,21 +66,19 @@ quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")
 layoutKeys = [ ((mod4Mask, xK_a), sendMessage $ JumpToLayout "mainLeft")
              , ((mod4Mask, xK_s), sendMessage $ JumpToLayout "mainTop")
              , ((mod4Mask, xK_d), sendMessage $ JumpToLayout "float")
-             , ((mod4Mask, xK_f), sendMessage $ JumpToLayout "full")
+	     , ((mod4Mask, xK_space ), sendMessage $ Toggle FULL)
 	     ]
 
 
-myLayouts = smartBorders $ (
+myLayouts = smartBorders $ mkToggle(NOBORDERS ?? FULL ?? EOT) $ (
                             tiled1 LC.|||
                             tiled2 LC.|||
-                            fullscreen LC.|||
 			    floating1 
                           )
 
 floating1 = renamed [Replace "float"] $ borderResize $ positionStoreFloat 
 tiled1 = renamed [Replace "mainLeft"] $ mouseResizableTile
 tiled2 = renamed [Replace "mainTop"] $ mouseResizableTileMirrored
-fullscreen = renamed [Replace "full"] $ Full
 
 
 kill8 ss | Just w <- W.peek ss = (W.insertUp w) $ W.delete w ss | otherwise = ss
