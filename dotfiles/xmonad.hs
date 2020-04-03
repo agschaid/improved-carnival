@@ -42,8 +42,9 @@ main = do
         
  
 
-keysToRemove = [ (mod4Mask .|. shiftMask ,xK_q) -- suppress original quit
-               , (mod4Mask, xK_space)           -- suppress layout cycling
+keysToRemove = [ (mod4Mask .|. shiftMask ,xK_q)     -- suppress original quit
+               , (mod4Mask, xK_space)               -- suppress layout cycling
+               , (mod4Mask .|. shiftMask, xK_space) -- suppress jumping back to first layout
 	       ] 
 
 keysToAdd  = [ ((mod4Mask, xK_g), sequence_ $ [windows $ copy i | i <- XMonad.workspaces defaultConfig]) -- copy window to all workspaces (aka 'global')

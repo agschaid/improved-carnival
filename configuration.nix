@@ -152,7 +152,14 @@
       ];
     };
 
+    displayManager = {
+      sessionCommands = ''
+        setxkbmap de
+      '';
+    };
+
   };
+
 
   # Enable touchpad support.
   services.xserver.synaptics = {
