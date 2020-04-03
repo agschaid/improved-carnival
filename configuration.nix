@@ -102,8 +102,8 @@
       gmrun       # run dialog für xmonad
       # gksudo    # graphical sudo
       acpi        # battery status
-      arandr      # screens anordnen
-      xrandr      # scripts für arandr erstellen
+      xorg.xrandr # screens anordnen
+      arandr      # frontend für xrandr
       mplayer     # video
       ffmpeg      # basis video schnitt
       sl          # muy importante
