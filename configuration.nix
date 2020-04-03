@@ -74,6 +74,7 @@
       vim_configurable_py3
       tmux
       git
+      tig
       gnupg1
       htop
       firefox
@@ -87,7 +88,6 @@
       unzip
       jdk11
       jdk8
-      jetbrains.idea-ultimate
       maven_jdk11
       google-chrome
       thunderbird
@@ -95,12 +95,20 @@
       curl
       jq
       vscode
-      kitty   # terminal
-      zathura # pdf
+      kitty       # terminal
+      zathura     # pdf
       unclutter
       hsetroot
-      gmrun   # run dialog für xmonad
-      # gksudo  # graphical sudo
+      gmrun       # run dialog für xmonad
+      # gksudo    # graphical sudo
+      acpi        # battery status
+      arandr      # screens anordnen
+      xrandr      # scripts für arandr erstellen
+      mplayer     # video
+      ffmpeg      # basis video schnitt
+      sl          # muy importante
+      sxiv        # image viewer
+
     ];
 
   environment.etc = with pkgs; {
