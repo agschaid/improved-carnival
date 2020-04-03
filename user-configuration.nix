@@ -13,7 +13,8 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.agl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" # Enable ‘sudo’ for the user.
+                    "docker" ]; 
   };
 
   home-manager.users.agl = {
@@ -45,6 +46,7 @@ in
 
       extraConfig = {
         core.editor = "vim";
+        push.default = "current";
       };
 
     };

@@ -160,6 +160,8 @@
 
   };
 
+  virtualisation.docker.enable = true;
+
 
   # Enable touchpad support.
   services.xserver.synaptics = {
