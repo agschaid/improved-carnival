@@ -14,7 +14,9 @@ in
   users.users.agl = {
     isNormalUser = true;
     extraGroups = [ "wheel" # Enable ‘sudo’ for the user.
-                    "docker" ]; 
+                    "docker" 
+                    "networkmanager" 
+                  ]; 
   };
 
   home-manager.users.agl = {

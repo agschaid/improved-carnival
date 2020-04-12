@@ -108,7 +108,9 @@
       ffmpeg      # basis video schnitt
       sl          # muy importante
       sxiv        # image viewer
-
+      steam
+      xorg.libxcb # needed for steam
+      postgresql
     ];
 
   environment.etc = with pkgs; {
@@ -121,6 +123,11 @@
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+
+  # needed for Steam
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  hardware.pulseaudio.support32Bit = true;
 
   # List services that you want to enable:
 
