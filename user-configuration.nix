@@ -1,3 +1,4 @@
+{config, pkgs, lib,...}:
 let
   home-manager = builtins.fetchGit {
     url = "https://github.com/rycee/home-manager.git";
@@ -56,7 +57,10 @@ in
     programs.vim = {
       enable = true;
 
-      plugins = [];
+      plugins = with pkgs.vimPlugins;
+        [
+          goyo
+        ];
 
       settings = {
         ignorecase = true;
