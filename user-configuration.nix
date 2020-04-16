@@ -59,7 +59,14 @@ in
 
       plugins = with pkgs.vimPlugins;
         [
-          goyo
+          goyo  # writing
+
+          ##### versuchen
+          # vim-pencil  # word wrapping und so
+          # wheel . . . bisserl scrolling
+          # syntastic  # syntax checking
+          
+          ctrlp
         ];
 
       settings = {
