@@ -18,6 +18,7 @@ in
                     "docker" 
                     "networkmanager" 
                   ]; 
+    shell = pkgs.zsh;
   };
 
   home-manager.users.agl = {
@@ -80,6 +81,18 @@ in
       extraConfig = ''
         set incsearch
       '';
+    };
+
+    programs.zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      autocd = true;
+      defaultKeymap = "viins";
+
+      oh-my-zsh = {
+        enable = true;
+        theme = "bira";
+      };
     };
 
 
