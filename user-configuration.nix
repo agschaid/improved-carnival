@@ -2,7 +2,7 @@
 let
   home-manager = builtins.fetchGit {
     url = "https://github.com/rycee/home-manager.git";
-    ref = "release-19.09";
+    ref = "release-20.03";
   };
 in
 {
@@ -116,11 +116,12 @@ in
       };
     };
 
-
-    /*programs.kitty = {
+    programs.kitty = {
       enable = true;
 
       settings = {
+        enable_audio_bell = false;
+
         # Dark
 
         background =            "#002b36";
@@ -148,7 +149,7 @@ in
         color15    =            "#fdf6e3";
       };
 
-    };*/
+    };
     
   };
 }
