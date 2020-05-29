@@ -60,14 +60,38 @@
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = 
+    let
+      steam_overlay = self : super: 
+      {
+        steam = super.steam.override {
+          extraPkgs = pkgs: [self.linux-pam];
+        };
+      };
+    in
+    [steam_overlay];
+
   environment.systemPackages = with pkgs; 
     let 
+
+      python_vim_packages = python-packages: with python-packages; [
+        pynvim
+      ];
+      python_for_vim = python36Full.withPackages python_vim_packages;
+
+      
+
       vim_configurable_py3 = vim_configurable.override {
-        python = python36Full;
+        python = python_for_vim;
       };
       maven_jdk11 = maven.override {
         jdk = jdk11;
       };
+      my-python-packages = python-packages: with python-packages; [
+        pyyaml
+        pip
+      ];
+      python-with-my-packages = python3.withPackages my-python-packages;
 
     in [
       wget 
@@ -81,6 +105,7 @@
       dmenu
       xclip
       pass
+      # pinentry   # gpg needs it . . . 
       atom
       syncthing
       tree
@@ -108,9 +133,23 @@
       ffmpeg      # basis video schnitt
       sl          # muy importante
       sxiv        # image viewer
-      steam
       xorg.libxcb # needed for steam
       postgresql
+      zsh
+      fzf
+      # python-with-my-packages
+      python37Full
+      python37Packages.pip
+      python37Packages.virtualenv
+      python37Packages.pynvim
+
+
+      steam-run
+      #google-authenticator
+      #linux-pam
+      #libcap_pam
+      #pam_pgsql
+      #openpam
     ];
 
   environment.etc = with pkgs; {
@@ -119,10 +158,13 @@
     "jdk11".source = jdk11;
   };
 
+  environment.pathsToLink = ["/share/zsh"];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = { enable = true; };
 
   # needed for Steam
   hardware.opengl.driSupport32Bit = true;

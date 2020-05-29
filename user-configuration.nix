@@ -50,6 +50,7 @@ in
 
       extraConfig = {
         core.editor = "vim";
+        core.pager = "less -iXFR"; # -X does not clear the screen when exiting
         push.default = "current";
       };
 
@@ -61,6 +62,7 @@ in
       plugins = with pkgs.vimPlugins;
         [
           goyo  # writing
+          limelight-vim
 
           ##### versuchen
           # vim-pencil  # word wrapping und so
@@ -68,6 +70,8 @@ in
           # syntastic  # syntax checking
           
           ctrlp
+          LanguageClient-neovim
+          deoplete-nvim
         ];
 
       settings = {
@@ -80,6 +84,19 @@ in
 
       extraConfig = ''
         set incsearch
+        
+        """ VALUES FOR SOLARIZED BRIGHT
+        " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
+        " let g:limelight_conceal_guifg = '#8a8a8a'  " Solarized Base1
+
+        """ VALUES FOR SOLARIZED DARK
+        let g:limelight_conceal_ctermfg = 240  " Solarized Base01
+        let g:limelight_conceal_guifg = '#585858'  " Solarized Base01
+
+        let g:LanguageClient_serverCommands = {
+            \ 'java': ['/home/agl/bin/jdtls', '-data', getcwd()],
+            \ }
+
       '';
     };
 
@@ -92,6 +109,10 @@ in
       oh-my-zsh = {
         enable = true;
         theme = "bira";
+        plugins = 
+          [
+            # "zsh-notes" # nv ähnlich
+          ];
       };
     };
 
