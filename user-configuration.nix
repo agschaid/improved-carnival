@@ -10,7 +10,6 @@ in
     (import "${home-manager}/nixos")
   ];
 
-  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.agl = {
     isNormalUser = true;
@@ -56,37 +55,24 @@ in
 
     };
 
-    programs.vim = {
+    programs.neovim = {
       enable = true;
+      withPython3 = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      viAlias = true;
 
-      plugins = with pkgs.vimPlugins;
-        [
-          goyo  # writing
-          limelight-vim
+      configure = {
 
-          ##### versuchen
-          # vim-pencil  # word wrapping und so
-          # wheel . . . bisserl scrolling
-          # syntastic  # syntax checking
-          
-          ctrlp
-          LanguageClient-neovim
-          deoplete-nvim
-          fzf-vim
-        ];
-
-      settings = {
-        ignorecase = true;
-        smartcase = true;
-        number = true;
-        background = "dark";
-        mouse = "a";
-      };
-
-      extraConfig = ''
+        customRC = ''
         set incsearch
         
         set hidden
+        set ignorecase
+        set smartcase
+        set number
+        set background=dark
+        set mouse=a
 
         """ VALUES FOR SOLARIZED BRIGHT
         " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
@@ -106,8 +92,31 @@ in
         nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
       '';
-    };
 
+        packages.myVimPackage = with pkgs.vimPlugins; {
+          start = [
+            goyo  # writing
+            limelight-vim
+
+            ##### versuchen
+            # vim-pencil  # word wrapping und so
+            # wheel . . . bisserl scrolling
+            # syntastic  # syntax checking
+            
+            ctrlp
+            LanguageClient-neovim
+            fzf-vim
+
+            # completers
+            # youcompleteme
+            deoplete-lsp
+          ];
+        };
+
+      };     
+
+    };
+    
     programs.zsh = {
       enable = true;
       enableAutosuggestions = true;

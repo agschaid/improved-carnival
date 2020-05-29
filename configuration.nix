@@ -62,7 +62,7 @@
 
   nixpkgs.overlays = 
     let
-      steam_overlay = self : super: 
+      steam_overlay = self: super: 
       {
         steam = super.steam.override {
           extraPkgs = pkgs: [self.linux-pam];
@@ -74,16 +74,7 @@
   environment.systemPackages = with pkgs; 
     let 
 
-      python_vim_packages = python-packages: with python-packages; [
-        pynvim
-      ];
-      python_for_vim = python36Full.withPackages python_vim_packages;
 
-      
-
-      vim_configurable_py3 = vim_configurable.override {
-        python = python_for_vim;
-      };
       maven_jdk11 = maven.override {
         jdk = jdk11;
       };
@@ -95,7 +86,7 @@
 
     in [
       wget 
-      vim_configurable_py3
+      vim
       tmux
       git
       tig
