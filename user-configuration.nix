@@ -72,6 +72,7 @@ in
           ctrlp
           LanguageClient-neovim
           deoplete-nvim
+          fzf-vim
         ];
 
       settings = {
@@ -85,6 +86,8 @@ in
       extraConfig = ''
         set incsearch
         
+        set hidden
+
         """ VALUES FOR SOLARIZED BRIGHT
         " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
         " let g:limelight_conceal_guifg = '#8a8a8a'  " Solarized Base1
@@ -96,6 +99,11 @@ in
         let g:LanguageClient_serverCommands = {
             \ 'java': ['/home/agl/bin/jdtls', '-data', getcwd()],
             \ }
+
+
+        nnoremap <silent> MM :call LanguageClient_contextMenu()<CR>
+        nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+        nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
       '';
     };
