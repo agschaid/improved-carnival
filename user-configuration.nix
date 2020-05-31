@@ -77,9 +77,16 @@ in
         set background=dark
         set mouse=a
 
-	:set tabstop=4
-        :set shiftwidth=4
-        :set expandtab
+	    set tabstop=4
+        set shiftwidth=4
+        set expandtab
+
+        " show tabs and trailing whitespace. Use some less pronounced solarized color
+        set list
+        set listchars=tab:▸\ ,trail:·
+        :hi BadWhitespace ctermfg=240 " Solarized Base01
+        :match BadWhitespace / \+$/
+        :2match BadWhitespace /\t/
 
         """ VALUES FOR SOLARIZED BRIGHT
         " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
