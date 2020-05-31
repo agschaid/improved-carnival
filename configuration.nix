@@ -23,14 +23,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices = [
-    {
+  boot.initrd.luks.devices = {
+    root = {
       name = "root";
       device = "/dev/disk/by-uuid/bf3c2bf2-a024-4377-8438-47fff4a154a5";
       preLVM = true;
       allowDiscards = true;
-    }
-  ];
+    };
+  };
 
   networking.hostName = "langeoog"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -46,10 +46,13 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "de";
+  };
+
   # Select internationalisation properties.
   i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "de";
     defaultLocale = "en_US.UTF-8";
   };
 
@@ -141,6 +144,7 @@
       #libcap_pam
       #pam_pgsql
       #openpam
+      nodejs # for coc.nvim
     ];
 
   environment.etc = with pkgs; {

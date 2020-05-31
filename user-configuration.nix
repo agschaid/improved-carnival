@@ -57,10 +57,13 @@ in
 
     programs.neovim = {
       enable = true;
-      withPython3 = true;
+
       vimAlias = true;
       vimdiffAlias = true;
       viAlias = true;
+
+      withPython3 = true;
+      extraPython3Packages = ps: with ps; [pynvim msgpack];
 
       configure = {
 
@@ -73,6 +76,10 @@ in
         set number
         set background=dark
         set mouse=a
+
+	:set tabstop=4
+        :set shiftwidth=4
+        :set expandtab
 
         """ VALUES FOR SOLARIZED BRIGHT
         " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
@@ -91,6 +98,9 @@ in
         nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
         nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
+        " needed by ncm2
+        "let g:python3_host_prog = '/home/agl/.nix-profile/bin/python3'
+	"autocmd BufEnter * call ncm2#enable_for_buffer()
       '';
 
         packages.myVimPackage = with pkgs.vimPlugins; {
@@ -104,12 +114,17 @@ in
             # syntastic  # syntax checking
             
             ctrlp
-            LanguageClient-neovim
             fzf-vim
 
             # completers
-            # youcompleteme
-            deoplete-lsp
+
+            LanguageClient-neovim
+            youcompleteme
+	    #coc-nvim
+	    # coc-java
+
+	    # nvim-yarp # needed by ncm2
+	    # ncm2
           ];
         };
 
