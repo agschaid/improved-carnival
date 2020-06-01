@@ -173,12 +173,16 @@ in
     programs.kitty = {
       enable = true;
 
-      # mal versuchen:
-      font.package = pkgs.victor-mono;
-      font.name = "Victor Mono";
+      font = {
+        package = pkgs.victor-mono;
+        name = "Victor Mono Medium";
+      };
 
       settings = {
         enable_audio_bell = false;
+        
+        cursor_shape = "beam";
+        font_size = 12;
 
         # Dark
 
