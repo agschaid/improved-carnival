@@ -70,16 +70,21 @@ in
         customRC = ''
         set incsearch
         
+        " buffers are hidden and not unloaded  -> switch between buffers without save
         set hidden
+        
         set ignorecase
         set smartcase
         set number
         set background=dark
         set mouse=a
 
-	    set tabstop=4
+        set tabstop=4
         set shiftwidth=4
         set expandtab
+
+        " make comments look pretty with Victor Mono
+        highlight Comment cterm=italic gui=italic
 
         " show tabs and trailing whitespace. Use some less pronounced solarized color
         set list
@@ -100,6 +105,13 @@ in
             \ 'java': ['/home/agl/bin/jdtls', '-data', getcwd()],
             \ }
 
+        " maybe I should delete these . . .
+        let g:airline_theme='solarized'
+        let g:airline_solarized_bg='dark'
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+        " let g:airline#extensions#tabline#tab_nr_type = 2
+        let g:airline#extensions#tabline#show_tab_nr = 1
 
         nnoremap <silent> MM :call LanguageClient_contextMenu()<CR>
         nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -107,7 +119,7 @@ in
 
         " needed by ncm2
         "let g:python3_host_prog = '/home/agl/.nix-profile/bin/python3'
-	"autocmd BufEnter * call ncm2#enable_for_buffer()
+        "autocmd BufEnter * call ncm2#enable_for_buffer()
       '';
 
         packages.myVimPackage = with pkgs.vimPlugins; {
@@ -122,16 +134,19 @@ in
             
             ctrlp
             fzf-vim
+            vim-bufferline
+            #vim-airline
+            #vim-airline-themes
 
             # completers
 
             LanguageClient-neovim
             youcompleteme
-	    #coc-nvim
-	    # coc-java
+            #coc-nvim
+            # coc-java
 
-	    # nvim-yarp # needed by ncm2
-	    # ncm2
+            # nvim-yarp # needed by ncm2
+            # ncm2
           ];
         };
 
@@ -157,6 +172,10 @@ in
 
     programs.kitty = {
       enable = true;
+
+      # mal versuchen:
+      font.package = pkgs.victor-mono;
+      font.name = "Victor Mono";
 
       settings = {
         enable_audio_bell = false;
