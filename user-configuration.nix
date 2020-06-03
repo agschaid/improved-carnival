@@ -121,6 +121,7 @@ in
         "let g:python3_host_prog = '/home/agl/.nix-profile/bin/python3'
         "autocmd BufEnter * call ncm2#enable_for_buffer()
 
+        " NERDTREE CONFIG
         function BetterNerdTreeToggle()
             if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
                 :NERDTreeToggle
@@ -131,6 +132,10 @@ in
             endif
         endfunction
         nnoremap <silent> NN :call BetterNerdTreeToggle()<CR>
+
+        " GOYO CONFIG
+        " by default start in programming linebreak width
+        let g:goyo_width = 120
       '';
 
         packages.myVimPackage = with pkgs.vimPlugins; {
