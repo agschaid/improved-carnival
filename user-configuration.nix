@@ -120,6 +120,17 @@ in
         " needed by ncm2
         "let g:python3_host_prog = '/home/agl/.nix-profile/bin/python3'
         "autocmd BufEnter * call ncm2#enable_for_buffer()
+
+        function BetterNerdTreeToggle()
+            if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
+                :NERDTreeToggle
+            elseif filereadable(expand('%'))
+                NERDTreeFind
+            else
+                :NERDTree
+            endif
+        endfunction
+        nnoremap <silent> NN :call BetterNerdTreeToggle()<CR>
       '';
 
         packages.myVimPackage = with pkgs.vimPlugins; {
@@ -147,6 +158,7 @@ in
 
             # nvim-yarp # needed by ncm2
             # ncm2
+            nerdtree
           ];
         };
 
@@ -175,7 +187,7 @@ in
 
       font = {
         package = pkgs.victor-mono;
-        name = "Victor Mono Medium";
+        name = "Victor Mono";
       };
 
       settings = {
