@@ -132,10 +132,16 @@ in
             endif
         endfunction
         nnoremap <silent> NN :call BetterNerdTreeToggle()<CR>
+        
+        " show dot files by default
+        let NERDTreeShowHidden=1
 
         " GOYO CONFIG
         " by default start in programming linebreak width
         let g:goyo_width = 120
+
+        " CTRL-P CONFIG
+        let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
       '';
 
         packages.myVimPackage = with pkgs.vimPlugins; {
