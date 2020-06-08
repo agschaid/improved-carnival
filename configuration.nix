@@ -88,6 +88,7 @@
       python-with-my-packages = python3.withPackages my-python-packages;
 
     in [
+      killall
       wget 
       vim
       tmux
@@ -144,7 +145,7 @@
       #libcap_pam
       #pam_pgsql
       #openpam
-      nodejs # for coc.nvim
+      # nodejs # for coc.nvim
     ];
 
   environment.etc = with pkgs; {

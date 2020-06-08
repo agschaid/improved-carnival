@@ -104,6 +104,9 @@ in
         let g:LanguageClient_serverCommands = {
             \ 'java': ['/home/agl/bin/jdtls', '-data', getcwd()],
             \ }
+        let g:LanguageClient_rootMarkers = {
+            \ 'java': ['.git']
+            \ }
 
         " maybe I should delete these . . .
         let g:airline_theme='solarized'
