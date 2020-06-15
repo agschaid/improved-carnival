@@ -77,6 +77,12 @@
   environment.systemPackages = with pkgs; 
     let 
 
+      # using unstable. Do to install unstable as alternative path:
+      #
+      # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+      # sudo nix-channel --update
+
+      unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 
       maven_jdk11 = maven.override {
         jdk = jdk11;
@@ -115,7 +121,7 @@
       curl
       jq
       vscode
-      kitty       # terminal
+      unstable.kitty       # terminal
       zathura     # pdf
       unclutter
       hsetroot
