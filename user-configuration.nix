@@ -4,6 +4,41 @@ let
     url = "https://github.com/rycee/home-manager.git";
     ref = "release-20.03";
   };
+
+      helloWorld = pkgs.writeScriptBin "helloWorld" ''
+        #!${pkgs.stdenv.shell}
+        echo Hello World
+      '';
+  
+  laptop_layout = pkgs.writeScriptBin "screen_laptop_layout" ''
+    #!${pkgs.stdenv.shell}
+    xrandr --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off
+  '';
+
+  homeoffice_layout = pkgs.writeScriptBin "screen_homeoffice_layout" ''
+    #!${pkgs.stdenv.shell}
+    xrandr --output eDP-1 --mode 1920x1080 --pos 320x1440 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --primary --mode 2560x1440 --pos 0x0 --rotate normal
+  '';
+
+  office_layout = pkgs.writeScriptBin "screen_office_layout" ''
+    #!${pkgs.stdenv.shell}
+    xrandr --output HDMI-2 --mode 2560x1440 --pos 1920x0 --rotate left --output HDMI-1 --mode 1920x1200 --pos 0x1360 --rotate normal --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 1680x2560 --rotate normal --output DP-2 --off
+  '';
+
+  mongo_connect = pkgs.writeScriptBin "mongoConnect" ''
+    #!${pkgs.stdenv.shell}
+    docker run --net="host" -it --entrypoint mongo mongo:3.2.10 --authenticationDatabase admin -u admin -p
+  '';
+
+  vpn_office = pkgs.writeScriptBin "vpn-office" ''
+    #!${pkgs.stdenv.shell}
+    systemctl $1 openvpn-office.service
+  '';
+
+  vpn_private = pkgs.writeScriptBin "vpn-private" ''
+    #!${pkgs.stdenv.shell}
+    systemctl $1 openvpn-private.service
+  '';
 in
 {
   imports = [
@@ -35,6 +70,19 @@ in
         config = ./dotfiles/xmonad.hs;
       };
     };
+
+    home.packages = [ 
+      laptop_layout 
+      homeoffice_layout
+      office_layout
+      mongo_connect
+      vpn_office
+      vpn_private
+      ];
+
+    home.file.".daSepp".text = ''
+      alpenrap
+    '';
 
     programs.git = {
       enable = true;
@@ -166,7 +214,8 @@ in
             # completers
 
             LanguageClient-neovim
-            youcompleteme
+            #deoplete-lsp
+            YouCompleteMe
             #coc-nvim
             # coc-java
 
@@ -199,6 +248,7 @@ in
     programs.kitty = {
       enable = true;
 
+
       font = {
         package = pkgs.victor-mono;
         name = "Victor Mono";
@@ -207,6 +257,7 @@ in
       settings = {
         enable_audio_bell = false;
         
+        allow_remote_control = true;
         cursor_shape = "beam";
         font_size = 12;
 
