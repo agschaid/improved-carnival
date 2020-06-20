@@ -152,17 +152,6 @@ in
         let g:LanguageClient_serverCommands = {
             \ 'java': ['/home/agl/bin/jdtls', '-data', getcwd()],
             \ }
-        let g:LanguageClient_rootMarkers = {
-            \ 'java': ['.git']
-            \ }
-
-        " maybe I should delete these . . .
-        let g:airline_theme='solarized'
-        let g:airline_solarized_bg='dark'
-        let g:airline#extensions#tabline#enabled = 1
-        let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-        " let g:airline#extensions#tabline#tab_nr_type = 2
-        let g:airline#extensions#tabline#show_tab_nr = 1
 
         nnoremap <silent> MM :call LanguageClient_contextMenu()<CR>
         nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
