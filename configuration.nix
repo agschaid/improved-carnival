@@ -65,6 +65,18 @@
 
   nixpkgs.overlays = 
     let
+      # using unstable. Do to install unstable as alternative path:
+      #
+      # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+      # sudo nix-channel --update
+
+      unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
+
+      unstable_overlay = self: super:
+      {
+        kitty = unstable.kitty;
+      };
+
       steam_overlay = self: super: 
       {
         steam = super.steam.override {
@@ -72,17 +84,11 @@
         };
       };
     in
-    [steam_overlay];
+    [steam_overlay unstable_overlay];
 
   environment.systemPackages = with pkgs; 
     let 
 
-      # using unstable. Do to install unstable as alternative path:
-      #
-      # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-      # sudo nix-channel --update
-
-      unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 
       maven_jdk11 = maven.override {
         jdk = jdk11;
@@ -121,7 +127,7 @@
       curl
       jq
       vscode
-      unstable.kitty       # terminal
+      kitty       # terminal
       zathura     # pdf
       unclutter
       hsetroot
