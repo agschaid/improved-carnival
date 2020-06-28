@@ -158,7 +158,12 @@
       #pam_pgsql
       #openpam
       # nodejs # for coc.nvim
+
     ];
+
+  fonts.fonts = with pkgs; [
+      victor-mono # terminal font
+  ];
 
   environment.etc = with pkgs; {
     "jdk".source = jdk;

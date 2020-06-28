@@ -5,11 +5,6 @@ let
     ref = "release-20.03";
   };
 
-      helloWorld = pkgs.writeScriptBin "helloWorld" ''
-        #!${pkgs.stdenv.shell}
-        echo Hello World
-      '';
-  
   laptop_layout = pkgs.writeScriptBin "screen_laptop_layout" ''
     #!${pkgs.stdenv.shell}
     xrandr --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off
@@ -82,6 +77,37 @@ in
 
     home.file.".daSepp".text = ''
       alpenrap
+    '';
+
+    home.file.".config/kitty/kitty.conf".text = ''
+font_family Victor Mono
+
+allow_remote_control yes
+
+background #002b36
+color0 #073642
+color1 #dc322f
+color10 #586e75
+color11 #657b83
+color12 #839496
+color13 #6c71c4
+color14 #93a1a1
+color15 #fdf6e3
+color2 #859900
+color3 #b58900
+color4 #268bd2
+color5 #d33682
+color6 #2aa198
+color7 #eee8d5
+color8 #002b36
+color9 #cb4b16
+cursor #93a1a1
+cursor_shape beam
+enable_audio_bell no
+font_size 12
+foreground #839496
+selection_background #81908f
+selection_foreground #002831 
     '';
 
     programs.git = {
@@ -234,50 +260,6 @@ in
       };
     };
 
-    programs.kitty = {
-      enable = true;
-
-
-      font = {
-        package = pkgs.victor-mono;
-        name = "Victor Mono";
-      };
-
-      settings = {
-        enable_audio_bell = false;
-        
-        allow_remote_control = true;
-        cursor_shape = "beam";
-        font_size = 12;
-
-        # Dark
-
-        background =            "#002b36";
-        foreground =            "#839496";
-        cursor     =            "#93a1a1";
-       
-        selection_background =  "#81908f";
-        selection_foreground =  "#002831";
-        
-        color0     =            "#073642";
-        color1     =            "#dc322f";
-        color2     =            "#859900";
-        color3     =            "#b58900";
-        color4     =            "#268bd2";
-        color5     =            "#d33682";
-        color6     =            "#2aa198";
-        color7     =            "#eee8d5";
-        color9     =            "#cb4b16";
-        color8     =            "#002b36";
-        color10    =            "#586e75";
-        color11    =            "#657b83";
-        color12    =            "#839496";
-        color13    =            "#6c71c4";
-        color14    =            "#93a1a1";
-        color15    =            "#fdf6e3";
-      };
-
-    };
     
   };
 }
