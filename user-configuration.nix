@@ -323,6 +323,11 @@ in
       loginShellInit = "dark_theme";
       
       interactiveShellInit = "theme_local";
+      
+      #functions = {
+      #  fish_prompt = "echo 'New Prompt % '
+      #  echo 'la'(set_color red)'la'(set_color normal)'la'(set_color green)'la'";
+      #};
 
     };
     
