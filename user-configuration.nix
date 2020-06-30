@@ -45,6 +45,17 @@ let
     kitty @set-colors --all --configured ~/.config/kitty/solarized-light.conf
   '';
 
+  customVimPlugins = {
+    #dwm-vim = pkgs.vimUtils.buildVimPlugin {
+    #  name = "dwm-vim";
+    #  src = pkgs.fetchFromGitHub {
+    #    owner = "spolu";
+    #    repo = "dwm.vim";
+    #    rev = "6149e58fdd81f69e4e6a3f239842f3dc23e4872b";
+    #  };
+    #};
+  };
+
 in
 {
   imports = [
@@ -260,7 +271,7 @@ color15               #fdf6e3
         let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
       '';
 
-        packages.myVimPackage = with pkgs.vimPlugins; {
+        packages.myVimPackage = with pkgs.vimPlugins // customVimPlugins; {
           start = [
             goyo  # writing
             limelight-vim
@@ -287,6 +298,7 @@ color15               #fdf6e3
             # nvim-yarp # needed by ncm2
             # ncm2
             nerdtree
+            # dwm-vim
           ];
         };
 
