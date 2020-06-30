@@ -39,8 +39,19 @@ let
     #!${pkgs.stdenv.shell}
     if grep -q "light" ~/.theme; then
         kitty @set-colors --all --configured ~/.config/kitty/solarized-light.conf
+        hsetroot -solid '#fdf6e3'
     else
         kitty @set-colors --all --configured ~/.config/kitty/solarized-dark.conf
+        hsetroot -solid '#002b36'
+    fi
+  '';
+
+  theme_local = pkgs.writeScriptBin "theme_local" ''
+    #!${pkgs.stdenv.shell}
+    if grep -q "light" ~/.theme; then
+        kitty @set-colors ~/.config/kitty/solarized-light.conf
+    else
+        kitty @set-colors ~/.config/kitty/solarized-dark.conf
     fi
   '';
 
@@ -80,7 +91,7 @@ in
                     "docker" 
                     "networkmanager" 
                   ]; 
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   home-manager.users.agl = {
@@ -107,13 +118,10 @@ in
       vpn_office
       vpn_private
       theme
+      theme_local
       light_theme
       dark_theme
       ];
-
-    home.file.".daSepp".text = ''
-      alpenrap
-    '';
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
         background              #002b36
@@ -242,7 +250,7 @@ color15               #fdf6e3
         """ VALUES FOR SOLARIZED BRIGHT
         " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
         " let g:limelight_conceal_guifg = '#8a8a8a'  " Solarized Base1
-
+ 
         """ VALUES FOR SOLARIZED DARK
         let g:limelight_conceal_ctermfg = 240  " Solarized Base01
         let g:limelight_conceal_guifg = '#585858'  " Solarized Base01
@@ -318,22 +326,14 @@ color15               #fdf6e3
 
     };
     
-    programs.zsh = {
+    programs.fish = {
       enable = true;
-      enableAutosuggestions = true;
-      autocd = true;
-      defaultKeymap = "viins";
+      
+      loginShellInit = "dark_theme";
+      
+      interactiveShellInit = "theme_local";
 
-      oh-my-zsh = {
-        enable = true;
-        theme = "bira";
-        plugins = 
-          [
-            # "zsh-notes" # nv ähnlich
-          ];
-      };
     };
-
     
   };
 }
