@@ -35,14 +35,25 @@ let
     systemctl $1 openvpn-private.service
   '';
 
+  theme = pkgs.writeScriptBin "theme" ''
+    #!${pkgs.stdenv.shell}
+    if grep -q "light" ~/.theme; then
+        kitty @set-colors --all --configured ~/.config/kitty/solarized-light.conf
+    else
+        kitty @set-colors --all --configured ~/.config/kitty/solarized-dark.conf
+    fi
+  '';
+
   dark_theme = pkgs.writeScriptBin "dark_theme" ''
     #!${pkgs.stdenv.shell}
-    kitty @set-colors --all --configured ~/.config/kitty/solarized-dark.conf
+    echo "dark" > ~/.theme
+    theme
   '';
 
   light_theme = pkgs.writeScriptBin "light_theme" ''
     #!${pkgs.stdenv.shell}
-    kitty @set-colors --all --configured ~/.config/kitty/solarized-light.conf
+    echo "light" > ~/.theme
+    theme
   '';
 
   customVimPlugins = {
@@ -95,6 +106,7 @@ in
       mongo_connect
       vpn_office
       vpn_private
+      theme
       light_theme
       dark_theme
       ];
