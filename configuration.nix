@@ -110,6 +110,11 @@
       htop
       firefox
       dmenu
+
+      # does not quite work. Investigate
+      # networkmanager_dmenu
+      # networkmanager
+
       xclip
       pass
       # pinentry   # gpg needs it . . . 
