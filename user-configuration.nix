@@ -73,14 +73,15 @@ let
   '';
 
   customVimPlugins = {
-    #dwm-vim = pkgs.vimUtils.buildVimPlugin {
-    #  name = "dwm-vim";
-    #  src = pkgs.fetchFromGitHub {
-    #    owner = "spolu";
-    #    repo = "dwm.vim";
-    #    rev = "6149e58fdd81f69e4e6a3f239842f3dc23e4872b";
-    #  };
-    #};
+    dwm-vim = pkgs.vimUtils.buildVimPlugin {
+      name = "dwm-vim";
+      src = pkgs.fetchFromGitHub {
+        owner = "spolu";
+        repo = "dwm.vim";
+        rev = "6149e58fdd81f69e4e6a3f239842f3dc23e4872b";
+        sha256 = "0ixnw6mxabgbpd702xdsrp9vp30iwa453pf89hli9wyzdz7ilg7p";
+      };
+    };
   };
 
 in
@@ -315,7 +316,7 @@ in
             # nvim-yarp # needed by ncm2
             # ncm2
             nerdtree
-            # dwm-vim
+            dwm-vim
           ];
         };
 
