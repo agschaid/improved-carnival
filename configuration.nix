@@ -163,7 +163,7 @@
       #pam_pgsql
       #openpam
       # nodejs # for coc.nvim
-
+      aerc
     ];
 
   fonts.fonts = with pkgs; [
