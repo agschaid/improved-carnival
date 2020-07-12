@@ -164,6 +164,7 @@
       #openpam
       # nodejs # for coc.nvim
       aerc
+      qutebrowser
     ];
 
   fonts.fonts = with pkgs; [
