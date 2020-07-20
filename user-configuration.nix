@@ -369,7 +369,7 @@ in
               set -g background    $base3
             end
           
-            set -g battery_average (acpi | sed 's/^Battery.* \\([1-9]\\{0,1\\}[0-9]\\)%.*$/\\1/' | awk '{sum+= $1} END {print sum/ NR}')
+            set -g battery_average (acpi | sed 's/^Battery.* \\([0-9]\\{1,3\\}\\)%.*$/\\1/' | awk '{sum+= $1} END {print sum/ NR}')
           
             set -g pb $secondary 
             if [ \"$battery_average\" -gt 10 ]
@@ -399,7 +399,9 @@ in
           
             set _git_branch (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
           
-            if test -n \"$_git_branch\"
+            if test -z \"$_git_branch\"
+              set -g git_prompt \"\"
+            else
               set _git_is_dirty (command git status -s --ignore-submodules=dirty ^/dev/null)
           
               if test -n \"$_git_is_dirty\"
