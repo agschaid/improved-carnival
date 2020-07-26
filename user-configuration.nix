@@ -116,6 +116,10 @@ in
       };
     };
 
+    home.sessionVariables = {
+      EDITOR = "vim";
+    };
+
     home.packages = [ 
       laptop_layout 
       homeoffice_layout
@@ -186,6 +190,7 @@ in
         cursor_shape beam
         enable_audio_bell no
         font_size 12
+
     '';
 
     programs.git = {
