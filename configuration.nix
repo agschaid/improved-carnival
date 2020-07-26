@@ -165,6 +165,7 @@
       # nodejs # for coc.nvim
       aerc
       qutebrowser
+      abcde
     ];
 
   fonts.fonts = with pkgs; [
