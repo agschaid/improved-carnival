@@ -293,6 +293,13 @@ in
 
         " CTRL-P CONFIG
         let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
+
+        " asdasdasd
+        let g:ale_java_eclipselsp_path = '/home/agl/github/eclipse.jdt.ls'
+        let g:ale_completion_enabled = 1
+        let g:ale_linters = {
+            \ 'java':['eclipselsp'],
+        \}
       '';
 
         packages.myVimPackage = with pkgs.vimPlugins // customVimPlugins; {
@@ -313,9 +320,10 @@ in
 
             # completers
 
-            LanguageClient-neovim
+            ale
+            # LanguageClient-neovim
             #deoplete-lsp
-            YouCompleteMe
+            # YouCompleteMe
             #coc-nvim
             # coc-java
 
