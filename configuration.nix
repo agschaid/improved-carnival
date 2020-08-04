@@ -33,7 +33,8 @@
   };
 
   networking.hostName = "langeoog"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -166,6 +167,7 @@
       aerc
       qutebrowser
       abcde
+      networkmanager_dmenu
     ];
 
   fonts.fonts = with pkgs; [
