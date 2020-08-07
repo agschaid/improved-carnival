@@ -168,6 +168,8 @@
       qutebrowser
       abcde
       networkmanager_dmenu
+      nms  # no more secrets effect ;)
+      nvpy # notational veolicity?
     ];
 
   fonts.fonts = with pkgs; [
