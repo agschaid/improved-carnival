@@ -352,56 +352,6 @@ in
         fish_mode_prompt = "";
 
         fish_prompt = (builtins.readFile ./dotfiles/fish/functions/fish_prompt.fish);
-
-
-        fish_right_prompt = "set -l last_status $status
-    
-            set -g base03  (set_color 002b36)
-            set -g base02  (set_color 073642)
-            set -g base01  (set_color 586e75)
-            set -g base00  (set_color 657b83)
-            set -g base0   (set_color 839496)
-            set -g base1   (set_color 93a1a1)
-            set -g base2   (set_color eee8d5)
-            set -g base3   (set_color fdf6e3)
-            set -g yellow  (set_color b58900)
-            set -g orange  (set_color cb4b16)
-            set -g red     (set_color dc322f)
-            set -g magenta (set_color d33682)
-            set -g violet  (set_color 6c71c4)
-            set -g blue    (set_color 268bd2)
-            set -g cyan    (set_color 2aa198)
-            set -g green   (set_color 859900)
-          
-            set -l theme (command cat ~/.theme)
-            if test $theme = 'dark'
-              set -g emphasized    $base1
-              set -g content       $base0
-              set -g secondary     $base01
-              set -g bkg_highlight $base02
-              set -g background    $base03
-            else
-              set -g emphasized    $base01
-              set -g content       $base00
-              set -g secondary     $base1
-              set -g bkg_highlight $base2
-              set -g background    $base3
-            end
-          
-            # commant took longer than 1 second
-            if [ \"$CMD_DURATION\" -gt 1000 ]
-              echo \"$cyan$CMD_DURATION\"
-            end
-          
-            # command returned an error status
-            if test $last_status = 0
-              printf \"       \"
-            else
-              printf \"$red ✖%03d✖ \" $last_status
-            end
-          
-            printf (date \"+$secondary%H:%M$bkg_highlight:%S\")
-            ";
       };
 
     };

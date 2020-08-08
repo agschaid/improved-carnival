@@ -1,3 +1,5 @@
+set -l last_status $status
+
 set -g base03  (set_color 002b36)
 set -g base02  (set_color 073642)
 set -g base01  (set_color 586e75)
@@ -33,10 +35,12 @@ end
 set -g battery_average (acpi | sed 's/^Battery.* \([0-9]\{1,3\}\)%.*$/\1/' | awk '{sum+= $1} END {print sum/ NR}')
           
 set -g pb $secondary 
-if [ "$battery_average" -gt 10 ]
-  set -g lb $pb
-else
+set -g lb $pb
+if [ "$battery_average" -lt 10 ]
   set -g lb $orange
+end
+if [ "$battery_average" -lt 5 ]
+  set -g lb $red
 end
 
 switch $fish_bind_mode
@@ -60,6 +64,8 @@ end
 
 set _git_branch (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 
+set separation_element "$lb├───┤"
+
 if test -z "$_git_branch"
   set -g git_prompt ""
 else
@@ -76,10 +82,29 @@ else
     set stash_prompt " $blue☰$git_stash_count"
   end
 
-  set -g git_prompt "$lb├───┤$git_colour$_git_branch$stash_prompt"
+  set -g git_prompt "$separation_element$git_colour$_git_branch$stash_prompt"
 
 end
 
 set -l cwd (basename (prompt_pwd))
-echo "$lb╭─$vi_ind──────┤$pb$cwd$git_prompt$lb│"
+
+set -g status_prompt ""
+if test $last_status != 0
+  set -l x_symbol "⨯"
+  set -g status_prompt "$separation_element$violet$x_symbol $red$last_status"
+end
+
+set -g duration_prompt ""
+# commant took longer than 1 second
+if [ "$CMD_DURATION" -gt 1000 ]
+  set -l duration_symbol "⟳"
+  set -l seconds (math $CMD_DURATION / 1000)
+  set -g duration_prompt "$separation_element$violet$duration_symbol $cyan$seconds"
+  set -g CMD_DURATION 0
+end
+
+
+set -l ze_time (date "+$secondary%H:%M$bkg_highlight:%S")
+
+echo "$lb╭─$vi_ind───┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time"
 echo "$lb╰┤"
