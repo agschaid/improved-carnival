@@ -320,10 +320,10 @@ in
 
             # completers
 
-            ale
-            # LanguageClient-neovim
+            # ale
+            LanguageClient-neovim
             #deoplete-lsp
-            # YouCompleteMe
+            YouCompleteMe
             #coc-nvim
             # coc-java
 
