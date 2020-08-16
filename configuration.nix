@@ -219,11 +219,14 @@
   hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "de";
-  services.xserver.xkbOptions = "eurosign:e";
 
   services.xserver = {
+    enable = true;
+
+    # I really don't know why but setting the layout does not seem to work. Maybe xmonad ignores it?
+    layout = "de";
+    xkbOptions = "eurosign:e";
+
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
@@ -232,12 +235,6 @@
         haskellPackages.xmonad-extras
         haskellPackages.xmonad
       ];
-    };
-
-    displayManager = {
-      sessionCommands = ''
-        setxkbmap de
-      '';
     };
 
   };

@@ -107,6 +107,7 @@ in
 
       profileExtra = "
       hsetroot -solid '#002b36' &
+      sleep 1 &&
       setxkbmap de &";
 
       windowManager.xmonad = {
