@@ -259,18 +259,9 @@ in
         let g:limelight_conceal_ctermfg = 240  " Solarized Base01
         let g:limelight_conceal_guifg = '#585858'  " Solarized Base01
 
-        let g:LanguageClient_serverCommands = {
-            \ 'java': ['/home/agl/bin/jdtls', '-data', getcwd()],
-            \ 'elixir': ['/home/agl/github/elixir-ls/release/language_server.sh']
-            \ }
-
-        nnoremap <silent> MM :call LanguageClient_contextMenu()<CR>
-        nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-        nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-
-        " needed by ncm2
-        "let g:python3_host_prog = '/home/agl/.nix-profile/bin/python3'
-        "autocmd BufEnter * call ncm2#enable_for_buffer()
+        " nnoremap <silent> MM :call LanguageClient_contextMenu()<CR>
+        " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+        " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
         " NERDTREE CONFIG
         function BetterNerdTreeToggle()
@@ -295,7 +286,7 @@ in
         " CTRL-P CONFIG
         let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
 
-        " asdasdasd
+        " ALE
         let g:ale_java_eclipselsp_path = '/home/agl/github/eclipse.jdt.ls'
         let g:ale_completion_enabled = 1
         let g:ale_linters = {
@@ -315,21 +306,9 @@ in
             
             ctrlp
             fzf-vim
-            vim-bufferline
-            #vim-airline
-            #vim-airline-themes
+            vim-bufferline # shows list of buffers in command bar
 
-            # completers
-
-            # ale
-            LanguageClient-neovim
-            #deoplete-lsp
-            YouCompleteMe
-            #coc-nvim
-            # coc-java
-
-            # nvim-yarp # needed by ncm2
-            # ncm2
+            ale
             nerdtree
             dwm-vim
             vim-elixir
