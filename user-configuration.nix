@@ -300,6 +300,8 @@ in
         
         :map <silent> <C-A-j> <Plug>(ale_next_wrap)
         :map <silent> <C-A-k> <Plug>(ale_previous_wrap)
+        :nmap <silent> gd :ALEGoToDefinition<CR>
+        :nmap <silent> K :ALEHover<CR>
 
         let g:ale_linters = {
             \ 'java':['eclipselsp'],
