@@ -97,6 +97,7 @@
       my-python-packages = python-packages: with python-packages; [
         pyyaml
         pip
+        requests
       ];
       python-with-my-packages = python3.withPackages my-python-packages;
 
