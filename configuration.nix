@@ -192,6 +192,8 @@
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
   programs.gnupg.agent = { enable = true; };
 
+  programs.adb.enable = true;
+
   # needed for Steam
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];

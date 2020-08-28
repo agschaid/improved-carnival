@@ -96,6 +96,7 @@ in
     extraGroups = [ "wheel" # Enable ‘sudo’ for the user.
                     "docker" 
                     "networkmanager" 
+                    "adbusers"
                   ]; 
     shell = pkgs.fish;
   };
