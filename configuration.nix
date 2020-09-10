@@ -172,6 +172,12 @@
       nms  # no more secrets effect ;)
       nvpy # notational veolicity?
       stern
+      
+      gparted
+      
+      nnn
+      spaceFM
+
     ];
 
   fonts.fonts = with pkgs; [
