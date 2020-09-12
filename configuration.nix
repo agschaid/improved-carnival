@@ -76,6 +76,9 @@
       unstable_overlay = self: super:
       {
         kitty = unstable.kitty;
+        
+        # currently fails. But the version in the repos is really old and fails on contacts
+        # vdirsyncer = unstable.vdirsyncer;
       };
 
       steam_overlay = self: super: 
@@ -98,6 +101,7 @@
         pyyaml
         pip
         requests
+        setuptools
       ];
       python-with-my-packages = python3.withPackages my-python-packages;
 
@@ -175,9 +179,13 @@
       
       gparted
       
+      # filemanagers. Just one. Or none.
       nnn
       spaceFM
 
+      khal
+      khard
+      vdirsyncer
     ];
 
   fonts.fonts = with pkgs; [
