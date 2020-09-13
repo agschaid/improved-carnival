@@ -306,6 +306,7 @@ in
 
         let g:ale_linters = {
             \ 'java':['eclipselsp'],
+            \ 'python':['flake8', 'mypy', 'pyflakes']
         \}
       '';
 

@@ -79,6 +79,8 @@
         
         # currently fails. But the version in the repos is really old and fails on contacts
         # vdirsyncer = unstable.vdirsyncer;
+        
+        prospector = unstable.prospector;
       };
 
       steam_overlay = self: super: 
@@ -160,6 +162,11 @@
       python37Packages.pip
       python37Packages.virtualenv
       python37Packages.pynvim
+      python37Packages.flake8
+      # prospector
+      mypy
+      python37Packages.pyflakes
+
 
 
       steam-run
