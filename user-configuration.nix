@@ -89,7 +89,7 @@ let
     cd ~/syncthing/Diary
 
     mkdir -p $MONTH_PATH
-    vim +Goyo $DAY_PATH.md -c "let g:bufferline_fname_mod=':.'"
+    vim +Goyo $DAY_PATH.md -c ":set linebreak | let g:bufferline_fname_mod=':.'"
   '';
 
   customVimPlugins = {
