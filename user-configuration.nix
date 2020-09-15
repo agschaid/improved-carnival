@@ -252,7 +252,13 @@ in
 
       configure = {
 
+
         customRC = ''
+
+        " always move in wrapped lines
+        noremap <silent> k gk
+        noremap <silent> j gj
+        
         set incsearch
         
         " buffers are hidden and not unloaded  -> switch between buffers without save
