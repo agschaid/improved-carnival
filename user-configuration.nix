@@ -204,11 +204,16 @@ in
         wolf = "clean -i";
         tree = "log --all --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'";
         pruned-tree = "log --graph --abbrev-commit --decorate --date=relative --all --simplify-by-decoration";
+        patch = "!git --no-pager diff --no-color";
       };
 
       extraConfig = {
         core.editor = "vim";
-        core.pager = "less -iXFR"; # -X does not clear the screen when exiting
+
+        # -X does not clear the screen when exiting.
+        # move between changed files with n/p
+        core.pager = "diff-so-fancy | less -iXFRS --pattern '^(Date|added|deleted|modified): '"; 
+        
         push.default = "current";
       };
 

@@ -193,6 +193,10 @@
       khal
       khard
       vdirsyncer
+      
+
+      gitAndTools.diff-so-fancy
+      mdcat
     ];
 
   fonts.fonts = with pkgs; [
