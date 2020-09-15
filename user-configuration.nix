@@ -72,6 +72,12 @@ let
     theme
   '';
 
+  diary = pkgs.writeScriptBin "diary" ''
+    #!${pkgs.stdenv.shell}
+    mkdir -p ~/syncthing/Diary/$(date +"%Y/%m")
+    vim ~/syncthing/Diary/$(date +"%Y/%m/%d").md
+  '';
+
   customVimPlugins = {
     dwm-vim = pkgs.vimUtils.buildVimPlugin {
       name = "dwm-vim";
@@ -134,6 +140,7 @@ in
       theme_local
       light_theme
       dark_theme
+      diary
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
