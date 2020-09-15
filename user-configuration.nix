@@ -289,8 +289,14 @@ in
 
         " ALE
         let g:ale_java_eclipselsp_path = '/home/agl/github/eclipse.jdt.ls'
+        let g:ale_elixir_elixir_ls_release= '/home/agl/github/elixir-ls/release'
+        let g:ale_elixir_elixir_ls_config = { 
+                                   \   'elixirLS': {
+                                   \     'dialyzerEnabled': v:false,
+                                   \   },  
+                                   \}
         let g:ale_completion_enabled = 1
-        " let g:ale_sign_column_always = 1
+        let g:ale_sign_column_always = 1
 
         let g:ale_sign_error = '>>'
         let g:ale_sign_warning = '--'
@@ -306,7 +312,8 @@ in
 
         let g:ale_linters = {
             \ 'java':['eclipselsp'],
-            \ 'python':['flake8', 'mypy', 'pyflakes']
+            \ 'python':['flake8', 'mypy', 'pyflakes'],
+            \ 'elixir':['credo', 'dialyxir', 'elixir-ls']
         \}
       '';
 
