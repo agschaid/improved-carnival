@@ -86,10 +86,10 @@ let
     MONTH_PATH=$(date --date="$DATE" +"%Y/%m" )
     DAY_PATH=$MONTH_PATH/$(date --date="$DATE" +"%d" )
 
-    PATH_TO_DIARY=~/syncthing/Diary
+    cd ~/syncthing/Diary
 
-    mkdir -p $PATH_TO_DIARY/$MONTH_PATH
-    vim +Goyo $PATH_TO_DIARY/$DAY_PATH.md
+    mkdir -p $MONTH_PATH
+    vim +Goyo $DAY_PATH.md -c "let g:bufferline_fname_mod=':.'"
   '';
 
   customVimPlugins = {
