@@ -75,7 +75,7 @@ let
   diary = pkgs.writeScriptBin "diary" ''
     #!${pkgs.stdenv.shell}
     mkdir -p ~/syncthing/Diary/$(date +"%Y/%m")
-    vim ~/syncthing/Diary/$(date +"%Y/%m/%d").md
+    vim +Goyo ~/syncthing/Diary/$(date +"%Y/%m/%d").md
   '';
 
   customVimPlugins = {
@@ -295,6 +295,31 @@ in
         " GOYO CONFIG
         " by default start in programming linebreak width
         let g:goyo_width = 120
+
+        " GOYO QUIT: START
+        " taken from https://github.com/junegunn/goyo.vim/wiki/Customization
+        " When Goyo is open :q usually just quits Goyo. Not vim. The code below changes this behavior.
+        function! s:goyo_enter()
+          let b:quitting = 0
+          let b:quitting_bang = 0
+          autocmd QuitPre <buffer> let b:quitting = 1
+          cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+        endfunction
+
+        function! s:goyo_leave()
+          " Quit Vim if this is the only remaining buffer
+          if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+            if b:quitting_bang
+              qa!
+            else
+              qa
+            endif
+          endif
+        endfunction
+
+        autocmd! User GoyoEnter call <SID>goyo_enter()
+        autocmd! User GoyoLeave call <SID>goyo_leave()
+        " GOYO QUIT: END
 
         " CTRL-P CONFIG
         let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
