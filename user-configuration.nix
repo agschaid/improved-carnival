@@ -259,6 +259,13 @@ in
         noremap <silent> k gk
         noremap <silent> j gj
         
+        imap <A-f> (╯°□°)╯︵ ┻━┻
+        imap <A-s> ¯\_(ツ)_/¯
+        imap <A-d> (⌐■_■)
+        imap <A-y> ┌П┐(ಠ_ಠ)
+        imap <A-l> L(° O °L)
+
+
         set incsearch
         
         " buffers are hidden and not unloaded  -> switch between buffers without save
