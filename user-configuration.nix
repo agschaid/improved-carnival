@@ -74,8 +74,22 @@ let
 
   diary = pkgs.writeScriptBin "diary" ''
     #!${pkgs.stdenv.shell}
-    mkdir -p ~/syncthing/Diary/$(date +"%Y/%m")
-    vim +Goyo ~/syncthing/Diary/$(date +"%Y/%m/%d").md
+
+    if [ $# -eq 0 ]
+      then
+        DAYS=0
+      else
+        [[ $1 == "yesterday" || $1 == "y" ]] && DAYS=-1 || DAYS=$1
+    fi
+
+    DATE=" $DAYS day"
+    MONTH_PATH=$(date --date="$DATE" +"%Y/%m" )
+    DAY_PATH=$MONTH_PATH/$(date --date="$DATE" +"%d" )
+
+    PATH_TO_DIARY=~/syncthing/Diary
+
+    mkdir -p $PATH_TO_DIARY/$MONTH_PATH
+    vim +Goyo $PATH_TO_DIARY/$DAY_PATH.md
   '';
 
   customVimPlugins = {
