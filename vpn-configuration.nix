@@ -22,7 +22,12 @@
     private = {
       # add line and file:
       # auth-user-pass /etc/VPN/expressVPN/cred
-      config = ''config /etc/VPN/expressVPN/my_expressvpn_austria_udp.ovpn'';
+      # config = ''config /etc/VPN/expressVPN/my_expressvpn_austria_udp.ovpn'';
+      config = ''config /etc/VPN/mullvard/mullvard_at_vie.conf'';
+
+      # modify the up/down config in the provided conf to point to 
+      # /etc/VPN/mullvard/update-resolv-conf
+
       autoStart = false;
       updateResolvConf = true;
     };
