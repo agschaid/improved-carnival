@@ -194,9 +194,10 @@
       khard
       vdirsyncer
       
-
       gitAndTools.diff-so-fancy
       mdcat
+
+      bc # calculator
     ];
 
   fonts.fonts = with pkgs; [
