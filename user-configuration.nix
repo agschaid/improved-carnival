@@ -395,7 +395,8 @@ in
             fzf-vim
             vim-bufferline # shows list of buffers in command bar
 
-            ale
+            # ale
+            coc-nvim
             nerdtree
             dwm-vim
             vim-elixir
