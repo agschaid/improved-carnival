@@ -220,10 +220,8 @@
 
   programs.adb.enable = true;
 
-  # needed for Steam
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-  hardware.pulseaudio.support32Bit = true;
 
   # List services that you want to enable:
 
@@ -245,7 +243,12 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    # needed for Steam
+    support32Bit = true;
+  };
 
   # Enable the X11 windowing system.
 
@@ -279,6 +282,9 @@
     palmDetect = true;
 
   };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # services.xserver.displayManager.ly.enable = true;
 
