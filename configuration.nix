@@ -198,6 +198,7 @@
       mdcat
 
       bc # calculator
+      nodejs
     ];
 
   fonts.fonts = with pkgs; [
