@@ -104,6 +104,16 @@ let
     };
   };
 
+  oc_rsh = pkgs.writeScriptBin "oc_rsh" ''
+    #!${pkgs.stdenv.shell}
+    oc project > /dev/tty && oc rsh $(oc get pods | fzf | cut -d " " -f1)
+  '';
+
+  oc_port_forward = pkgs.writeScriptBin "oc_port_forward" ''
+    #!${pkgs.stdenv.shell}
+    oc project > /dev/tty && echo "oc port-forward" $(oc get pods | fzf | cut -d ' ' -f1) $(echo -e '8080:8080 REST\n27017:27017 MongoDB\n8081:8080 REST alt1\n8082:8080 REST alt2\n8083:8080 REST alt3' | fzf --print-query | tail -n -1 | cut -d ' ' -f1) | tee /dev/tty | sh
+  '';
+
 in
 {
   imports = [
@@ -155,6 +165,8 @@ in
       light_theme
       dark_theme
       diary
+      oc_rsh
+      oc_port_forward
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
