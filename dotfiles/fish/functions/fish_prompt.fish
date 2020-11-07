@@ -36,11 +36,27 @@ set -g battery_average (acpi | sed 's/^Battery.* \([0-9]\{1,3\}\)%.*$/\1/' | awk
           
 set -g pb $secondary 
 set -g lb $pb
+
+set -g battery_color false
+
 if [ "$battery_average" -lt 10 ]
   set -g lb $orange
+  set -g battery_color true
 end
 if [ "$battery_average" -lt 5 ]
   set -g lb $red
+  set -g battery_color true
+end
+
+set -g bb $lb
+
+jobs -q
+set -l jobs_status $status
+if test $jobs_status -eq 0
+  set -g bb $green
+  if test $battery_color = false
+    set -g lb $green
+  end
 end
 
 switch $fish_bind_mode
@@ -59,12 +75,12 @@ end
 if test -n "$vi_sign" 
   set -g vi_ind "$lb┤$pb$vi_sign$lb├"
 else
-  set -g vi_ind "$lb───"
+  set -g vi_ind "$bb───"
 end
 
 set _git_branch (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 
-set separation_element "$lb├───┤"
+set separation_element "$lb├$bb───$lb┤"
 
 if test -z "$_git_branch"
   set -g git_prompt ""
@@ -106,5 +122,5 @@ end
 
 set -l ze_time (date "+$secondary%H:%M$bkg_highlight:%S")
 
-echo "$lb╭─$vi_ind───┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time"
-echo "$lb╰┤"
+echo "$bb╭─$vi_ind$bb───$lb┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time"
+echo "$bb╰$lb┤"
