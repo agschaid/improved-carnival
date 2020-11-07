@@ -199,6 +199,10 @@
 
       bc # calculator
       nodejs
+
+      lynx
+      links2
+      w3m-full
     ];
 
   fonts.fonts = with pkgs; [
