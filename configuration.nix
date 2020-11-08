@@ -203,6 +203,8 @@
       lynx
       links2
       w3m-full
+
+      gimp
     ];
 
   fonts.fonts = with pkgs; [
