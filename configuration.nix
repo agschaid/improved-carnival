@@ -205,6 +205,13 @@
       w3m-full
 
       gimp
+      libreoffice
+      postman
+
+      yq
+
+      arp-scan
+      lolcat
     ];
 
   fonts.fonts = with pkgs; [
