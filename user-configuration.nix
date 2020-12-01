@@ -252,6 +252,23 @@ in
 
     };
 
+    programs.ssh = {
+        enable = true;
+
+        matchBlocks = {
+            "*" = {
+                # hostname = "*";
+                identityFile = "~/.ssh/id_rsa";
+            };
+            # "10.0.0.89" = lib.hm.dag.entryBefore ["*"] {
+            "10.0.0.89" = {
+                #hostname = "10.0.0.89";
+                identityFile = "~/.ssh/id_rsa.gitsync";
+            };
+        };
+
+    };
+
     programs.neovim = {
       enable = true;
 
