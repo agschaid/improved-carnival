@@ -248,6 +248,7 @@ in
         pager.diff = "diff-so-fancy | less -iXFRS --pattern '^(Date|added|deleted|modified): '"; 
         
         push.default = "current";
+        pull.ff = "only";
       };
 
     };
