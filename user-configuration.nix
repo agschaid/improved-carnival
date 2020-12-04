@@ -1,9 +1,5 @@
 {config, pkgs, lib,...}:
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    ref = "release-20.09";
-  };
 
   laptop_layout = pkgs.writeScriptBin "screen_laptop_layout" ''
     #!${pkgs.stdenv.shell}
@@ -117,7 +113,7 @@ let
 in
 {
   imports = [
-    (import "${home-manager}/nixos")
+    <home-manager/nixos>
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
