@@ -112,6 +112,7 @@ let
 
 in
 {
+
   imports = [
     <home-manager/nixos>
   ];
@@ -127,7 +128,7 @@ in
     shell = pkgs.fish;
   };
 
-  home-manager.users.agl = {
+  home-manager.users.agl = {pkgs, lib, ... }: {
 
     xsession = {
       enable = true;
@@ -254,11 +255,9 @@ in
 
         matchBlocks = {
             "*" = {
-                # hostname = "*";
                 identityFile = "~/.ssh/id_rsa";
             };
-            # "10.0.0.89" = lib.hm.dag.entryBefore ["*"] {
-            "10.0.0.89" = {
+            "10.0.0.89" = lib.hm.dag.entryBefore ["*"] {
                 #hostname = "10.0.0.89";
                 identityFile = "~/.ssh/id_rsa.gitsync";
             };
