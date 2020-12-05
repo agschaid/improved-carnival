@@ -110,6 +110,17 @@ let
     oc project > /dev/tty && echo "oc port-forward" $(oc get pods | fzf | cut -d ' ' -f1) $(echo -e '8080:8080 REST\n27017:27017 MongoDB\n8081:8080 REST alt1\n8082:8080 REST alt2\n8083:8080 REST alt3' | fzf --print-query | tail -n -1 | cut -d ' ' -f1) | tee /dev/tty | sh
   '';
 
+  check_vehicle = pkgs.writeScriptBin "check_vehicle" ''
+    #!${pkgs.stdenv.shell}
+
+    CARHUB_ENV=$1
+    VEHICLE_ID=$2
+
+    PWD=$(pass show work/carhub/$CARHUB_ENV/admin | head -n 1)
+
+    curl -v --user "admin:$PWD" -H "Content-Type: application/json" "https://carhub-$CARHUB_ENV.int.ocp.porscheinformatik.cloud/api/v1/vehicles/$VEHICLE_ID" | jq 
+  '';
+
 in
 {
 
@@ -164,6 +175,7 @@ in
       diary
       oc_rsh
       oc_port_forward
+      check_vehicle
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
