@@ -99,13 +99,6 @@
       maven_jdk11 = maven.override {
         jdk = jdk11;
       };
-      my-python-packages = python-packages: with python-packages; [
-        pyyaml
-        pip
-        requests
-        setuptools
-      ];
-      python-with-my-packages = python3.withPackages my-python-packages;
 
     in [
       killall
@@ -157,12 +150,12 @@
       postgresql
       zsh
       fzf
-      # python-with-my-packages
       python37Full
       python37Packages.pip
       python37Packages.virtualenv
       python37Packages.pynvim
       python37Packages.flake8
+      python37Packages.setuptools
       # prospector
       mypy
       python37Packages.pyflakes
@@ -212,6 +205,13 @@
 
       arp-scan
       lolcat
+      youtube-dl
+      entr
+
+      p7zip
+      muse
+      tdesktop
+      ncdu
     ];
 
   fonts.fonts = with pkgs; [
