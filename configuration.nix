@@ -212,6 +212,7 @@
       muse
       tdesktop
       ncdu
+      exercism
     ];
 
   fonts.fonts = with pkgs; [
