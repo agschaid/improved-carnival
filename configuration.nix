@@ -213,6 +213,7 @@
       tdesktop
       ncdu
       exercism
+      rebar3
     ];
 
   fonts.fonts = with pkgs; [
