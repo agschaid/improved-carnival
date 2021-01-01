@@ -214,6 +214,8 @@
       ncdu
       exercism
       rebar3
+
+      steam
     ];
 
   fonts.fonts = with pkgs; [
