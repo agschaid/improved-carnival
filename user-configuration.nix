@@ -82,7 +82,7 @@ let
     MONTH_PATH=$(date --date="$DATE" +"%Y/%m" )
     DAY_PATH=$MONTH_PATH/$(date --date="$DATE" +"%d" )
 
-    cd ~/syncthing/Diary
+    cd ~/.gitsync/plaintext/notes/diary
 
     mkdir -p $MONTH_PATH
     vim +Goyo $DAY_PATH.md -c ":set linebreak | let g:bufferline_fname_mod=':.'"
@@ -119,6 +119,17 @@ let
     PWD=$(pass show work/carhub/$CARHUB_ENV/admin | head -n 1)
 
     curl -v --user "admin:$PWD" -H "Content-Type: application/json" "https://carhub-$CARHUB_ENV.int.ocp.porscheinformatik.cloud/api/v1/vehicles/$VEHICLE_ID" | jq 
+  '';
+
+  check_vehicle_history = pkgs.writeScriptBin "check_vehicle_history" ''
+    #!${pkgs.stdenv.shell}
+
+    CARHUB_ENV=$1
+    VEHICLE_ID=$2
+
+    PWD=$(pass show work/carhub/$CARHUB_ENV/admin | head -n 1)
+
+    curl -v --user "admin:$PWD" -H "Content-Type: application/json" "https://carhub-$CARHUB_ENV.int.ocp.porscheinformatik.cloud/api/v1/vehicles/$VEHICLE_ID/history" | jq 
   '';
 
 in
@@ -176,6 +187,7 @@ in
       oc_rsh
       oc_port_forward
       check_vehicle
+      check_vehicle_history
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
@@ -573,6 +585,7 @@ in
             nerdtree
             dwm-vim
             vim-elixir
+            vim-markdown
           ];
         };
 

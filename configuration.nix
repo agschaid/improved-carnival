@@ -134,6 +134,7 @@
       jq
       vscode
       kitty       # terminal
+      alacritty
       zathura     # pdf
       unclutter
       hsetroot
@@ -214,8 +215,17 @@
       ncdu
       exercism
       rebar3
+      gradle
 
       steam
+      hugo    # site generator
+      deltachat-electron
+      renameutils
+      josm
+      wmname
+      libnotify
+      signal-desktop
+      signal-cli
     ];
 
   fonts.fonts = with pkgs; [
