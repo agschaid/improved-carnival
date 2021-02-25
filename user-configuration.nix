@@ -88,6 +88,12 @@ let
     vim +Goyo $DAY_PATH.md -c ":set linebreak | let g:bufferline_fname_mod=':.'"
   '';
 
+  cut_gif = pkgs.writeScriptBin "cut_gif" ''
+    #!${pkgs.stdenv.shell}
+
+    ffmpeg -i "$1" -vf select="between(n\,$2\,$3),setpts=PTS-STARTPTS" $4
+  '';
+
   customVimPlugins = {
     dwm-vim = pkgs.vimUtils.buildVimPlugin {
       name = "dwm-vim";
@@ -188,6 +194,7 @@ in
       oc_port_forward
       check_vehicle
       check_vehicle_history
+      cut_gif
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
