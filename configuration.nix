@@ -134,7 +134,7 @@
       jq
       vscode
       kitty       # terminal
-      alacritty
+
       zathura     # pdf
       unclutter
       hsetroot
@@ -314,6 +314,7 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  services.cron.enable = true;
   # services.xserver.displayManager.ly.enable = true;
 
 
