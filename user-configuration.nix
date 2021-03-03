@@ -604,9 +604,9 @@ in
     programs.fish = {
       enable = true;
       
-      loginShellInit = "dark_theme";
+      # loginShellInit = "dark_theme";
       
-      interactiveShellInit = "theme_local";
+      # interactiveShellInit = "theme_local";
       
       functions = {
 
@@ -615,6 +615,15 @@ in
         fish_prompt = (builtins.readFile ./dotfiles/fish/functions/fish_prompt.fish);
       };
 
+    };
+
+    programs.tmux = {
+      enable = true;
+      aggressiveResize = true;
+      baseIndex = 1;
+      shortcut = "a";
+      keyMode = "vi";
+      extraConfig = (builtins.readFile ./dotfiles/tmux/tmux.conf);
     };
     
     home.file.".config/fish/completions/pass.fish".source = ./dotfiles/fish/completions/pass.fish;

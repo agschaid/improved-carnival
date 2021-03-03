@@ -105,6 +105,7 @@
       wget 
       vim
       tmux
+      dvtm # terminal multiplexer
       git
       tig
       gnupg1
