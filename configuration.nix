@@ -12,6 +12,7 @@
       ./user-configuration.nix
     ];
 
+
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.enable = true;
   # boot.loader.grub.version = 2;
@@ -73,6 +74,13 @@
 
       unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 
+      st_src = pkgs.fetchFromGitHub {
+            owner  = "agschaid";
+            repo   = "st";
+            rev    = "f12614d87a37b3a3a6589b6194b1d41ebdc205d3";
+            sha256 = "0lssaxm9caviz9q2cpf8hghq0fxnlhw2mywqxggag1vfqiandyhs";
+        };
+
       unstable_overlay = self: super:
       {
         kitty = unstable.kitty;
@@ -89,8 +97,13 @@
           extraPkgs = pkgs: [self.linux-pam];
         };
       };
+
+      src_overlays = self: super: {
+        st = import "${st_src}/default.nix";
+      };
+
     in
-    [steam_overlay unstable_overlay];
+    [steam_overlay unstable_overlay src_overlays];
 
   environment.systemPackages = with pkgs; 
     let 
@@ -135,6 +148,7 @@
       jq
       vscode
       kitty       # terminal
+      st
 
       zathura     # pdf
       unclutter
