@@ -175,6 +175,7 @@ in
 
     home.sessionVariables = {
       EDITOR = "vim";
+      BROWSER = "qutebrowser";
     };
 
     home.packages = [ 
