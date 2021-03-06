@@ -39,10 +39,10 @@ let
   theme = pkgs.writeScriptBin "theme" ''
     #!${pkgs.stdenv.shell}
     if grep -q "light" ~/.theme; then
-        kitty @set-colors --all --configured ~/.config/kitty/solarized-light.conf
+        # kitty @set-colors --all --configured ~/.config/kitty/solarized-light.conf
         hsetroot -solid '#fdf6e3'
     else
-        kitty @set-colors --all --configured ~/.config/kitty/solarized-dark.conf
+        # kitty @set-colors --all --configured ~/.config/kitty/solarized-dark.conf
         hsetroot -solid '#002b36'
     fi
   '';
