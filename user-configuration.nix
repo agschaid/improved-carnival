@@ -364,6 +364,11 @@ in
         :match BadWhitespace / \+$/
         :2match BadWhitespace /\t/
 
+        " general values for solarized plugin 
+        let g:solarized_termtrans = 1
+        set background=dark " not sure why but this should always be dark 
+        colorscheme solarized
+
         """ VALUES FOR SOLARIZED BRIGHT
         " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
         " let g:limelight_conceal_guifg = '#8a8a8a'  " Solarized Base1
@@ -594,6 +599,8 @@ in
             dwm-vim
             vim-elixir
             vim-markdown
+
+            solarized
           ];
         };
 
