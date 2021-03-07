@@ -430,6 +430,13 @@ in
         let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
 
         """""""
+        " FZF "
+        """""""
+
+        " make :Ag not search in the filename.
+        command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+        """""""
         " COC "
         """""""
 
