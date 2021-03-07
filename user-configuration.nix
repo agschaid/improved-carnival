@@ -350,8 +350,8 @@ in
         set background=dark
         set mouse=a
 
-        set tabstop=4
-        set shiftwidth=4
+        set tabstop=2
+        set shiftwidth=2
         set expandtab
 
         " make comments look pretty with Victor Mono
