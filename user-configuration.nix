@@ -297,6 +297,18 @@ in
 
     };
 
+    programs.qutebrowser = {
+      enable = true;
+
+      keyBindings = {
+        normal = {
+        "<ctrl+shift+p>" = "spawn --userscript qute-pass";
+        "<ctrl+shift+l>" = ''config-cycle spellcheck.languages ["en-GB"] ["en-US"]'';
+        };
+      };
+
+    };
+
     programs.neovim = {
       enable = true;
 
