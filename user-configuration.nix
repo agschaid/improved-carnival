@@ -302,7 +302,7 @@ in
 
       keyBindings = {
         normal = {
-        "<ctrl+shift+p>" = "spawn --userscript qute-pass";
+        "<ctrl+shift+p>" = "spawn --userscript password_fill";
         "<ctrl+shift+l>" = ''config-cycle spellcheck.languages ["en-GB"] ["en-US"]'';
         };
       };
