@@ -74,12 +74,22 @@
 
       unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 
+      # HOWTO get sha256: https://github.com/NixOS/nix/issues/1880
+      # nix-prefetch-url --unpack githuburl<rev>.tar.gz
+
       st_src = pkgs.fetchFromGitHub {
             owner  = "agschaid";
             repo   = "st";
             rev    = "f12614d87a37b3a3a6589b6194b1d41ebdc205d3";
             sha256 = "0lssaxm9caviz9q2cpf8hghq0fxnlhw2mywqxggag1vfqiandyhs";
         };
+
+      scroll_src = pkgs.fetchFromGitHub {
+        owner  = "agschaid";
+        repo   = "scroll";
+        rev    = "a3078d4e5c956b9cfe483c8f500c8994d01e54d0";
+        sha256 = "1d1lsqafkcia3s86cbmpgw7dz9qp5mwra8s0cg5x3a86p81cl1ca";
+      };
 
       unstable_overlay = self: super:
       {
@@ -100,6 +110,7 @@
 
       src_overlays = self: super: {
         st = import "${st_src}/default.nix";
+        scroll = import "${scroll_src}/default.nix";
       };
 
     in
@@ -149,6 +160,7 @@
       vscode
       kitty       # terminal
       st
+      scroll
 
       zathura     # pdf
       unclutter
@@ -192,6 +204,8 @@
       nms  # no more secrets effect ;)
       nvpy # notational veolicity?
       stern
+      nushell
+      mtm   # minimal multiplexer
       
       gparted
       
