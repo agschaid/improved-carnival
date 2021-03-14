@@ -80,8 +80,8 @@
       st_src = pkgs.fetchFromGitHub {
             owner  = "agschaid";
             repo   = "st";
-            rev    = "f12614d87a37b3a3a6589b6194b1d41ebdc205d3";
-            sha256 = "0lssaxm9caviz9q2cpf8hghq0fxnlhw2mywqxggag1vfqiandyhs";
+            rev    = "f70528ec465fd634256fec6140c327a2dad6c4c7";
+            sha256 = "1p010nhm2r45ipji6l5xsiqjzjp5j6j6w1sc50x6kmy4dssy0yip";
         };
 
       scroll_src = pkgs.fetchFromGitHub {
