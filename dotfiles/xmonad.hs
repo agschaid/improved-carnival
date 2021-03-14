@@ -35,7 +35,7 @@ main = do
         , focusedBorderColor = "#cb4b16"
         , normalBorderColor = "#657b83"
         , borderWidth = 2
-        , terminal = "st"
+        , terminal = "st -e scroll"
         }
         `removeKeys` keysToRemove
         `additionalKeys` keysToAdd
