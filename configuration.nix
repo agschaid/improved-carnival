@@ -255,6 +255,8 @@
       libnotify
       signal-desktop
       signal-cli
+
+      flameshot # screenshot
     ];
 
   fonts.fonts = with pkgs; [
