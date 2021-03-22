@@ -95,15 +95,15 @@ let
   '';
 
   customVimPlugins = {
-    dwm-vim = pkgs.vimUtils.buildVimPlugin {
-      name = "dwm-vim";
-      src = pkgs.fetchFromGitHub {
-        owner = "spolu";
-        repo = "dwm.vim";
-        rev = "6149e58fdd81f69e4e6a3f239842f3dc23e4872b";
-        sha256 = "0ixnw6mxabgbpd702xdsrp9vp30iwa453pf89hli9wyzdz7ilg7p";
-      };
-    };
+    # dwm-vim = pkgs.vimUtils.buildVimPlugin {
+    #   name = "dwm-vim";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "spolu";
+    #     repo = "dwm.vim";
+    #     rev = "6149e58fdd81f69e4e6a3f239842f3dc23e4872b";
+    #     sha256 = "0ixnw6mxabgbpd702xdsrp9vp30iwa453pf89hli9wyzdz7ilg7p";
+    #   };
+    # };
   };
 
   oc_rsh = pkgs.writeScriptBin "oc_rsh" ''
@@ -615,7 +615,8 @@ in
             # ale
             coc-nvim
             nerdtree
-            dwm-vim
+            # TODO also remove plugin definition above
+            # dwm-vim
             vim-elixir
             vim-markdown
             tabular # needed by vim-markdown
