@@ -172,6 +172,7 @@
       arandr      # frontend für xrandr
       mplayer     # video
       ffmpeg      # basis video schnitt
+      imagemagick
       sl          # muy importante
       sxiv        # image viewer
       xorg.libxcb # needed for steam
