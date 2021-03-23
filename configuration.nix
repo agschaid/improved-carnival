@@ -173,7 +173,13 @@
       mplayer     # video
       ffmpeg      # basis video schnitt
       imagemagick
-      sl          # muy importante
+      
+      ############ MUY IMPORTANTE
+      sl          # eh scho wissen
+      gti         # wie sl für git
+      nms         # no more secrets effect ;)
+      bastet      # tetris. Aber schwer
+      
       sxiv        # image viewer
       xorg.libxcb # needed for steam
       postgresql
@@ -202,7 +208,6 @@
       qutebrowser
       abcde
       networkmanager_dmenu
-      nms  # no more secrets effect ;)
       nvpy # notational veolicity?
       stern
       nushell
