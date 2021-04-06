@@ -324,6 +324,8 @@ in
 
         customRC = ''
 
+        let mapleader = ','
+
         " always move in wrapped lines
         noremap <silent> k gk
         noremap <silent> j gj
@@ -622,6 +624,7 @@ in
             tabular # needed by vim-markdown
 
             solarized
+            todo-txt-vim
           ];
         };
 
