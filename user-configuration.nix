@@ -299,11 +299,15 @@ in
 
     programs.qutebrowser = {
       enable = true;
+      
+      extraConfig = (builtins.readFile ./dotfiles/qutebrowser/extra_config.py);
 
       keyBindings = {
         normal = {
-        "<ctrl+shift+p>" = "spawn --userscript password_fill";
+        ",p" = "spawn --userscript password_fill";
         "<ctrl+shift+l>" = ''config-cycle spellcheck.languages ["en-GB"] ["en-US"]'';
+        "J" = "tab-prev";
+        "K" = "tab-next";
         };
       };
 
