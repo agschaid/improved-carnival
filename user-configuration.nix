@@ -301,6 +301,11 @@ in
       enable = true;
       
       extraConfig = (builtins.readFile ./dotfiles/qutebrowser/extra_config.py);
+      settings = {
+        input = {
+          spatial_navigation = true;
+        };
+      };
 
       keyBindings = {
         normal = {
