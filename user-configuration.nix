@@ -346,7 +346,13 @@ in
         imap <A-l> L(° O °L)
 
 
+        " incremental search
         set incsearch
+
+        " incremental search and replace
+        set inccommand=split
+        nmap <leader>s :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
+        xmap <leader>s y:%s/<C-R>"/\0/g<Left><Left>a<BS>
         
         " buffers are hidden and not unloaded  -> switch between buffers without save
         set hidden
