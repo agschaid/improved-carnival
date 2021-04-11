@@ -94,8 +94,8 @@
       wallbag_src = pkgs.fetchFromGitHub {
         owner  = "agschaid";
         repo   = "wallabag-cli";
-        rev    = "48fd563dd785c97fc1f211bf2bca1a898bcbc8b0";
-        sha256 = "02iq17nvhcxzha9g4277xzkpwzn6wrsb2pmlb83k3wlj1r4zi09r";
+        rev    = "daedfba4a9a17dc479a0957bdb7310359f4bee38";
+        sha256 = "1hk8d1gzfsdzv4m6zxgcc8fk7s7vfrvb9mg5v4fj19r0iqxlmcmz";
       };
 
       unstable_overlay = self: super:
