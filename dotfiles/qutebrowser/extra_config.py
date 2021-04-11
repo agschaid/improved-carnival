@@ -272,22 +272,22 @@ c.colors.tabs.pinned.odd.fg = base3
 c.colors.tabs.pinned.selected.even.bg = base03
 
 # Foreground color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.fg = yellow
+c.colors.tabs.pinned.selected.even.fg = orange
 
 # Background color of pinned selected odd tabs.
 c.colors.tabs.pinned.selected.odd.bg = base03
 
 # Foreground color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.fg = yellow
+c.colors.tabs.pinned.selected.odd.fg = orange
 
 # Foreground color of selected odd tabs.
-c.colors.tabs.selected.odd.fg = yellow
+c.colors.tabs.selected.odd.fg = orange
 
 # Background color of selected odd tabs.
 c.colors.tabs.selected.odd.bg = base03
 
 # Foreground color of selected even tabs.
-c.colors.tabs.selected.even.fg = yellow
+c.colors.tabs.selected.even.fg = orange
 
 # Background color of selected even tabs.
 c.colors.tabs.selected.even.bg = base03
