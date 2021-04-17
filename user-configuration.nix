@@ -307,6 +307,11 @@ in
         };
       };
 
+      aliases = {
+        "b" = "buffer";
+        "bd" = "tab-close";
+      };
+
       keyBindings = {
         normal = {
         ",p" = "spawn --userscript password_fill";
