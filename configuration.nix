@@ -91,13 +91,6 @@
         sha256 = "1d1lsqafkcia3s86cbmpgw7dz9qp5mwra8s0cg5x3a86p81cl1ca";
       };
 
-      wallbag_src = pkgs.fetchFromGitHub {
-        owner  = "agschaid";
-        repo   = "wallabag-cli";
-        rev    = "daedfba4a9a17dc479a0957bdb7310359f4bee38";
-        sha256 = "1hk8d1gzfsdzv4m6zxgcc8fk7s7vfrvb9mg5v4fj19r0iqxlmcmz";
-      };
-
       unstable_overlay = self: super:
       {
         kitty = unstable.kitty;
@@ -118,7 +111,6 @@
       src_overlays = self: super: {
         st = import "${st_src}/default.nix";
         scroll = import "${scroll_src}/default.nix";
-        wallabag_cli = import "${wallbag_src}/default.nix";
       };
 
     in
@@ -271,7 +263,6 @@
       signal-cli
 
       flameshot # screenshot
-      wallabag_cli
     ];
 
   fonts.fonts = with pkgs; [
