@@ -264,6 +264,9 @@
 
       flameshot # screenshot
       httpie
+
+      hydrogen
+      musescore
     ];
 
   fonts.fonts = with pkgs; [
