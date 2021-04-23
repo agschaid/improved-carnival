@@ -138,6 +138,36 @@ let
     curl -v --user "admin:$PWD" -H "Content-Type: application/json" "https://carhub-$CARHUB_ENV.int.ocp.porscheinformatik.cloud/api/v1/vehicles/$VEHICLE_ID/history" | jq 
   '';
 
+  wallabag_add = pkgs.writeScriptBin "wallabag_add" ''
+    #!${pkgs.stdenv.shell}
+
+    URL=$1
+
+    CONFIG=~/.wallabag
+
+    SEARCH_CMD="jq -e -r "
+
+    HOST=$(jq -r '.url' $CONFIG)
+    USR=$(jq -r ".usr" $CONFIG)
+    PWD=$(jq -r ".pwd" $CONFIG)
+    CLIENT_ID=$(jq -r ".client_id" $CONFIG)
+    CLIENT_SECRET=$(jq -r ".client_secret" $CONFIG)
+
+    RESPONSE=$(http POST $HOST/oauth/v2/token \
+      grant_type=password \
+      client_id=$CLIENT_ID \
+      client_secret=$CLIENT_SECRET \
+      username=$USR \
+      password=$PWD )
+
+    TOKEN=$(echo $RESPONSE | jq -r ".access_token")
+
+    http POST $HOST/api/entries.json \
+      "Authorization:Bearer $TOKEN" \
+      url="$URL"
+
+  '';
+
 in
 {
 
@@ -196,6 +226,7 @@ in
       check_vehicle
       check_vehicle_history
       cut_gif
+      wallabag_add
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
@@ -315,6 +346,7 @@ in
       keyBindings = {
         normal = {
         ",p" = "spawn --userscript password_fill";
+        ",w" = "spawn -v -m wallabag_add {url}"; # this script is defined above
         "<ctrl+shift+l>" = ''config-cycle spellcheck.languages ["en-GB"] ["en-US"]'';
         "J" = "tab-prev";
         "K" = "tab-next";

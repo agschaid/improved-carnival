@@ -263,6 +263,7 @@
       signal-cli
 
       flameshot # screenshot
+      httpie
     ];
 
   fonts.fonts = with pkgs; [
