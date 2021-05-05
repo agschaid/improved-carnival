@@ -45,6 +45,7 @@ main = do
 keysToRemove = [ (mod4Mask .|. shiftMask ,xK_q)     -- suppress original quit
                , (mod4Mask, xK_space)               -- suppress layout cycling
                , (mod4Mask .|. shiftMask, xK_space) -- suppress jumping back to first layout
+               , (mod4Mask, xK_p)                   -- suppress original binding to dmenu
 	       ] 
 
 keysToAdd  = [ ((mod4Mask, xK_g), sequence_ $ [windows $ copy i | i <- XMonad.workspaces defaultConfig]) -- copy window to all workspaces (aka 'global')
@@ -58,7 +59,9 @@ keysForMoving x = [((m .|. mod4Mask, k), windows $ f i)
                    | (i, k) <- zip (XMonad.workspaces x) [xK_1 ..]
                    , (f, m) <- [(W.view, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]]
 
-programShortcuts  = [((mod4Mask, xK_n), spawn "firefox")]
+programShortcuts  = [ ((mod4Mask, xK_n), spawn "firefox")
+                    , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
+                    ]
 
 quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")
                 , ((mod4Mask .|. shiftMask .|. mod1Mask, xK_q), io (exitWith ExitSuccess))

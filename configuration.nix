@@ -206,6 +206,7 @@
       # nodejs # for coc.nvim
       aerc
       qutebrowser
+      rofi
       abcde
       networkmanager_dmenu
       nvpy # notational veolicity?
@@ -267,6 +268,7 @@
 
       hydrogen
       musescore
+
     ];
 
   fonts.fonts = with pkgs; [
