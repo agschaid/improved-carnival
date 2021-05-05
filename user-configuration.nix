@@ -409,6 +409,9 @@ in
         " Needed by coc.
         set shortmess+=c
 
+        " easier copy
+        vnoremap <leader>c "+y<CR>
+
         
         set ignorecase
         set smartcase
