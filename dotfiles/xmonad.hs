@@ -59,7 +59,7 @@ keysForMoving x = [((m .|. mod4Mask, k), windows $ f i)
                    | (i, k) <- zip (XMonad.workspaces x) [xK_1 ..]
                    , (f, m) <- [(W.view, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]]
 
-programShortcuts  = [ ((mod4Mask, xK_n), spawn "firefox")
+programShortcuts  = [ ((mod4Mask, xK_n), spawn "qutebrowser")
                     , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
                     ]
 
