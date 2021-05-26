@@ -156,6 +156,7 @@
       zip
       unzip
       jdk16
+      jdk11
       jdk8
       maven_jdk16
       google-chrome
@@ -284,6 +285,7 @@
   environment.etc = with pkgs; {
     "jdk".source = jdk;
     "jdk8".source = jdk8;
+    "jdk11".source = jdk11;
     "jdk16".source = jdk16;
   };
 
