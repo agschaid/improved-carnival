@@ -103,6 +103,8 @@
         deltachat-electron = unstable.deltachat-electron;
 
         nushell = unstable.nushell;
+
+        jdk16 = unstable.jdk16; # currently only in unstable
       };
 
       steam_overlay = self: super: 
@@ -124,8 +126,8 @@
     let 
 
 
-      maven_jdk11 = maven.override {
-        jdk = jdk11;
+      maven_jdk16 = maven.override {
+        jdk = jdk16;
       };
 
     in [
@@ -153,9 +155,9 @@
       tree
       zip
       unzip
-      jdk11
+      jdk16
       jdk8
-      maven_jdk11
+      maven_jdk16
       google-chrome
       thunderbird
       feh
@@ -282,7 +284,7 @@
   environment.etc = with pkgs; {
     "jdk".source = jdk;
     "jdk8".source = jdk8;
-    "jdk11".source = jdk11;
+    "jdk16".source = jdk16;
   };
 
   environment.pathsToLink = ["/share/zsh"];
