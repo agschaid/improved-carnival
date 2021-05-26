@@ -99,6 +99,10 @@
         # vdirsyncer = unstable.vdirsyncer;
         
         prospector = unstable.prospector;
+
+        deltachat-electron = unstable.deltachat-electron;
+
+        nushell = unstable.nushell;
       };
 
       steam_overlay = self: super: 
