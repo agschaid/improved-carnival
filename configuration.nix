@@ -105,6 +105,13 @@
         nushell = unstable.nushell;
 
         jdk16 = unstable.jdk16; # currently only in unstable
+        adoptJdk16 = unstable.adoptopenjdk-openj9-bin-16; # currently only in unstable
+
+        maven = unstable.maven;
+
+        wezterm = unstable.wezterm; # currently only in unstable
+
+        gradle_7 = unstable.gradle_7;
       };
 
       steam_overlay = self: super: 
@@ -127,7 +134,7 @@
 
 
       maven_jdk16 = maven.override {
-        jdk = jdk16;
+        jdk = adoptJdk16;
       };
 
     in [
@@ -136,6 +143,7 @@
       vim
       tmux
       dvtm # terminal multiplexer
+      wezterm
       git
       tig
       gnupg1
@@ -155,7 +163,8 @@
       tree
       zip
       unzip
-      jdk16
+      # jdk16
+      adoptJdk16
       jdk11
       jdk8
       maven_jdk16
@@ -258,7 +267,7 @@
       ncdu
       exercism
       rebar3
-      gradle
+      gradle_7
 
       steam
       hugo    # site generator
@@ -283,10 +292,10 @@
   ];
 
   environment.etc = with pkgs; {
-    "jdk".source = jdk;
+    "jdk".source = adoptJdk16;
     "jdk8".source = jdk8;
     "jdk11".source = jdk11;
-    "jdk16".source = jdk16;
+    "jdk16".source = adoptJdk16;
   };
 
   environment.pathsToLink = ["/share/zsh"];
