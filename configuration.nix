@@ -158,7 +158,7 @@
       xclip
       pass
       # pinentry   # gpg needs it . . . 
-      atom
+      # atom
       syncthing
       tree
       zip
@@ -173,7 +173,7 @@
       feh
       curl
       jq
-      vscode
+      #vscode
       kitty       # terminal
       st
       scroll
@@ -250,9 +250,9 @@
       links2
       w3m-full
 
-      gimp
-      libreoffice
-      postman
+      #gimp
+      #libreoffice
+      #postman
 
       yq
 
@@ -286,6 +286,8 @@
       musescore
 
       mullvad-vpn
+
+      lmms # for creating music n stuff
     ];
 
   fonts.fonts = with pkgs; [
