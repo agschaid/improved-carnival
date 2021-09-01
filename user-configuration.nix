@@ -365,10 +365,7 @@ in
       withPython3 = true;
       extraPython3Packages = ps: with ps; [pynvim msgpack];
 
-      configure = {
-
-
-        customRC = ''
+      extraConfig = ''
 
         let mapleader = ','
 
@@ -655,6 +652,7 @@ in
         nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
       '';
 
+      configure = {
         packages.myVimPackage = with pkgs.vimPlugins // customVimPlugins; {
           start = [
             goyo  # writing
