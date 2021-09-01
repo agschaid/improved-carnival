@@ -457,7 +457,7 @@ in
                 :NERDTree
             endif
         endfunction
-        nnoremap <silent> NN :call BetterNerdTreeToggle()<CR>
+        nnoremap <silent>NN :call BetterNerdTreeToggle()<CR>
         
         " show dot files by default
         let NERDTreeShowHidden=1
@@ -652,9 +652,8 @@ in
         nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
       '';
 
-      configure = {
-        packages.myVimPackage = with pkgs.vimPlugins // customVimPlugins; {
-          start = [
+      
+      plugins = with pkgs.vimPlugins; [
             goyo  # writing
             limelight-vim
 
@@ -679,9 +678,7 @@ in
             solarized
             todo-txt-vim
           ];
-        };
 
-      };     
 
     };
     
