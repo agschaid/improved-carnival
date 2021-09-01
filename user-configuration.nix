@@ -362,7 +362,6 @@ in
             ##### versuchen
             # vim-pencil  # word wrapping und so
             # wheel . . . bisserl scrolling
-            # syntastic  # syntax checking
             
             ctrlp
             fzf-vim
@@ -371,14 +370,14 @@ in
             # ale
             coc-nvim
             nerdtree
-            # TODO also remove plugin definition above
-            # dwm-vim
             vim-elixir
-            vim-markdown
-            tabular # needed by vim-markdown
+            # vim-markdown
+            # tabular # needed by vim-markdown
 
             solarized
-            todo-txt-vim
+            # todo-txt-vim
+
+	    # vinegar # "better" netrw
           ];
 
 
