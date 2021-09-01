@@ -94,18 +94,6 @@ let
     ffmpeg -i "$1" -vf select="between(n\,$2\,$3),setpts=PTS-STARTPTS" $4
   '';
 
-  customVimPlugins = {
-    # dwm-vim = pkgs.vimUtils.buildVimPlugin {
-    #   name = "dwm-vim";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "spolu";
-    #     repo = "dwm.vim";
-    #     rev = "6149e58fdd81f69e4e6a3f239842f3dc23e4872b";
-    #     sha256 = "0ixnw6mxabgbpd702xdsrp9vp30iwa453pf89hli9wyzdz7ilg7p";
-    #   };
-    # };
-  };
-
   oc_rsh = pkgs.writeScriptBin "oc_rsh" ''
     #!${pkgs.stdenv.shell}
     oc project > /dev/tty && oc rsh $(oc get pods | fzf | cut -d " " -f1)
