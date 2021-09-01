@@ -89,7 +89,7 @@ function BetterNerdTreeToggle()
         :NERDTree
     endif
 endfunction
-nnoremap <silent>NN :call BetterNerdTreeToggle()<CR>
+nnoremap <silent>TT :call BetterNerdTreeToggle()<CR>
 
 " show dot files by default
 let NERDTreeShowHidden=1
