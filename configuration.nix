@@ -112,6 +112,8 @@
         wezterm = unstable.wezterm; # currently only in unstable
 
         gradle_7 = unstable.gradle_7;
+
+	pass-otp = unstable.pass-otp;
       };
 
       steam_overlay = self: super: 
@@ -156,7 +158,7 @@
       # networkmanager
 
       xclip
-      pass
+      pass-otp     # version of pass including the otp plugin
       # pinentry   # gpg needs it . . . 
       # atom
       syncthing
@@ -287,7 +289,7 @@
 
       mullvad-vpn
 
-      lmms # for creating music n stuff
+      # lmms # for creating music n stuff
     ];
 
   fonts.fonts = with pkgs; [
