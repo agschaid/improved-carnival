@@ -104,7 +104,6 @@
 
         nushell = unstable.nushell;
 
-        jdk16 = unstable.jdk16; # currently only in unstable
         adoptJdk16 = unstable.adoptopenjdk-openj9-bin-16; # currently only in unstable
 
         maven = unstable.maven;
@@ -165,7 +164,6 @@
       tree
       zip
       unzip
-      # jdk16
       adoptJdk16
       jdk11
       jdk8
