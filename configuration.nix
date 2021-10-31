@@ -113,6 +113,8 @@
         gradle_7 = unstable.gradle_7;
 
 	pass-otp = unstable.pass-otp;
+
+	zellij = unstable.zellij;
       };
 
       steam_overlay = self: super: 
@@ -177,6 +179,7 @@
       kitty       # terminal
       st
       scroll
+      zellij
 
       zathura     # pdf
       unclutter
