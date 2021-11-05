@@ -35,7 +35,7 @@ main = do
         , focusedBorderColor = "#cb4b16"
         , normalBorderColor = "#657b83"
         , borderWidth = 2
-        , terminal = "st -e zellij --layout-path /home/agl/.config/zellij/layouts/defaultLayout.yaml options --no-pane-frames"
+        , terminal = "st -e dvtm -m ^a -h 5000"
         }
         `removeKeys` keysToRemove
         `additionalKeys` keysToAdd

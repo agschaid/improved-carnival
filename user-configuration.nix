@@ -410,7 +410,6 @@ in
     };
     
     home.file.".config/fish/completions/pass.fish".source = ./dotfiles/fish/completions/pass.fish;
-    home.file.".config/zellij/layouts/defaultLayout.yaml".source = ./dotfiles/zellij/defaultLayout.yaml;
     
   };
 }
