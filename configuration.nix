@@ -115,6 +115,8 @@
 	pass-otp = unstable.pass-otp;
 
 	zellij = unstable.zellij;
+
+	glab = unstable.glab;
       };
 
       steam_overlay = self: super: 
@@ -290,6 +292,7 @@
 
       mullvad-vpn
 
+      glab
       # lmms # for creating music n stuff
     ];
 
