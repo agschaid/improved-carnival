@@ -117,6 +117,8 @@
 	zellij = unstable.zellij;
 
 	glab = unstable.glab;
+
+	tdesktop = unstable.tdesktop;
       };
 
       steam_overlay = self: super: 
@@ -294,6 +296,7 @@
 
       glab
       # lmms # for creating music n stuff
+      tdesktop # telegram
     ];
 
   fonts.fonts = with pkgs; [
