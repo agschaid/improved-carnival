@@ -47,15 +47,6 @@ let
     fi
   '';
 
-  theme_local = pkgs.writeScriptBin "theme_local" ''
-    #!${pkgs.stdenv.shell}
-    if grep -q "light" ~/.theme; then
-        kitty @set-colors ~/.config/kitty/solarized-light.conf
-    else
-        kitty @set-colors ~/.config/kitty/solarized-dark.conf
-    fi
-  '';
-
   dark_theme = pkgs.writeScriptBin "dark_theme" ''
     #!${pkgs.stdenv.shell}
     echo "dark" > ~/.theme
@@ -205,7 +196,6 @@ in
       vpn_office
       vpn_private
       theme
-      theme_local
       light_theme
       dark_theme
       diary
@@ -387,10 +377,6 @@ in
     programs.fish = {
       enable = true;
       
-      # loginShellInit = "dark_theme";
-      
-      # interactiveShellInit = "theme_local";
-      
       functions = {
 
         fish_mode_prompt = "";
@@ -410,6 +396,7 @@ in
     };
     
     home.file.".config/fish/completions/pass.fish".source = ./dotfiles/fish/completions/pass.fish;
+    home.file.".wezterm.lua".source = ./dotfiles/wezterm/wezterm.lua;
     
   };
 }
