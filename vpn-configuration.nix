@@ -4,6 +4,7 @@
 {
   environment.systemPackages = with pkgs; [
     openvpn
+    networkmanager-openvpn
   ];
 
   services.openvpn.servers = {
@@ -14,7 +15,7 @@
       #  * insert: auth-user-pass /etc/VPN/rise/cred
       # create a cred file and put usr and pwd in distinct lines
       # start with systemctl start openvpn.rise
-      config = ''config /etc/VPN/rise/vpn.rz01.riseops.at-linux.ovpn'';
+      config = ''config /etc/VPN/rise/vpn.rz01.riseops.at-udp1194.ovpn'';
       autoStart = false;
       updateResolvConf = true;
     };

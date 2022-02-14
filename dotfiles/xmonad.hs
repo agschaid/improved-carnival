@@ -61,6 +61,8 @@ keysForMoving x = [((m .|. mod4Mask, k), windows $ f i)
 
 programShortcuts  = [ ((mod4Mask, xK_n), spawn "qutebrowser")
                     , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
+		    , ((mod4Mask, xK_t), spawn "wezterm start -- tmux new-session -A -s todo 'vim ~/todo.txt'") -- open a todo window
+		    , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui")
                     ]
 
 quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")

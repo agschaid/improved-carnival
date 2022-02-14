@@ -1,5 +1,6 @@
 
 let mapleader = ','
+let maplocalleader = ','
 
 " always move in wrapped lines
 noremap <silent> k gk
@@ -126,6 +127,9 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 
 " CTRL-P CONFIG
 let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
+" disable working path mode and limit ctrl+p to the current working directory
+" https://stackoverflow.com/questions/29399349/cant-get-ctrlp-to-set-working-dir-as-root-folder
+let g:ctrlp_working_path_mode = ''
 
 """""""
 " FZF "

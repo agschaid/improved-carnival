@@ -365,7 +365,7 @@ in
             # tabular # needed by vim-markdown
 
             solarized
-            # todo-txt-vim
+            todo-txt-vim
 
 	    # vinegar # "better" netrw
           ];

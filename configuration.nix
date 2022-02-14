@@ -297,6 +297,10 @@
       glab
       # lmms # for creating music n stuff
       tdesktop # telegram
+
+      git-annex
+
+      handbrake # eh scho wissen. DVD Ripper
     ];
 
   fonts.fonts = with pkgs; [
