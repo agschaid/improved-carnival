@@ -105,6 +105,7 @@
         nushell = unstable.nushell;
 
         adoptJdk16 = unstable.adoptopenjdk-openj9-bin-16; # currently only in unstable
+	jdk17 = unstable.jdk17;
 
         maven = unstable.maven;
 
@@ -144,6 +145,10 @@
         jdk = adoptJdk16;
       };
 
+      gradle7_jdk17 = gradle_7.override {
+      	java = jdk17;
+      };
+
     in [
       killall
       wget 
@@ -173,6 +178,7 @@
       adoptJdk16
       jdk11
       jdk8
+      jdk17
       maven_jdk16
       google-chrome
       thunderbird
@@ -274,7 +280,7 @@
       ncdu
       exercism
       rebar3
-      gradle_7
+      gradle7_jdk17
 
       steam
       hugo    # site generator
