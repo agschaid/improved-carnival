@@ -314,10 +314,11 @@
   ];
 
   environment.etc = with pkgs; {
-    "jdk".source = adoptJdk16;
+    "jdk".source = jdk17;
     "jdk8".source = jdk8;
     "jdk11".source = jdk11;
     "jdk16".source = adoptJdk16;
+    "jdk17".source = jdk17;
   };
 
   environment.pathsToLink = ["/share/zsh"];
@@ -329,6 +330,11 @@
   programs.gnupg.agent = { enable = true; };
 
   programs.adb.enable = true;
+
+  programs.java = with pkgs; {
+    enable = true;
+    package = jdk17;
+  };
 
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
