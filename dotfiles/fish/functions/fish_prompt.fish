@@ -85,7 +85,7 @@ set separation_element "$lb├$bb───$lb┤"
 if test -z "$_git_branch"
   set -g git_prompt ""
 else
-  set _git_is_dirty (command git status -s --ignore-submodules=dirty ^/dev/null)
+  set _git_is_dirty (command git status -s --ignore-submodules=dirty 2>/dev/null)
 
   if test -n "$_git_is_dirty"
     set git_colour $magenta
