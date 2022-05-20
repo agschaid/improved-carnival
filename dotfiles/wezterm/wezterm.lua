@@ -17,8 +17,7 @@ function color()
   return "Builtin Solarized Dark"
 end
 
--- TODO activate again when there is a newer verison of wezterm
--- wezterm.add_to_config_reload_watch_list(profile_file);
+wezterm.add_to_config_reload_watch_list(profile_file);
 
 return {
 
