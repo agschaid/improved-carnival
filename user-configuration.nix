@@ -287,6 +287,7 @@ in
         
         push.default = "current";
         pull.ff = "only";
+        safe.directory = "/etc/nixos";
       };
 
     };
