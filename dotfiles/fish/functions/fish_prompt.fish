@@ -78,7 +78,7 @@ else
   set -g vi_ind "$bb───"
 end
 
-set _git_branch (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+set _git_branch (command git symbolic-ref HEAD 2>/dev/null | sed -e 's|^refs/heads/||')
 
 set separation_element "$lb├$bb───$lb┤"
 
