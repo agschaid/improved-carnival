@@ -81,7 +81,10 @@ let g:limelight_conceal_guifg = '#585858'  " Solarized Base01
 " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " NERDTREE CONFIG
-function BetterNerdTreeToggle()
+" Not quite sure why this needs the 'function!' which (if I understand
+" correctly) replaces a previous function definition . . . but there is no
+" prefious definition.
+function! BetterNerdTreeToggle()
     if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
         :NERDTreeToggle
     elseif filereadable(expand('%'))
