@@ -109,17 +109,20 @@
 
         maven = unstable.maven;
 
-        wezterm = unstable.wezterm; # currently only in unstable
+        # wezterm = unstable.wezterm; # currently only in unstable
 
         gradle_7 = unstable.gradle_7;
 
-	pass-otp = unstable.pass-otp;
+	# pass-otp = unstable.pass-otp;
 
 	zellij = unstable.zellij;
 
 	glab = unstable.glab;
 
 	tdesktop = unstable.tdesktop;
+	signal-desktop = unstable.signal-desktop;
+        google-chrome = unstable.google-chrome;
+	kubectl = unstable.kubectl;
       };
 
       steam_overlay = self: super: 
@@ -134,8 +137,12 @@
         scroll = import "${scroll_src}/default.nix";
       };
 
+      extensions_overlay = self: super: {
+	pass-with-otp = (super.pass.withExtensions (ext: with ext; [pass-otp]));
+      };
+
     in
-    [steam_overlay unstable_overlay src_overlays];
+    [steam_overlay unstable_overlay src_overlays extensions_overlay];
 
   environment.systemPackages = with pkgs; 
     let 
@@ -168,7 +175,7 @@
       # networkmanager
 
       xclip
-      pass-otp     # version of pass including the otp plugin
+      pass-with-otp     # version of pass including the otp plugin
       # pinentry   # gpg needs it . . . 
       # atom
       syncthing
@@ -182,6 +189,7 @@
       maven_jdk16
       google-chrome
       thunderbird
+      evolution
       feh
       curl
       jq
@@ -235,6 +243,7 @@
       # nodejs # for coc.nvim
       aerc
       qutebrowser
+      #torbrowser
       rofi
       abcde
       networkmanager_dmenu
@@ -290,7 +299,6 @@
       wmname
       libnotify
       signal-desktop
-      signal-cli
 
       flameshot # screenshot
       httpie
@@ -307,6 +315,8 @@
       git-annex
 
       handbrake # eh scho wissen. DVD Ripper
+
+      kubectl
     ];
 
   fonts.fonts = with pkgs; [
