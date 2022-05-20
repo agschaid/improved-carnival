@@ -222,15 +222,14 @@
       postgresql
       zsh
       fzf
-      python37Full
-      python37Packages.pip
-      python37Packages.virtualenv
-      python37Packages.pynvim
-      python37Packages.flake8
-      python37Packages.setuptools
-      # prospector
-      mypy
-      python37Packages.pyflakes
+      # python37Full
+      # python37Packages.pip
+      # python37Packages.virtualenv
+      # python37Packages.pynvim
+      # python37Packages.flake8
+      # python37Packages.setuptools
+      # mypy
+      # python37Packages.pyflakes
 
 
 
