@@ -395,6 +395,12 @@ in
       keyMode = "vi";
       extraConfig = (builtins.readFile ./dotfiles/tmux/tmux.conf);
     };
+
+    # notification daemon
+    services.dunst = {
+      enable = true;
+      # that's all for now
+    };
     
     home.file.".config/fish/completions/pass.fish".source = ./dotfiles/fish/completions/pass.fish;
     home.file.".wezterm.lua".source = ./dotfiles/wezterm/wezterm.lua;
