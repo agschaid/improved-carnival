@@ -26,6 +26,25 @@ let
     docker run --net="host" -it --entrypoint mongo mongo:3.2.10 --authenticationDatabase admin -u admin -p
   '';
 
+  battery_notify = pkgs.writeScriptBin "batteryNotify" ''
+    #!/usr/bin/env fish
+
+    set -g battery_average (acpi | sed 's/^Battery.* \([0-9]\{1,3\}\)%.*$/\1/' | awk '{sum+= $1} END {print sum/ NR}')
+
+    if [ "$battery_average" -lt 10 ]
+      dunstify "ok. This is quite low now." $battery_average -u 2 -t 5000
+      touch ~/.battery_low
+    else if [ "$battery_average" -lt 5 ]
+      if not test -e ~/.battery_low
+        dunstify "allright partner. We are a bit low." $battery_average -t 0
+      end
+      touch ~/.battery_low
+    else
+      rm -f ~/.battery_low
+    end
+
+  '';
+
   vpn_office = pkgs.writeScriptBin "vpn-office" ''
     #!${pkgs.stdenv.shell}
     systemctl $1 openvpn-office.service
@@ -205,6 +224,7 @@ in
       check_vehicle_history
       cut_gif
       wallabag_add
+      battery_notify
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
