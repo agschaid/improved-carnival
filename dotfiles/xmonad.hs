@@ -63,6 +63,7 @@ programShortcuts  = [ ((mod4Mask, xK_n), spawn "qutebrowser")
                     , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
 		    , ((mod4Mask, xK_t), spawn "wezterm start -- tmux new-session -A -s todo 'vim ~/.gitsync/todo/todo.txt'") -- open a todo window
 		    , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui")
+        , ((mod4Mask .|. shiftMask, xK_n), spawn "networkmanager_dmenu")
                     ]
 
 quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")
