@@ -381,6 +381,7 @@ in
             # ale
             coc-nvim
             nerdtree
+	    minimap-vim
             vim-elixir
             # vim-markdown
             # tabular # needed by vim-markdown
