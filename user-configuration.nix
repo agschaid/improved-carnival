@@ -390,6 +390,7 @@ in
             todo-txt-vim
 
 	    # vinegar # "better" netrw
+	    telescope-nvim
           ];
 
 
