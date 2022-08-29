@@ -316,6 +316,8 @@
       handbrake # eh scho wissen. DVD Ripper
 
       kubectl
+
+      ripgrep
     ];
 
   fonts.fonts = with pkgs; [
