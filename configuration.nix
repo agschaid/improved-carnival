@@ -318,6 +318,12 @@
       kubectl
 
       ripgrep
+
+      vlc
+
+      extremetuxracer
+      superTuxKart
+      opendune
     ];
 
   fonts.fonts = with pkgs; [

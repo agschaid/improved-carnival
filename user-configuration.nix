@@ -423,6 +423,10 @@ in
       enable = true;
       # that's all for now
     };
+
+    services.syncthing = {
+      enable = true;
+    };
     
     home.file.".config/fish/completions/pass.fish".source = ./dotfiles/fish/completions/pass.fish;
     home.file.".wezterm.lua".source = ./dotfiles/wezterm/wezterm.lua;
