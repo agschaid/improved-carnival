@@ -323,6 +323,10 @@ in
                 #hostname = "10.0.0.89";
                 identityFile = "~/.ssh/id_rsa.gitsync";
             };
+            "agschaid.mooo.com" = lib.hm.dag.entryBefore ["*"] {
+                #hostname = "agschaid.mooo.com"
+                identityFile = "~/.ssh/id_rsa.gitsync";
+            };
         };
 
     };
