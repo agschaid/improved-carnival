@@ -12,6 +12,11 @@ imap <A-d> (⌐■_■)
 imap <A-y> ┌П┐(ಠ_ಠ)
 imap <A-l> L(° O °L)
 
+" navigation in split windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " incremental search
 set incsearch
@@ -20,6 +25,9 @@ set incsearch
 set inccommand=split
 nmap <leader>s :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
 xmap <leader>s y:%s/<C-R>"/\0/g<Left><Left>a<BS>
+
+" clear search highlight
+nmap <leader><leader><leader> :noh<CR>
 
 " buffers are hidden and not unloaded  -> switch between buffers without save
 set hidden
