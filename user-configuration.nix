@@ -310,6 +310,8 @@ in
         safe.directory = "/etc/nixos";
       };
 
+      ignores = [".factorypath"];
+
     };
 
     programs.ssh = {
