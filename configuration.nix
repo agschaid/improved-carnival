@@ -326,7 +326,8 @@
       superTuxKart
       opendune
 
-      pipewire # audio. weil es David Herberth sagt
+      # pipewire # audio. weil es David Herberth sagt
+      topydo # recht netter python client für todo.txt -> columns
     ];
 
   fonts.fonts = with pkgs; [
