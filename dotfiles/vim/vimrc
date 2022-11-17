@@ -23,8 +23,8 @@ set incsearch
 
 " incremental search and replace
 set inccommand=split
-nmap <leader>s :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
-xmap <leader>s y:%s/<C-R>"/\0/g<Left><Left>a<BS>
+nmap <leader><leader>r :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
+xmap <leader><leader>r y:%s/<C-R>"/\0/g<Left><Left>a<BS>
 
 " clear search highlight
 nmap <leader><leader><leader> :noh<CR>
