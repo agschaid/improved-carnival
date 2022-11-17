@@ -422,6 +422,14 @@ in
       shortcut = "a";
       keyMode = "vi";
       extraConfig = (builtins.readFile ./dotfiles/tmux/tmux.conf);
+
+
+      plugins = with pkgs.tmuxPlugins; [
+        # extrakto # texte mit fzf ins clipboard holen. Eh nett.
+        # jump # j + erster Buchstabe. Dann bekommt man solche jump-to highlights
+        # power-theme # powerline theme. Besser als gar nix.
+        # tilish # TODO: mal ansehen! wie i3wm
+      ];
     };
 
     # notification daemon
