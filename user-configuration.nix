@@ -393,7 +393,11 @@ in
             # tabular # needed by vim-markdown
 
             solarized
-            todo-txt-vim
+            { plugin = todo-txt-vim;
+              # overwrite the date insertion and allow prio D instead
+              # TODO does not work right now ;(
+              config = "noremap <script> <silent> <buffer> <LocalLeader>d :call todo#txt#prioritize_add('D')<CR>";
+            }
 
 	    # vinegar # "better" netrw
 	    telescope-nvim
