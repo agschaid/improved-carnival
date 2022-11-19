@@ -371,7 +371,20 @@ in
       extraPython3Packages = ps: with ps; [pynvim msgpack];
       extraConfig =(builtins.readFile ./dotfiles/vim/vimrc);
 
-      
+      coc = {
+        enable = true;
+
+        settings = {
+          "java.home" = "/etc/jdk11";
+          "languageserver" = {
+              "elixirLS"= {
+                "command"= "/home/agl/github/elixir-ls/release/language_server.sh";
+                "filetypes"= ["elixir" "eelixir"];
+              };
+          };
+        };
+      };
+
       plugins = with pkgs.vimPlugins; [
             goyo  # writing
             limelight-vim
@@ -385,7 +398,7 @@ in
             vim-bufferline # shows list of buffers in command bar
 
             # ale
-            coc-nvim
+            # coc-nvim
             nerdtree
 	    minimap-vim
             vim-elixir
