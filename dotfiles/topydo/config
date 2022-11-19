@@ -1,0 +1,19 @@
+[topydo]
+filename=~/.gitsync/plaintext/todo/todo.txt
+archive_filename=~/.gitsync/plaintext/todo/done.txt
+backup_count=0
+
+[edit]
+editor=vim
+
+[add]
+auto_creation_date=0
+
+[aliases]
+now = ls "(A)"
+today = ls "(>=B)"
+pending = ls "(D)"
+scheduled = ls "(E)"
+
+overdue = ls 'due:<today'
+
