@@ -328,6 +328,10 @@
 
       # pipewire # audio. weil es David Herberth sagt
       topydo # recht netter python client für todo.txt -> columns
+
+      jetbrains.idea-community # let's give good old intellij one more chance
+
+      tageditor
     ];
 
   fonts.fonts = with pkgs; [
