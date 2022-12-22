@@ -142,6 +142,7 @@ let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico
 " https://stackoverflow.com/questions/29399349/cant-get-ctrlp-to-set-working-dir-as-root-folder
 let g:ctrlp_working_path_mode = ''
 
+
 """""""
 " FZF "
 """""""

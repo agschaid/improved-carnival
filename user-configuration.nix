@@ -166,6 +166,16 @@ let
 
   '';
 
+  my-todo-txt-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "my-todo-txt-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "agschaid";
+      repo = "todo.txt-vim";
+      rev = "caccbfb4175e711e9400c023face20cb9351cdf3";
+      sha256 = "09c8wn3zgwpq3b1z7ykjsa0n4cqlyqagnh7i4khr33w6yy34gyqq";
+    };
+  };
+         
 in
 {
 
@@ -405,11 +415,12 @@ in
             # tabular # needed by vim-markdown
 
             solarized
-            { plugin = todo-txt-vim;
-              # overwrite the date insertion and allow prio D instead
-              # TODO does not work right now ;(
-              config = "noremap <script> <silent> <buffer> <LocalLeader>d :call todo#txt#prioritize_add('D')<CR>";
-            }
+            #{ plugin = todo-txt-vim;
+            #  # overwrite the date insertion and allow prio D instead
+            #  # TODO does not work right now ;(
+            #  config = "noremap <script> <silent> <buffer> <LocalLeader>d :call todo#txt#prioritize_add('D')<CR>";
+            #}
+            my-todo-txt-vim
 
 	    # vinegar # "better" netrw
 	    telescope-nvim
