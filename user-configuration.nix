@@ -171,8 +171,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "agschaid";
       repo = "todo.txt-vim";
-      rev = "caccbfb4175e711e9400c023face20cb9351cdf3";
-      sha256 = "09c8wn3zgwpq3b1z7ykjsa0n4cqlyqagnh7i4khr33w6yy34gyqq";
+      rev = "c3a73739d387e04a60ceb9cc38b0ae4e434dd77c";
+      sha256 = "1rzdvxv9wj756kg0zwk606mxcfyp1sksmp5sihjycjkafm1iaxqg";
     };
   };
          
