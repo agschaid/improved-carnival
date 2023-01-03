@@ -166,6 +166,13 @@ let
 
   '';
 
+  add_todos = pkgs.writeScriptBin "add_todos" ''
+    #!${pkgs.stdenv.shell}
+
+    echo "Add ToDos. End with blank line:"
+    sed '/^$/q' >> ~/todo/todo.txt
+  '';
+
   my-todo-txt-vim = pkgs.vimUtils.buildVimPlugin {
     name = "my-todo-txt-vim";
     src = pkgs.fetchFromGitHub {
@@ -235,6 +242,7 @@ in
       cut_gif
       wallabag_add
       battery_notify
+      add_todos
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
@@ -428,6 +436,10 @@ in
 
 
     };
+
+    #programs.vscode = {
+    #  enable = true;
+    #};
     
 
     programs.fish = {
