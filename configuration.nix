@@ -337,6 +337,8 @@
       jetbrains.idea-community # let's give good old intellij one more chance
 
       tageditor
+
+      abiword # for allem für Wildflowers. Kann danach wohl wieder weg
     ];
 
   fonts.fonts = with pkgs; [
