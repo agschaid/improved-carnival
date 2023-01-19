@@ -487,6 +487,7 @@ in
     home.file.".config/fish/completions/pass.fish".source = ./dotfiles/fish/completions/pass.fish;
     home.file.".wezterm.lua".source = ./dotfiles/wezterm/wezterm.lua;
     home.file.".config/topydo/config".source = ./dotfiles/topydo/config;
+    home.file.".abcde.conf".source = ./dotfiles/abcde/abcde.conf;
     
   };
 }
