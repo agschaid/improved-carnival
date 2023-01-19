@@ -217,7 +217,7 @@ in
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        config = ./dotfiles/xmonad.hs;
+        config = ./dotfiles/xmonad/xmonad.hs;
       };
     };
 
