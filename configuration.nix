@@ -104,7 +104,7 @@
         
         prospector = unstable.prospector;
 
-        deltachat-electron = unstable.deltachat-electron;
+        #deltachat-electron = unstable.deltachat-electron;
 
         nushell = unstable.nushell;
 
@@ -126,7 +126,6 @@
 	tdesktop = unstable.tdesktop;
 	signal-desktop = unstable.signal-desktop;
         google-chrome = unstable.google-chrome;
-	kubectl = unstable.kubectl;
       };
 
       steam_overlay = self: super: 
@@ -152,9 +151,9 @@
     let 
 
 
-      maven_jdk16 = maven.override {
-        jdk = adoptJdk16;
-      };
+      #maven_jdk16 = maven.override {
+      #  jdk = adoptJdk16;
+      #};
 
       gradle7_jdk17 = gradle_7.override {
       	java = jdk17;
@@ -187,10 +186,11 @@
       zip
       unzip
       adoptJdk16
-      jdk11
+      # jdk11
       jdk8
       jdk17
-      maven_jdk16
+      #maven_jdk16
+      maven
       google-chrome
       thunderbird
       evolution
@@ -261,6 +261,7 @@
       nnn
       spaceFM
 
+      ghc # haskell
       khal
       khard
       vdirsyncer
@@ -319,8 +320,6 @@
 
       handbrake # eh scho wissen. DVD Ripper
 
-      kubectl
-
       ripgrep
 
       vlc
@@ -334,9 +333,22 @@
 
       jetbrains.idea-community # let's give good old intellij one more chance
 
-      tageditor
+      kid3 # id3 tags -> ui und shell
 
       abiword # for allem für Wildflowers. Kann danach wohl wieder weg
+
+      # kube-stuff for work
+      minikube
+      kubectl
+      k9s
+      gettext # for envsubst
+
+
+      tldr
+
+
+      # exercism languages 2023
+      julia-bin
     ];
 
   fonts.fonts = with pkgs; [
@@ -346,8 +358,8 @@
   environment.etc = with pkgs; {
     "jdk".source = jdk17;
     "jdk8".source = jdk8;
-    "jdk11".source = jdk11;
-    "jdk16".source = adoptJdk16;
+    #"jdk11".source = jdk11;
+    #"jdk16".source = adoptJdk16;
     "jdk17".source = jdk17;
   };
 

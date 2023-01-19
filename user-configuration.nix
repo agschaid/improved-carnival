@@ -201,7 +201,10 @@ in
     shell = pkgs.fish;
   };
 
+
   home-manager.users.agl = {pkgs, lib, ... }: {
+
+    home.stateVersion = "21.11";
 
     xsession = {
       enable = true;
