@@ -71,10 +71,16 @@ set listchars=tab:▸\ ,trail:·
 :match BadWhitespace / \+$/
 :2match BadWhitespace /\t/
 
+"""""""""""""""""""""""""""""""""""""""
+" Not quite sure why I don't need those solarized values anymore.
+" But after update to nixos 22.11 this broke vim
+"""""""""""""""""""""""""""""""""""""""
 " general values for solarized plugin 
-let g:solarized_termtrans = 1
-set background=dark " not sure why but this should always be dark 
-colorscheme solarized
+" let g:solarized_termtrans = 1
+" set background=dark " not sure why but this should always be dark 
+" colorscheme solarized
+"""""""""""""""""""""""""""""""""""""""
+
 
 """ VALUES FOR SOLARIZED BRIGHT
 " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
