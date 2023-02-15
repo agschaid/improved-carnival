@@ -53,7 +53,7 @@ keysToAdd  = [ ((mod4Mask, xK_g), sequence_ $ [windows $ copy i | i <- XMonad.wo
               ,  ((mod4Mask, xK_u), sendMessage ShrinkSlave)
               ,  ((mod4Mask, xK_i), sendMessage ExpandSlave)
 	      ,  ((mod4Mask, xK_r), broadcastMessage ToggleMonitor >> refresh)
-              ] ++ (programShortcuts ) ++ (quittingKeys ) ++ (layoutKeys)
+              ] ++ (programShortcuts ) ++ (quittingKeys ) ++ (layoutKeys) ++ mediaKeys
 
 keysForMoving x = [((m .|. mod4Mask, k), windows $ f i)
                    | (i, k) <- zip (XMonad.workspaces x) [xK_1 ..]
@@ -63,7 +63,7 @@ programShortcuts  = [ ((mod4Mask, xK_n), spawn "qutebrowser")
                     , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
 		    , ((mod4Mask, xK_t), spawn "wezterm start -- tmux new-session -A -s todo 'vim ~/.gitsync/plaintext/todo/todo.txt'") -- open a todo window
 		    , ((mod4Mask .|. mod1Mask, xK_t), spawn "wezterm start -- add_todos") -- add new todos
-		    , ((mod4Mask .|. shiftMask, xK_t), spawn "wezterm start -- tmux new-session -A -s diary 'diary'") -- open a todo window
+		    , ((mod4Mask .|. shiftMask, xK_t), spawn "wezterm start -- tmux new-session -A -s diary 'diary'") -- open a diary window
 		    , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui")
         , ((mod4Mask .|. shiftMask, xK_n), spawn "networkmanager_dmenu")
                     ]
@@ -77,6 +77,13 @@ layoutKeys = [ ((mod4Mask, xK_a), sendMessage $ JumpToLayout "mainLeft")
              , ((mod4Mask, xK_d), sendMessage $ JumpToLayout "float")
 	     , ((mod4Mask, xK_space ), sendMessage $ Toggle FULL)
 	     ]
+
+mediaKeys = [ -- set this to propper media keys
+  ((0, xK_F1), spawn $ "amixer set Master toggle"),
+  ((0, xK_F2), spawn $ "amixer set Master 8%-"),
+  ((0, xK_F3), spawn $ "amixer set Master 8%+"),
+  ((0, xK_F4), spawn $ "amixer set Capture toggle")
+  ]
 
 
 myLayouts = smartBorders $ mkToggle(NOBORDERS ?? FULL ?? EOT) $ (
