@@ -104,7 +104,7 @@
         
         prospector = unstable.prospector;
 
-        #deltachat-electron = unstable.deltachat-electron;
+        deltachat-electron = unstable.deltachat-electron;
 
         nushell = unstable.nushell;
 
