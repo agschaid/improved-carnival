@@ -173,6 +173,15 @@ let
     sed '/^$/q' >> ~/todo/todo.txt
   '';
 
+  mindmaps = pkgs.writeScriptBin "mindmaps" ''
+    #!${pkgs.stdenv.shell}
+
+    MM_FOLDER=~/notes/mindmaps/
+    FILE=$(ls "$MM_FOLDER" | fzf --print-query | tail -1)
+
+    ~/github/h-m-m/h-m-m "$MM_FOLDER"/"$FILE"
+  '';
+
   my-todo-txt-vim = pkgs.vimUtils.buildVimPlugin {
     name = "my-todo-txt-vim";
     src = pkgs.fetchFromGitHub {
@@ -246,6 +255,7 @@ in
       wallabag_add
       battery_notify
       add_todos
+      mindmaps
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
