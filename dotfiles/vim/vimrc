@@ -26,6 +26,9 @@ set inccommand=split
 nmap <leader><leader>r :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
 xmap <leader><leader>r y:%s/<C-R>"/\0/g<Left><Left>a<BS>
 
+:command! -bang -range NotNow <line1>,<line2>write<bang> >> ~/todo/notNow.txt | <line1>,<line2>delete _
+:command! -bang -range Now <line1>,<line2>write<bang> >> ~/todo/todo.txt | <line1>,<line2>delete _
+
 " clear search highlight
 nmap <leader><leader><leader> :noh<CR>
 
