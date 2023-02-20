@@ -262,6 +262,8 @@
       spaceFM
 
       ghc # haskell
+      stack
+
       khal
       khard
       vdirsyncer
@@ -349,6 +351,7 @@
 
       # exercism languages 2023
       julia-bin
+      php
     ];
 
   fonts.fonts = with pkgs; [
