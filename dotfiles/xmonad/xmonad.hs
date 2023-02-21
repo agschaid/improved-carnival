@@ -66,6 +66,7 @@ programShortcuts  = [ ((mod4Mask, xK_n), spawn "qutebrowser")
 		    , ((mod4Mask .|. shiftMask, xK_t), spawn "wezterm start -- tmux new-session -A -s diary 'diary'") -- open a diary window
 		    , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui")
         , ((mod4Mask .|. shiftMask, xK_n), spawn "networkmanager_dmenu")
+        , ((mod4Mask .|. shiftMask, xK_m), spawn "wezterm start -- mindmaps")
                     ]
 
 quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")
