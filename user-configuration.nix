@@ -177,9 +177,12 @@ let
     #!${pkgs.stdenv.shell}
 
     MM_FOLDER=~/notes/mindmaps/
-    FILE=$(ls "$MM_FOLDER" | fzf --print-query | tail -1)
+    PATH_LENGTH=$(expr length $MM_FOLDER)
+    ((PATH_LENGTH++))
 
-    ~/github/h-m-m/h-m-m "$MM_FOLDER"/"$FILE"
+    FILE=$(find $MM_FOLDER -type f -not -path "*/archive/*" -prune | cut --characters=$PATH_LENGTH- | fzf --print-query | tail -1)
+
+    tmux new-session -A -s "mindmap $FILE" "~/github/h-m-m/h-m-m $MM_FOLDER/$FILE"
   '';
 
   my-todo-txt-vim = pkgs.vimUtils.buildVimPlugin {
