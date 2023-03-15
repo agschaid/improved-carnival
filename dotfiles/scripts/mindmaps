@@ -1,0 +1,14 @@
+#!/bin/bash
+
+MM_FOLDER=~/notes/mindmaps/
+HMM_BINARY=~/github/h-m-m/h-m-m
+
+PATH_LENGTH=$(expr length $MM_FOLDER)
+
+FILE=$(find $MM_FOLDER -type f -not -path "*/archive/*" -prune | cut --characters=$((PATH_LENGTH+1))- | fzf --print-query | tail -1)
+
+FULL_FILE_PATH="$MM_FOLDER/$FILE"
+
+mkdir -p "${FULL_FILE_PATH%/*}"
+
+tmux new-session -A -s "mindmap $FILE" "$HMM_BINARY '$FULL_FILE_PATH'"

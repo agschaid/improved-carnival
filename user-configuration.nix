@@ -173,17 +173,7 @@ let
     sed '/^$/q' >> ~/todo/todo.txt
   '';
 
-  mindmaps = pkgs.writeScriptBin "mindmaps" ''
-    #!${pkgs.stdenv.shell}
-
-    MM_FOLDER=~/notes/mindmaps/
-    PATH_LENGTH=$(expr length $MM_FOLDER)
-    ((PATH_LENGTH++))
-
-    FILE=$(find $MM_FOLDER -type f -not -path "*/archive/*" -prune | cut --characters=$PATH_LENGTH- | fzf --print-query | tail -1)
-
-    tmux new-session -A -s "mindmap $FILE" "~/github/h-m-m/h-m-m $MM_FOLDER/$FILE"
-  '';
+  mindmaps = pkgs.writeScriptBin "mindmaps" (builtins.readFile ./dotfiles/scripts/mindmaps);
 
   my-todo-txt-vim = pkgs.vimUtils.buildVimPlugin {
     name = "my-todo-txt-vim";

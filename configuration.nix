@@ -126,6 +126,8 @@
 	tdesktop = unstable.tdesktop;
 	signal-desktop = unstable.signal-desktop;
         google-chrome = unstable.google-chrome;
+
+        stack = unstable.stack;
       };
 
       steam_overlay = self: super: 
@@ -352,6 +354,7 @@
       # exercism languages 2023
       julia-bin
       php
+      pdfgrep
     ];
 
   fonts.fonts = with pkgs; [
