@@ -491,6 +491,7 @@ in
     home.file.".wezterm.lua".source = ./dotfiles/wezterm/wezterm.lua;
     home.file.".config/topydo/config".source = ./dotfiles/topydo/config;
     home.file.".abcde.conf".source = ./dotfiles/abcde/abcde.conf;
+    home.file.".config/networkmanager-dmenu/config.ini".source = ./dotfiles/networkmanager_dmenu/config.ini;
     
   };
 }
