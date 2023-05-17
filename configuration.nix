@@ -335,8 +335,6 @@
       # pipewire # audio. weil es David Herberth sagt
       topydo # recht netter python client für todo.txt -> columns
 
-      jetbrains.idea-community # let's give good old intellij one more chance
-
       kid3 # id3 tags -> ui und shell
 
       abiword # for allem für Wildflowers. Kann danach wohl wieder weg
@@ -350,11 +348,13 @@
 
       tldr
 
+      silver-searcher
 
       # exercism languages 2023
       julia-bin
       php
       pdfgrep
+      jetbrains.idea-community
     ];
 
   fonts.fonts = with pkgs; [
