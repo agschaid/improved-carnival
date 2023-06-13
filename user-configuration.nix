@@ -313,6 +313,7 @@ in
       extraConfig = {
         core.editor = "vim";
 
+
         # -X does not clear the screen when exiting.
         # move between changed files with n/p
         pager.diff = "diff-so-fancy | less -iXFRS --pattern '^(Date|added|deleted|modified): '"; 
@@ -320,9 +321,10 @@ in
         push.default = "current";
         pull.ff = "only";
         safe.directory = "/etc/nixos";
+
       };
 
-      ignores = [".factorypath"];
+      ignores = [".factorypath" ".vim/"];
 
     };
 
