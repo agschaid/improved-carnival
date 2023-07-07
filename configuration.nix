@@ -128,6 +128,8 @@
         google-chrome = unstable.google-chrome;
 
         stack = unstable.stack;
+
+        kubectl = unstable.kubectl;
       };
 
       steam_overlay = self: super: 
