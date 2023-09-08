@@ -410,14 +410,12 @@ in
             fzf-vim
             vim-bufferline # shows list of buffers in command bar
 
-            # ale
-            coc-nvim
-            coc-java
             nerdtree
-	    minimap-vim
+            minimap-vim
             vim-elixir
             # vim-markdown
             # tabular # needed by vim-markdown
+
 
             solarized
             #{ plugin = todo-txt-vim;
@@ -426,10 +424,10 @@ in
             #  config = "noremap <script> <silent> <buffer> <LocalLeader>d :call todo#txt#prioritize_add('D')<CR>";
             #}
             my-todo-txt-vim
-            neoterm
+            # neoterm
 
 	    # vinegar # "better" netrw
-	    telescope-nvim
+	    # telescope-nvim
           ];
 
 
