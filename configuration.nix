@@ -321,6 +321,7 @@
       glab
       # lmms # for creating music n stuff
       tdesktop # telegram
+      threema-desktop
 
       git-annex
 
