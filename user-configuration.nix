@@ -413,6 +413,7 @@ in
             nerdtree
             minimap-vim
             vim-elixir
+            nvim-treesitter.withAllGrammars
             # vim-markdown
             # tabular # needed by vim-markdown
 
