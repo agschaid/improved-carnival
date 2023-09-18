@@ -163,6 +163,11 @@ let
     sed '/^$/q' >> ~/todo/todo.txt
   '';
 
+  nd = pkgs.writeScriptBin "nd" ''
+    #!${pkgs.stdenv.shell}
+    notify-send "DONE!" "\n(Whatever it was you were doing...)\n\n¯\\\\_(ツ)_/¯"
+  '';
+
   mindmaps = pkgs.writeScriptBin "mindmaps" (builtins.readFile ./dotfiles/scripts/mindmaps);
 
   my-todo-txt-vim = pkgs.vimUtils.buildVimPlugin {
@@ -174,7 +179,7 @@ let
       sha256 = "1rzdvxv9wj756kg0zwk606mxcfyp1sksmp5sihjycjkafm1iaxqg";
     };
   };
-         
+
 in
 {
 
@@ -237,6 +242,7 @@ in
       battery_notify
       add_todos
       mindmaps
+      nd
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
