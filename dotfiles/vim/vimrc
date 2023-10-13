@@ -49,7 +49,7 @@ vnoremap <leader>c "+y<CR>
 set ignorecase
 set smartcase
 set number
-set background=dark
+set background=light
 set mouse=a
 
 set tabstop=2
@@ -108,7 +108,9 @@ nnoremap <silent>TT :call BetterNerdTreeToggle()<CR>
 let NERDTreeShowHidden=1
 :hi Directory ctermfg=4  " fix directory coloring of NerdTree
 
-" GOYO CONFIG
+""""""""
+" GOYO "
+""""""""
 " by default start in programming linebreak width
 let g:goyo_width = 120
 
@@ -121,6 +123,7 @@ function! s:goyo_enter()
   autocmd QuitPre <buffer> let b:quitting = 1
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
 endfunction
+nnoremap <leader><leader>g :Goyo<CR>
 
 function! s:goyo_leave()
   " Quit Vim if this is the only remaining buffer
@@ -151,3 +154,42 @@ let g:ctrlp_working_path_mode = ''
 " make :Ag not search in the filename.
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
+""""""""
+" TAGS "
+""""""""
+
+" open tags with word under cursor
+nmap <leader><leader>t :Tags <c-r><c-a><CR>
+nmap gd <c-]><CR>
+
+"""""""""""""
+" LIGHTLINE "
+"""""""""""""
+
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'active' : {
+    \   'left' : [ ['buffers'] ],
+    \   'right' : [[ 'lineinfo' ]]
+    \ },
+    \ 'component_expand' : {
+    \   'buffers': 'lightline#bufferline#buffers'
+    \ },
+    \ 'component_type': {
+    \   'buffers': 'tabsel'
+    \ }
+    \ }
+
+let g:lightline#bufferline#show_number = 1
+
+" make them clickable
+let g:lightline.component_raw = {'buffers': 1}
+let g:lightline#bufferline#clickable = 1
+
+" make modified indicator work in buffers
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+
+"""""""""""""""""
+" YOUCOMPLETEME "
+"""""""""""""""""
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000

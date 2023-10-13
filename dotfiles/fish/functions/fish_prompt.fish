@@ -119,8 +119,17 @@ if [ "$CMD_DURATION" -gt 1000 ]
   set -g CMD_DURATION 0
 end
 
+if test -n "$IN_NIX_SHELL"
+  set -g nix_shell_prompt "┤!├"
+else
+  if test -e "default.nix"
+    set -g nix_shell_prompt "┤?├"
+  else
+    set -g nix_shell_prompt "───"
+  end
+end
 
 set -l ze_time (date "+$secondary%H:%M$bkg_highlight:%S")
 
-echo "$bb╭─$vi_ind$bb───$lb┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time"
+echo "$bb╭─$vi_ind$bb$nix_shell_prompt$lb┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time"
 echo "$bb╰$lb┤"

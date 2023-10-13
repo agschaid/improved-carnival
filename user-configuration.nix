@@ -180,6 +180,19 @@ let
     };
   };
 
+
+  # funktioniert so nicht
+  my-vim-qf-diagnostics = pkgs.vimUtils.buildVimPlugin {
+    name = "my-vim-qf-diagnostics";
+    src = pkgs.fetchFromGitHub {
+      owner = "agschaid";
+      repo = "vim-qf-diagnostics";
+      rev = "dff4bfe9afdda051193576bc72e5d46ccb3de61f";
+      sha256 = "0qgx3wzb2mn5svj4b1x75rppncjk9f38wzhm7mnh2dpwzb2b6iq2";
+    };
+  };
+
+
 in
 {
 
@@ -407,6 +420,7 @@ in
       plugins = with pkgs.vimPlugins; [
             goyo  # writing
             limelight-vim
+            # vim-illuminate # mag nicht so recht
 
             ##### versuchen
             # vim-pencil  # word wrapping und so
@@ -414,14 +428,19 @@ in
             
             ctrlp
             fzf-vim
-            vim-bufferline # shows list of buffers in command bar
+            # vim-bufferline # shows list of buffers in command bar
+            # quickfixstatus # nicht soooo geil. zB Fehler kommen nicht richtig durch
 
             nerdtree
             minimap-vim
             vim-elixir
-            nvim-treesitter.withAllGrammars
+            #nvim-treesitter.withAllGrammars
+            #ghcid # mache ich lieber "händisch"
             # vim-markdown
             # tabular # needed by vim-markdown
+
+            # supertab # autocompletion on tab -> bisserl buggy
+            YouCompleteMe # ist gut und macht auch ohne Config sinnvolle Sachen
 
 
             solarized
@@ -431,10 +450,21 @@ in
             #  config = "noremap <script> <silent> <buffer> <LocalLeader>d :call todo#txt#prioritize_add('D')<CR>";
             #}
             my-todo-txt-vim
+            # my-vim-qf-diagnostics
+            # haskell tags
+            #lushtags
+            # tagbar
             # neoterm
-
+            nvim-bqf # better quickfix
 	    # vinegar # "better" netrw
 	    # telescope-nvim
+            
+          
+            lightline-vim
+            lightline-bufferline
+
+            # vim-airline
+            # vim-airline-themes
           ];
 
 

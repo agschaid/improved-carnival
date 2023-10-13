@@ -130,6 +130,9 @@
         stack = unstable.stack;
 
         kubectl = unstable.kubectl;
+        ghc = unstable.ghc;
+        ghcid = unstable.ghcid;
+        haskell-language-server = unstable.haskell-language-server;
       };
 
       steam_overlay = self: super: 
@@ -162,6 +165,14 @@
       gradle7_jdk17 = gradle_7.override {
       	java = jdk17;
       };
+
+      ghc822pkgs = import (builtins.fetchGit {
+         # Descriptive name to make the store path easier to identify
+         name = "nixpgks_with_ghc_8_8_2";
+         url = "https://github.com/NixOS/nixpkgs/";
+         ref = "refs/heads/nixpkgs-unstable";
+         rev = "92a047a6c4d46a222e9c323ea85882d0a7a13af8";
+     }) {};
 
     in [
       killall
@@ -218,6 +229,8 @@
       mplayer     # video
       ffmpeg      # basis video schnitt
       imagemagick
+
+      ctags    # für vim. Solle ich vielleicht dort hin schieben
       
       ############ MUY IMPORTANTE
       sl          # eh scho wissen
@@ -230,6 +243,7 @@
       postgresql
       zsh
       fzf
+      lftp # ftp client for terminal
       # python37Full
       # python37Packages.pip
       # python37Packages.virtualenv
@@ -266,7 +280,11 @@
       spaceFM
 
       ghc # haskell
+      ghcid
+      ghc822pkgs.ghc
       stack
+      cabal-install
+      haskell-language-server
 
       khal
       khard
@@ -382,6 +400,9 @@
 
   programs.adb.enable = true;
 
+  # we need to enable it here so we can set it as shell in the user definition
+  programs.fish.enable = true;
+
   programs.java = with pkgs; {
     enable = true;
     package = jdk17;
@@ -444,12 +465,19 @@
 
 
   # Enable touchpad support.
-  services.xserver.synaptics = {
-    enable = true;
-    twoFingerScroll = true;
-    tapButtons = false;
-    palmDetect = true;
 
+  ## "something" activates libinput (which cant' be used together with synaptics).
+  # services.xserver.synaptics = {
+  #  enable = true;
+  #  twoFingerScroll = true;
+  #  tapButtons = false;
+  #  palmDetect = true;
+  #};
+  services.xserver.libinput.touchpad = {
+    # ???
+    clickMethod = "none";
+    disableWhileTyping = true;
+    tapping = false;
   };
 
   hardware.bluetooth.enable = true;
