@@ -109,7 +109,7 @@
         nushell = unstable.nushell;
 
         #adoptJdk16 = unstable.adoptopenjdk-openj9-bin-16; # currently only in unstable
-        #jdk17 = unstable.jdk17;
+        jdk17 = unstable.jdk17;
 
         maven = unstable.maven;
 
@@ -203,9 +203,9 @@
       #adoptJdk16
       # jdk11
       #jdk8
-      #jdk17
+      jdk17
       #maven_jdk16
-      #maven
+      maven
       google-chrome
       thunderbird
       evolution
@@ -375,7 +375,7 @@
       julia-bin
       php
       pdfgrep
-      #jetbrains.idea-community
+      jetbrains.idea-community
     ];
 
   fonts.fonts = with pkgs; [
