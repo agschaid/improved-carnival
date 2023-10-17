@@ -175,8 +175,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "agschaid";
       repo = "todo.txt-vim";
-      rev = "c3a73739d387e04a60ceb9cc38b0ae4e434dd77c";
-      sha256 = "1rzdvxv9wj756kg0zwk606mxcfyp1sksmp5sihjycjkafm1iaxqg";
+      rev = "015bce7422373a3ea41cc40fa0db54fe4d2e0150";
+      sha256 = "1y9mr8zphj1f8mp6sbwf3adkxay8h93wfsxyplax584ffzl0mjj9";
     };
   };
 
@@ -343,7 +343,7 @@ in
 
       };
 
-      ignores = [".factorypath" ".vim/"];
+      ignores = [".factorypath" ".vim/" "quickfix" "tags"];
 
     };
 

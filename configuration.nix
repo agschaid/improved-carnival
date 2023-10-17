@@ -108,14 +108,14 @@
 
         nushell = unstable.nushell;
 
-        adoptJdk16 = unstable.adoptopenjdk-openj9-bin-16; # currently only in unstable
-	jdk17 = unstable.jdk17;
+        #adoptJdk16 = unstable.adoptopenjdk-openj9-bin-16; # currently only in unstable
+        #jdk17 = unstable.jdk17;
 
         maven = unstable.maven;
 
         # wezterm = unstable.wezterm; # currently only in unstable
 
-        gradle_7 = unstable.gradle_7;
+        # gradle_7 = unstable.gradle_7;
 
 	# pass-otp = unstable.pass-otp;
 
@@ -162,17 +162,17 @@
       #  jdk = adoptJdk16;
       #};
 
-      gradle7_jdk17 = gradle_7.override {
-      	java = jdk17;
-      };
+      #gradle7_jdk17 = gradle_7.override {
+      #    java = jdk17;
+      #};
 
-      ghc822pkgs = import (builtins.fetchGit {
-         # Descriptive name to make the store path easier to identify
-         name = "nixpgks_with_ghc_8_8_2";
-         url = "https://github.com/NixOS/nixpkgs/";
-         ref = "refs/heads/nixpkgs-unstable";
-         rev = "92a047a6c4d46a222e9c323ea85882d0a7a13af8";
-     }) {};
+      #ghc822pkgs = import (builtins.fetchGit {
+      #   # Descriptive name to make the store path easier to identify
+      #   name = "nixpgks_with_ghc_8_8_2";
+      #   url = "https://github.com/NixOS/nixpkgs/";
+      #   ref = "refs/heads/nixpkgs-unstable";
+      #   rev = "92a047a6c4d46a222e9c323ea85882d0a7a13af8";
+      #}) {};
 
     in [
       killall
@@ -200,12 +200,12 @@
       tree
       zip
       unzip
-      adoptJdk16
+      #adoptJdk16
       # jdk11
-      jdk8
-      jdk17
+      #jdk8
+      #jdk17
       #maven_jdk16
-      maven
+      #maven
       google-chrome
       thunderbird
       evolution
@@ -281,7 +281,7 @@
 
       ghc # haskell
       ghcid
-      ghc822pkgs.ghc
+      #ghc822pkgs.ghc
       stack
       cabal-install
       haskell-language-server
@@ -317,7 +317,7 @@
       ncdu
       exercism
       rebar3
-      gradle7_jdk17
+      #gradle7_jdk17
 
       steam
       hugo    # site generator
@@ -375,20 +375,20 @@
       julia-bin
       php
       pdfgrep
-      jetbrains.idea-community
+      #jetbrains.idea-community
     ];
 
   fonts.fonts = with pkgs; [
       victor-mono # terminal font
   ];
 
-  environment.etc = with pkgs; {
-    "jdk".source = jdk17;
-    "jdk8".source = jdk8;
-    #"jdk11".source = jdk11;
-    #"jdk16".source = adoptJdk16;
-    "jdk17".source = jdk17;
-  };
+  #environment.etc = with pkgs; {
+  #  "jdk".source = jdk17;
+  #  "jdk8".source = jdk8;
+  #  #"jdk11".source = jdk11;
+  #  #"jdk16".source = adoptJdk16;
+  #  "jdk17".source = jdk17;
+  #};
 
   environment.pathsToLink = ["/share/zsh"];
 
@@ -403,10 +403,10 @@
   # we need to enable it here so we can set it as shell in the user definition
   programs.fish.enable = true;
 
-  programs.java = with pkgs; {
-    enable = true;
-    package = jdk17;
-  };
+  #programs.java = with pkgs; {
+  #  enable = true;
+  #  package = jdk17;
+  #};
 
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
