@@ -376,6 +376,8 @@
       php
       pdfgrep
       jetbrains.idea-community
+
+      openshift
     ];
 
   fonts.fonts = with pkgs; [
