@@ -180,6 +180,21 @@ let
     };
   };
 
+  # TODO fast-tags muss via `cabal install fast-tags` installiert sein
+  # taken from https://github.com/elaforge/fast-tags/blob/master/tools/init-tags
+  init-tags = pkgs.writeScriptBin "init-tags" ''
+    flags=(
+      --fully-qualified
+    )
+    fns=$@
+    if [[ ! -r tags ]]; then
+        echo Generating tags from scratch...
+        exec fast-tags $flags -R .
+    else
+        exec fast-tags $flags $fns
+    fi
+  '';
+
 
   # funktioniert so nicht
   my-vim-qf-diagnostics = pkgs.vimUtils.buildVimPlugin {
@@ -256,6 +271,7 @@ in
       add_todos
       mindmaps
       nd
+      init-tags
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
@@ -484,6 +500,8 @@ in
 
         fish_prompt = (builtins.readFile ./dotfiles/fish/functions/fish_prompt.fish);
       };
+
+      interactiveShellInit = "fish_add_path /home/agl/.cabal/bin /home/agl/.scripts";
 
     };
 

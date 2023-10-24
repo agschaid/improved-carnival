@@ -193,3 +193,13 @@ autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 " YOUCOMPLETEME "
 """""""""""""""""
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+
+"""""""""""""
+" FAST-TAGS "
+"""""""""""""
+" not really a plugin. But it provides some config for vim
+" https://github.com/elaforge/fast-tags/blob/master/tools/vimrc
+augroup tags
+au BufWritePost *.hs            silent !init-tags %
+au BufWritePost *.hsc           silent !init-tags %
+augroup END
