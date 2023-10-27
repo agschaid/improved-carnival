@@ -21,6 +21,9 @@ nnoremap <C-l> <C-w>l
 " incremental search
 set incsearch
 
+" nicer earch colors -> red on brblue
+:hi Search cterm=reverse
+
 " incremental search and replace
 set inccommand=split
 nmap <leader><leader>r :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
@@ -29,8 +32,8 @@ xmap <leader><leader>r y:%s/<C-R>"/\0/g<Left><Left>a<BS>
 :command! -bang -range NotNow <line1>,<line2>write<bang> >> ~/todo/notNow.txt | <line1>,<line2>delete _
 :command! -bang -range Now <line1>,<line2>write<bang> >> ~/todo/todo.txt | <line1>,<line2>delete _
 
-" clear search highlight
-nmap <leader><leader><leader> :noh<CR>
+" clear search highlight (and also update the highlight of Minimap)
+nmap <leader><leader><leader> :noh<CR>:call minimap#vim#ClearColorSearch()<CR>
 
 " buffers are hidden and not unloaded  -> switch between buffers without save
 set hidden
@@ -65,6 +68,103 @@ set listchars=tab:▸\ ,trail:·
 :hi BadWhitespace ctermfg=240 " Solarized Base01
 :match BadWhitespace / \+$/
 :2match BadWhitespace /\t/
+
+"""""""
+" Oh dear. In my haskell project they use subscripts for acronyms. Kind-of-ok.
+" But it's a pain in the a$$
+
+"alphsubs ---------------------- {{{
+execute "digraphs as " . 0x2090
+execute "digraphs es " . 0x2091
+execute "digraphs ks " . 0x2096 
+execute "digraphs hs " . 0x2095
+execute "digraphs is " . 0x1D62
+execute "digraphs ks " . 0x2096
+execute "digraphs ls " . 0x2097
+execute "digraphs ms " . 0x2098
+execute "digraphs ns " . 0x2099
+execute "digraphs os " . 0x2092
+execute "digraphs ps " . 0x209A
+execute "digraphs rs " . 0x1D63
+execute "digraphs ss " . 0x209B
+execute "digraphs ts " . 0x209C
+execute "digraphs us " . 0x1D64
+execute "digraphs vs " . 0x1D65
+execute "digraphs xs " . 0x2093
+
+execute "digraphs As " . 0x1D00
+"execute "digraphs Bs " . 0x1D
+execute "digraphs Cs " . 0x1D04
+execute "digraphs Ds " . 0x1D05
+execute "digraphs Es " . 0x1D07
+"execute "digraphs Gs " . 0x1D
+"execute "digraphs Hs " . 0x1D
+"execute "digraphs Is " . 0x1D
+execute "digraphs Js " . 0x1D0A
+execute "digraphs Ks " . 0x1D0B
+"execute "digraphs Ls " . 0x1D
+execute "digraphs Ms " . 0x1D0D
+"execute "digraphs Ns " . 0x1D
+execute "digraphs Os " . 0x1D0F
+execute "digraphs Ps " . 0x1D18
+"execute "digraphs Rs " . 0x1D
+execute "digraphs Ts " . 0x1D1B
+execute "digraphs Us " . 0x1D1C
+execute "digraphs Vs " . 0x2C20
+execute "digraphs Ws " . 0x1D21
+execute "digraphs Zs " . 0x1D22
+
+"}}}
+
+"alphtops ---------------------- {{{
+execute "digraphs aS " . 0x1d43
+execute "digraphs bS " . 0x1d47
+execute "digraphs cS " . 0x1d9c
+execute "digraphs dS " . 0x1d48
+execute "digraphs eS " . 0x1d49
+execute "digraphs fS " . 0x1da0
+execute "digraphs gS " . 0x1d4d
+execute "digraphs hS " . 0x02b0
+execute "digraphs iS " . 0x2071
+execute "digraphs jS " . 0x02b2
+execute "digraphs kS " . 0x1d4f
+execute "digraphs lS " . 0x02e1
+execute "digraphs mS " . 0x1d50
+execute "digraphs nS " . 0x207f
+execute "digraphs oS " . 0x1d52
+execute "digraphs pS " . 0x1d56
+execute "digraphs rS " . 0x02b3
+execute "digraphs sS " . 0x02e2
+execute "digraphs tS " . 0x1d57
+execute "digraphs uS " . 0x1d58
+execute "digraphs vS " . 0x1d5b
+execute "digraphs wS " . 0x02b7
+execute "digraphs xS " . 0x02e3
+execute "digraphs yS " . 0x02b8
+execute "digraphs zS " . 0x1dbb
+
+execute "digraphs AS " . 0x1D2C
+execute "digraphs BS " . 0x1D2E
+execute "digraphs DS " . 0x1D30
+execute "digraphs ES " . 0x1D31
+execute "digraphs GS " . 0x1D33
+execute "digraphs HS " . 0x1D34
+execute "digraphs IS " . 0x1D35
+execute "digraphs JS " . 0x1D36
+execute "digraphs KS " . 0x1D37
+execute "digraphs LS " . 0x1D38
+execute "digraphs MS " . 0x1D39
+execute "digraphs NS " . 0x1D3A
+execute "digraphs OS " . 0x1D3C
+execute "digraphs PS " . 0x1D3E
+execute "digraphs RS " . 0x1D3F
+execute "digraphs TS " . 0x1D40
+execute "digraphs US " . 0x1D41
+execute "digraphs VS " . 0x2C7D
+execute "digraphs WS " . 0x1D42
+"}}}
+
+
 
 """""""""""""""""""""""""""""""""""""""
 " Not quite sure why I don't need those solarized values anymore.
@@ -187,7 +287,7 @@ let g:lightline.component_raw = {'buffers': 1}
 let g:lightline#bufferline#clickable = 1
 
 " make modified indicator work in buffers
-autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+"autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
 """""""""""""""""
 " YOUCOMPLETEME "
@@ -203,3 +303,31 @@ augroup tags
 au BufWritePost *.hs            silent !init-tags %
 au BufWritePost *.hsc           silent !init-tags %
 augroup END
+
+"""""""""""
+" MINIMAP "
+"""""""""""
+" activate highlight of search
+let g:minimap_highlight_search = 1
+
+" start it right away
+let g:minimap_auto_start = 1
+
+" enable git support
+let g:minimap_git_colors = 1
+
+" toggle mapping
+nmap <leader><leader>m :MinimapToggle<CR>
+
+""""""""""""""""
+" CURRENT_WORD "
+""""""""""""""""
+" do NOT highlight the word under the cursor
+let g:vim_current_word#highlight_current_word = 0
+" don't show highlights right away
+let g:vim_current_word#highlight_delay = 350
+
+"""""""""""""
+" TELESCOPE "
+"""""""""""""
+nmap <leader><leader>b :Telescope buffers<CR>

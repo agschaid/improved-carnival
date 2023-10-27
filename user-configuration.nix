@@ -196,7 +196,7 @@ let
   '';
 
 
-  # funktioniert so nicht
+  # funktioniert so nicht -> no na ned. Ist vim9script. Geht so nicht in neovim
   my-vim-qf-diagnostics = pkgs.vimUtils.buildVimPlugin {
     name = "my-vim-qf-diagnostics";
     src = pkgs.fetchFromGitHub {
@@ -448,9 +448,30 @@ in
             # quickfixstatus # nicht soooo geil. zB Fehler kommen nicht richtig durch
 
             nerdtree
+            nnn-vim
             minimap-vim
             vim-elixir
             #nvim-treesitter.withAllGrammars
+            (nvim-treesitter.withPlugins (p: [p.bash
+                                              p.dockerfile
+                                              p.dot
+                                              p.elixir
+                                              p.erlang
+                                              p.fish
+                                              p.git_config
+                                              p.git_rebase
+                                              p.gitcommit
+                                              p.haskell
+                                              p.json
+                                              p.markdown
+                                              p.mermaid
+                                              p.nix
+                                              p.python
+                                              p.scala
+                                              p.sql
+                                              p.todotxt
+                                              p.vim
+                                             ]))
             #ghcid # mache ich lieber "händisch"
             # vim-markdown
             # tabular # needed by vim-markdown
@@ -459,30 +480,40 @@ in
             YouCompleteMe # ist gut und macht auch ohne Config sinnvolle Sachen
 
 
-            solarized
+            solarized-nvim
             #{ plugin = todo-txt-vim;
             #  # overwrite the date insertion and allow prio D instead
             #  # TODO does not work right now ;(
             #  config = "noremap <script> <silent> <buffer> <LocalLeader>d :call todo#txt#prioritize_add('D')<CR>";
             #}
             my-todo-txt-vim
-            # my-vim-qf-diagnostics
             # haskell tags
             #lushtags
             # tagbar
+            # vim-easytags
             # neoterm
+            toggleterm-nvim # -> auch auch aus extraLuaConfig löschen
+
+            # highlight the current word
+            vim_current_word
+
             nvim-bqf # better quickfix
-	    # vinegar # "better" netrw
-	    # telescope-nvim
-            
-          
-            lightline-vim
-            lightline-bufferline
+            # vinegar # "better" netrw
+            telescope-nvim
+            #(telescope-nvim.withPlugins (p: [p.hoogle
+            #                                 # p.frequency-nvim
+            #                            ]))
+
+            #lightline-vim
+            #lightline-bufferline
 
             # vim-airline
             # vim-airline-themes
           ];
 
+      extraLuaConfig = ''
+          require("toggleterm").setup{}
+      '';
 
     };
 
