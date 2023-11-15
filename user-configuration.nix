@@ -359,7 +359,7 @@ in
 
       };
 
-      ignores = [".factorypath" ".vim/" "quickfix" "tags"];
+      ignores = [".factorypath" ".vim/" "quickfix" "tags" ".local_bash_history"];
 
     };
 
@@ -435,22 +435,21 @@ in
 
       plugins = with pkgs.vimPlugins; [
             goyo  # writing
-            limelight-vim
-            # vim-illuminate # mag nicht so recht
+            # limelight-vim -> verwende ich dann doch nie
+            #vim-illuminate # mag nicht so recht
 
             ##### versuchen
             # vim-pencil  # word wrapping und so
             # wheel . . . bisserl scrolling
-            
+
             ctrlp
             fzf-vim
             # vim-bufferline # shows list of buffers in command bar
             # quickfixstatus # nicht soooo geil. zB Fehler kommen nicht richtig durch
 
             nerdtree
-            nnn-vim
             minimap-vim
-            vim-elixir
+            # vim-elixir
             #nvim-treesitter.withAllGrammars
             (nvim-treesitter.withPlugins (p: [p.bash
                                               p.dockerfile
@@ -476,7 +475,6 @@ in
             # vim-markdown
             # tabular # needed by vim-markdown
 
-            # supertab # autocompletion on tab -> bisserl buggy
             YouCompleteMe # ist gut und macht auch ohne Config sinnvolle Sachen
 
 
@@ -509,10 +507,13 @@ in
 
             # vim-airline
             # vim-airline-themes
+            # vim-hier # i should try the update version at https://github.com/chengzeyi/hier.vim
+            marks-nvim
           ];
 
       extraLuaConfig = ''
           require("toggleterm").setup{}
+          require("marks").setup{}
       '';
 
     };

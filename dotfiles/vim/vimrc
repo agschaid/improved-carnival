@@ -17,11 +17,13 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+" close
+nnoremap <C-c> <C-w>q
 
 " incremental search
 set incsearch
 
-" nicer earch colors -> red on brblue
+" nicer earch colors -> just reverse. Always works
 :hi Search cterm=reverse
 
 " incremental search and replace
@@ -29,7 +31,9 @@ set inccommand=split
 nmap <leader><leader>r :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
 xmap <leader><leader>r y:%s/<C-R>"/\0/g<Left><Left>a<BS>
 
+" move current line (or marked lines?) to notNow.txt
 :command! -bang -range NotNow <line1>,<line2>write<bang> >> ~/todo/notNow.txt | <line1>,<line2>delete _
+" move current line (or marked lines?) to todo.txt
 :command! -bang -range Now <line1>,<line2>write<bang> >> ~/todo/todo.txt | <line1>,<line2>delete _
 
 " clear search highlight (and also update the highlight of Minimap)
@@ -42,8 +46,8 @@ set hidden
 set nobackup
 set nowritebackup
 
-" Give more space for displaying messages.
-set cmdheight=2
+" Give more space for displaying messages -> not anymore (value was 2)
+set cmdheight=1
 
 " easier copy
 vnoremap <leader>c "+y<CR>
@@ -55,11 +59,12 @@ set number
 set background=light
 set mouse=a
 
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
-" make comments look pretty with Victor Mono
+" make comments look pretty with Victor Mono -> italic in Victor Mono is
+" pseudo-handwritten
 highlight Comment cterm=italic gui=italic
 
 " show tabs and trailing whitespace. Use some less pronounced solarized color
@@ -68,6 +73,9 @@ set listchars=tab:▸\ ,trail:·
 :hi BadWhitespace ctermfg=240 " Solarized Base01
 :match BadWhitespace / \+$/
 :2match BadWhitespace /\t/
+
+" fix quickfix for ghci(d)
+set errorformat=%f:(%l\\,%c)-(%e\\,%k):\ %t%*[^:]:%m,%f:%l:%c-%k:\ %t%*[^:]:%m,%f:%l:%c:\ %t%*[^:]:%m
 
 """""""
 " Oh dear. In my haskell project they use subscripts for acronyms. Kind-of-ok.
@@ -164,19 +172,6 @@ execute "digraphs VS " . 0x2C7D
 execute "digraphs WS " . 0x1D42
 "}}}
 
-
-
-"""""""""""""""""""""""""""""""""""""""
-" Not quite sure why I don't need those solarized values anymore.
-" But after update to nixos 22.11 this broke vim
-"""""""""""""""""""""""""""""""""""""""
-" general values for solarized plugin 
-" let g:solarized_termtrans = 1
-" set background=dark " not sure why but this should always be dark 
-" colorscheme solarized
-"""""""""""""""""""""""""""""""""""""""
-
-
 """ VALUES FOR SOLARIZED BRIGHT
 " let g:limelight_conceal_ctermfg = 245  " Solarized Base1
 " let g:limelight_conceal_guifg = '#8a8a8a'  " Solarized Base1
@@ -258,8 +253,8 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'opti
 " TAGS "
 """"""""
 
-" open tags with word under cursor
-nmap <leader><leader>t :Tags <c-r><c-a><CR>
+" open tags with word under cursor -> is now handled by Telescope
+"nmap <leader><leader>t :Tags <c-r><c-a><CR>
 nmap gd <c-]><CR>
 
 """""""""""""
@@ -330,4 +325,7 @@ let g:vim_current_word#highlight_delay = 350
 """""""""""""
 " TELESCOPE "
 """""""""""""
+" show buffers
 nmap <leader><leader>b :Telescope buffers<CR>
+nmap <leader><leader>t :Telescope tags default_text=<c-r><c-a><CR>
+

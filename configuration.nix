@@ -69,6 +69,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+                # TODO das wieder löschen
+                "electron-22.3.27"
+              ];
+
   nixpkgs.overlays = 
     let
       # using unstable. Do to install unstable as alternative path:
@@ -109,7 +114,7 @@
         nushell = unstable.nushell;
 
         #adoptJdk16 = unstable.adoptopenjdk-openj9-bin-16; # currently only in unstable
-        jdk17 = unstable.jdk17;
+        #jdk17 = unstable.jdk17;
 
         maven = unstable.maven;
 
@@ -125,7 +130,6 @@
 
 	tdesktop = unstable.tdesktop;
 	signal-desktop = unstable.signal-desktop;
-        google-chrome = unstable.google-chrome;
 
         stack = unstable.stack;
 
@@ -185,7 +189,6 @@
       tig
       gnupg1
       htop
-      firefox
       dmenu
 
       # does not quite work. Investigate
@@ -206,7 +209,6 @@
       jdk17
       #maven_jdk16
       maven
-      google-chrome
       thunderbird
       evolution
       feh
@@ -375,9 +377,12 @@
       julia-bin
       php
       pdfgrep
-      jetbrains.idea-community
+      # jetbrains.idea-community
 
       openshift
+
+      processing
+      kturtle
     ];
 
   fonts.fonts = with pkgs; [
