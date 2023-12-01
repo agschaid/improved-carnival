@@ -575,6 +575,7 @@ in
     home.file.".config/topydo/config".source = ./dotfiles/topydo/config;
     home.file.".abcde.conf".source = ./dotfiles/abcde/abcde.conf;
     home.file.".config/networkmanager-dmenu/config.ini".source = ./dotfiles/networkmanager_dmenu/config.ini;
+    home.file.".config/ranger_as_picker_in_kitty/rc.conf".source = ./dotfiles/ranger/as_picker_in_kitty.conf;
     
   };
 }

@@ -298,6 +298,47 @@ c.colors.tabs.selected.even.bg = base03
 
 ########################
 
+# 100 is not enough for me
+c.completion.cmd_history_max_items = 500
+
+# don't interrupt downloads
+c.confirm_quit = ["downloads"]
+
+# disable content blocking. I am using . . . TODO
+# c.content.blocking.enabled = False
+
+c.content.cookies.accept = "no-unknown-3rdparty"
 # if the websites puts the focus on an input field on load -> switch to insert mode
 c.input.insert_mode.auto_load = True
+# view PDFs in Browser
+c.content.pdfjs = True
 
+# defaults to "Downloads"
+c.downloads.location.directory = "~/downloads"
+
+# i GUESS this means that the NOTIFICATIONS are being removed
+c.downloads.remove_finished = 5000
+
+c.editor.command = ["wezterm", "start", "--", "vim", "{file}"]
+
+c.fileselect.handler = "external"
+c.fileselect.folder.command = ["kitty", "-e", "ranger", "--confdir=.config/ranger_as_picker_in_kitty/", "--choosedir={}"]
+c.fileselect.multiple_files.command = ["kitty", "-e", "ranger", "--confdir=.config/ranger_as_picker_in_kitty/", "--choosefiles={}"]
+c.fileselect.single_file.command = ["kitty", "-e", "ranger", "--confdir=.config/ranger_as_picker_in_kitty/", "--choosefile={}"]
+
+c.spellcheck.languages = ["de-DE", "en-US"]
+
+c.tabs.select_on_remove = "last-used"
+c.tabs.show             = "multiple" # hide with singel window
+c.tabs.title.format     = "{audio}{private}{index}: {current_title}"
+
+c.url.open_base_url = True # open search engine if shortcut is used without parameters
+c.url.searchengines = {
+            "DEFAULT"   : "https://duckduckgo.com/?q={}",
+            "duckduckgo": "https://duckduckgo.com/?q={}",
+            "ddg"       : "https://duckduckgo.com/?q={}",
+            "google"    : "https://www.google.com/search?q={}",
+            "g"         : "https://www.google.com/search?q={}",
+            "hoogle"    : "https://hoogle.haskell.org/?hoogle={}",
+            "h"         : "https://hoogle.haskell.org/?hoogle={}"
+        }

@@ -266,6 +266,7 @@
       # nodejs # for coc.nvim
       aerc
       qutebrowser
+      ranger # verwende ich als picker für qutebrowser
       #torbrowser
       rofi
       abcde
