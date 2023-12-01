@@ -59,7 +59,8 @@ keysForMoving x = [((m .|. mod4Mask, k), windows $ f i)
                    | (i, k) <- zip (XMonad.workspaces x) [xK_1 ..]
                    , (f, m) <- [(W.view, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]]
 
-programShortcuts  = [ ((mod4Mask, xK_n), spawn "qutebrowser")
+programShortcuts  = [ ((mod4Mask, xK_w), spawn "qutebrowser")
+                    , ((mod4Mask .|. shiftMask, xK_w), spawn "qutebrowser --target private-window")
                     , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
 		    , ((mod4Mask, xK_t), spawn "wezterm start -- tmux new-session -A -s todo 'vim ~/.gitsync/plaintext/todo/todo.txt'") -- open a todo window
 		    , ((mod4Mask .|. mod1Mask, xK_t), spawn "wezterm start -- add_todos") -- add new todos
