@@ -11,6 +11,11 @@ let
     xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal
   '';
 
+  mediacenter_layout = pkgs.writeScriptBin "screen_mediacenter_layout" ''
+    #!${pkgs.stdenv.shell}
+    xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+  '';
+
   mongo_connect = pkgs.writeScriptBin "mongoConnect" ''
     #!${pkgs.stdenv.shell}
     docker run --net="host" -it --entrypoint mongo mongo:3.2.10 --authenticationDatabase admin -u admin -p
@@ -254,6 +259,7 @@ in
     home.packages = [
       laptop_layout
       homeoffice_layout
+      mediacenter_layout
       mongo_connect
       vpn_office
       vpn_private
