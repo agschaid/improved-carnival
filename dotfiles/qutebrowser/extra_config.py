@@ -296,3 +296,8 @@ c.colors.tabs.selected.even.bg = base03
 # color).
 # c.colors.webpage.bg = base03
 
+########################
+
+# if the websites puts the focus on an input field on load -> switch to insert mode
+c.input.insert_mode.auto_load = True
+
