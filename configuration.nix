@@ -469,7 +469,12 @@
 
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    # daemon.settings = {
+    #  "dns" = ["8.8.8.8"];
+    #};
+  };
 
 
   # Enable touchpad support.
