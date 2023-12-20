@@ -305,18 +305,21 @@ c.completion.cmd_history_max_items = 500
 c.confirm_quit = ["downloads"]
 
 # disable content blocking. I am using . . . TODO
-# c.content.blocking.enabled = False
+c.content.blocking.enabled = False
 
 c.content.cookies.accept = "no-unknown-3rdparty"
+
 # if the websites puts the focus on an input field on load -> switch to insert mode
-c.input.insert_mode.auto_load = True
+# ^ this didn't work out too well
+# c.input.insert_mode.auto_load = True
+
 # view PDFs in Browser
 c.content.pdfjs = True
 
 # defaults to "Downloads"
 c.downloads.location.directory = "~/downloads"
 
-# i GUESS this means that the NOTIFICATIONS are being removed
+# i GUESS this means that the NOTIFICATIONS are being removed -> no . . . it does not
 c.downloads.remove_finished = 5000
 
 c.editor.command = ["wezterm", "start", "--", "vim", "{file}"]
@@ -328,8 +331,8 @@ c.fileselect.single_file.command = ["kitty", "-e", "ranger", "--confdir=.config/
 
 c.spellcheck.languages = ["de-DE", "en-US"]
 
-c.tabs.select_on_remove = "last-used"
-c.tabs.show             = "multiple" # hide with singel window
+c.tabs.select_on_remove = "next"
+c.tabs.show             = "multiple" # hide with single window
 c.tabs.title.format     = "{audio}{private}{index}: {current_title}"
 
 c.url.open_base_url = True # open search engine if shortcut is used without parameters
@@ -340,5 +343,6 @@ c.url.searchengines = {
             "google"    : "https://www.google.com/search?q={}",
             "g"         : "https://www.google.com/search?q={}",
             "hoogle"    : "https://hoogle.haskell.org/?hoogle={}",
-            "h"         : "https://hoogle.haskell.org/?hoogle={}"
+            "h"         : "https://hoogle.haskell.org/?hoogle={}",
+            "osm"       : "https://www.openstreetmap.org/search?query={}"
         }
