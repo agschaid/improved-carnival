@@ -305,8 +305,9 @@ augroup END
 " activate highlight of search
 let g:minimap_highlight_search = 1
 
-" start it right away
-let g:minimap_auto_start = 1
+" start it right away 
+" -> no. that sucks in some cases (Goyo/Diary) and kills the simple interface
+let g:minimap_auto_start = 0
 
 " enable git support
 let g:minimap_git_colors = 1
