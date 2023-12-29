@@ -344,5 +344,8 @@ c.url.searchengines = {
             "g"         : "https://www.google.com/search?q={}",
             "hoogle"    : "https://hoogle.haskell.org/?hoogle={}",
             "h"         : "https://hoogle.haskell.org/?hoogle={}",
-            "osm"       : "https://www.openstreetmap.org/search?query={}"
+            "osm"       : "https://www.openstreetmap.org/search?query={}",
+            "o"         : "https://www.openstreetmap.org/search?query={}",
+            "youtube"   : "https://www.youtube.com/results?search_query={}",
+            "y"         : "https://www.youtube.com/results?search_query={}"
         }
