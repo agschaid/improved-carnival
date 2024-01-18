@@ -72,6 +72,8 @@
   nixpkgs.config.permittedInsecurePackages = [
                 # TODO das wieder löschen
                 "electron-22.3.27"
+                # brauch ich für den Haskell Job.
+                "openssl-1.1.1w"
               ];
 
   nixpkgs.overlays = 
@@ -384,6 +386,8 @@
 
       processing
       kturtle
+
+      openssl_1_1
     ];
 
   fonts.fonts = with pkgs; [
