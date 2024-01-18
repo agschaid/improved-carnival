@@ -349,3 +349,7 @@ c.url.searchengines = {
             "youtube"   : "https://www.youtube.com/results?search_query={}",
             "y"         : "https://www.youtube.com/results?search_query={}"
         }
+
+config.set("input.mode_override", "passthrough", "https://times.rise-world.com/*")
+config.set("input.mode_override", "passthrough", "https://docs.google.com/document/*")
+

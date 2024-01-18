@@ -411,6 +411,9 @@ in
         "J" = "tab-prev";
         "K" = "tab-next";
         };
+        passthrough = {
+          "<Escape><Escape><Escape>" = "mode-leave";
+        };
       };
 
     };
