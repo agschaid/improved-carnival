@@ -54,6 +54,8 @@
     hostsFile = builtins.fetchurl hostsPath;
   in builtins.readFile "${hostsFile}";
 
+  powerManagement.enable = true;
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "de";
@@ -139,6 +141,7 @@
         ghc = unstable.ghc;
         ghcid = unstable.ghcid;
         haskell-language-server = unstable.haskell-language-server;
+        qutebrowser = unstable.qutebrowser;
       };
 
       steam_overlay = self: super: 
