@@ -340,6 +340,8 @@ nmap <leader><leader>t :Telescope tags default_text=<c-r><c-a><CR>
 let s:cfile_filename = ''
 " The last mtime of the filename
 let s:cfile_mtime = -1
+" Whether a write occured since the last reload
+let s:scfile_write_occured = 1
 
 " Define a command that can be called like:
 "
@@ -350,8 +352,8 @@ command! -nargs=1 -complete=file Cfile call s:Cfile(<f-args>)
 function! s:Cfile(filename)
   let s:cfile_filename = a:filename
 
-  " Update every 200ms
-  let timer = timer_start(200, function('s:UpdateCfile'), {'repeat': -1})
+  " Update every half second
+  let timer = timer_start(500, function('s:UpdateCfile'), {'repeat': -1})
   " First "update" to actually load the qf window immediately
   call s:UpdateCfile(timer)
 endfunction
@@ -366,14 +368,22 @@ function! s:UpdateCfile(timer_id)
     return
   endif
 
-  " Get file mtime
-  let mtime = system('stat -c %Y '.shellescape(s:cfile_filename))
+  " Only do this when a previous write occured. This will keep the cursor from
+  " blinking.
+  if s:scfile_write_occured > 0
+    " Get file mtime
+    " this already makes the cursor blink . . .
+    let mtime = system('stat -c %Y '.shellescape(s:cfile_filename))
 
-  " Load the file in the quickfix window if the mtime is newer than the last
-  " recorded one
-  if mtime > s:cfile_mtime
-    exe 'cfile '.s:cfile_filename
-    let s:cfile_mtime = mtime
+    " Load the file in the quickfix window if the mtime is newer than the last
+    " recorded one
+    if mtime > s:cfile_mtime
+      exe 'cfile '.s:cfile_filename
+      let s:cfile_mtime = mtime
+      let s:scfile_write_occured = 0
+    endif
   endif
 endfunction
+
+autocmd BufWritePost * let s:scfile_write_occured = 1
 
