@@ -331,6 +331,8 @@ c.fileselect.single_file.command = ["kitty", "-e", "ranger", "--confdir=.config/
 
 c.spellcheck.languages = ["de-DE", "en-US"]
 
+c.content.autoplay = False
+
 c.tabs.select_on_remove = "next"
 c.tabs.show             = "multiple" # hide with single window
 c.tabs.title.format     = "{audio}{private}{index}: {current_title}"
