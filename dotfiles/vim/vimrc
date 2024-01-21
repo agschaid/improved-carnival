@@ -330,3 +330,50 @@ let g:vim_current_word#highlight_delay = 350
 nmap <leader><leader>b :Telescope buffers<CR>
 nmap <leader><leader>t :Telescope tags default_text=<c-r><c-a><CR>
 
+"""""""""""""""""""""
+" my quickfix stuff "
+"""""""""""""""""""""
+
+" taken from https://superuser.com/questions/1124631/vim-auto-reload-quickfix-error-file-when-it-changes
+
+" The filename used for the cfile
+let s:cfile_filename = ''
+" The last mtime of the filename
+let s:cfile_mtime = -1
+
+" Define a command that can be called like:
+"
+"   Cfile errors.txt
+"
+command! -nargs=1 -complete=file Cfile call s:Cfile(<f-args>)
+
+function! s:Cfile(filename)
+  let s:cfile_filename = a:filename
+
+  " Update every 200ms
+  let timer = timer_start(200, function('s:UpdateCfile'), {'repeat': -1})
+  " First "update" to actually load the qf window immediately
+  call s:UpdateCfile(timer)
+endfunction
+
+function! s:UpdateCfile(timer_id)
+  " Stop the timer if the file is deleted
+  if s:cfile_filename == '' || !filereadable(s:cfile_filename)
+    call timer_stop(a:timer_id)
+    let s:cfile_filename = ''
+    let s:cfile_mtime = -1
+
+    return
+  endif
+
+  " Get file mtime
+  let mtime = system('stat -c %Y '.shellescape(s:cfile_filename))
+
+  " Load the file in the quickfix window if the mtime is newer than the last
+  " recorded one
+  if mtime > s:cfile_mtime
+    exe 'cfile '.s:cfile_filename
+    let s:cfile_mtime = mtime
+  endif
+endfunction
+
