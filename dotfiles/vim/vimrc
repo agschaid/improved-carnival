@@ -77,6 +77,8 @@ set listchars=tab:▸\ ,trail:·
 " fix quickfix for ghci(d)
 set errorformat=%f:(%l\\,%c)-(%e\\,%k):\ %t%*[^:]:%m,%f:%l:%c-%k:\ %t%*[^:]:%m,%f:%l:%c:\ %t%*[^:]:%m,%f:%l:%c-%k:\ %t%*[^:]:
 
+" display sings in the number columns
+set signcolumn=number
 
 "src-exe/CertificateMonitorSvc.hs:19:1-58: warning: [-Wunused-imports]
 "    The import of ‘Certificates’ is redundant
@@ -242,12 +244,6 @@ autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 " GOYO QUIT: END
 
-" CTRL-P CONFIG
-let g:ctrlp_custom_ignore = '\v[\/](target|dist|jdt.ls-java-project)|(\.(swp|ico|git|svn))$'
-" disable working path mode and limit ctrl+p to the current working directory
-" https://stackoverflow.com/questions/29399349/cant-get-ctrlp-to-set-working-dir-as-root-folder
-let g:ctrlp_working_path_mode = ''
-
 
 """""""
 " FZF "
@@ -337,6 +333,63 @@ let g:vim_current_word#highlight_delay = 350
 nmap <leader><leader>b :Telescope buffers<CR>
 nmap <leader><leader>t :Telescope tags default_text=<c-r><c-a><CR>
 
+" replaces Ctrl+p plugin
+nmap <C-p> :Telescope find_files<CR>
+
+""""""""""""""
+" statusline "
+""""""""""""""
+set statusline=
+" filename/tail
+set statusline+=%t
+" modified marker
+set statusline+=\ %m
+" allign center
+set statusline+=%=
+" TODO
+set statusline+=%{QF_counts()}
+" allign right
+set statusline+=%=
+" line and column
+set statusline+=%l:%v
+
+function! QF_counts()
+  let l:errors = getqflist()
+
+  let l:errorCountGlobal = 0
+  let l:errorCount = 0
+  let l:warningCountGlobal = 0
+  let l:warningCount = 0
+
+  let l:currentBuffer = bufnr('%')
+
+  for l:error in l:errors
+    if l:error.type ==# 'e'
+      let l:errorCountGlobal+=1
+      if l:error.bufnr == l:currentBuffer
+        let l:errorCount+=1
+      endif
+    elseif l:error.type ==# 'w'
+      let l:warningCountGlobal+=1
+      if l:error.bufnr == l:currentBuffer
+        let l:warningCount+=1
+      endif
+    endif
+  endfor
+
+  let l:ret=""
+  let l:x=""
+  if l:errorCountGlobal > 0
+    let l:ret=l:ret . "e:" . l:errorCount
+    let l:x=", "
+  endif
+
+  if l:warningCountGlobal > 0
+    let l:ret=l:ret . l:x . "w:" . l:warningCount
+  endif
+  return l:ret
+endfunction
+
 """""""""""""""""""""
 " quickfix autoload "
 """""""""""""""""""""
@@ -385,7 +438,8 @@ function! s:UpdateCfile(timer_id)
     " Load the file in the quickfix window if the mtime is newer than the last
     " recorded one
     if mtime > s:cfile_mtime
-      exe 'cfile '.s:cfile_filename
+      " use cgetfile instead of cfile so we don't jump to the first error
+      exe 'cgetfile '.s:cfile_filename
       let s:cfile_mtime = mtime
       let s:scfile_write_occured = 0
     endif
@@ -402,9 +456,13 @@ autocmd BufWritePost * let s:scfile_write_occured = 1
 " original taken from:
 " https://gist.github.com/BoltsJ/5942ecac7f0b0e9811749ef6e19d2176
 
-sign define QFErr texthl=QFErrMarker text=E
-sign define QFWarn texthl=QFWarnMarker text=W
-sign define QFInfo texthl=QFInfoMarker text=I
+sign define QFErr texthl=QFErrMarker text=!>
+sign define QFWarn texthl=QFWarnMarker text=>>
+sign define QFInfo texthl=QFInfoMarker text=\ >
+
+:hi QFErrMarker ctermfg=160 " Solarized Red
+:hi QFWarnMarker ctermfg=125 " Solarized Magenta
+:hi QFInfoMarker ctermfg=61 " Solarized Violet
 
 augroup qfsign
 autocmd!

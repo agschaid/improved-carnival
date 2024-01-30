@@ -451,7 +451,6 @@ in
             # vim-pencil  # word wrapping und so
             # wheel . . . bisserl scrolling
 
-            ctrlp
             fzf-vim
             # vim-bufferline # shows list of buffers in command bar
             # quickfixstatus # nicht soooo geil. zB Fehler kommen nicht richtig durch
