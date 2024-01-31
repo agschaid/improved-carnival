@@ -498,7 +498,7 @@ in
             # tagbar
             # vim-easytags
             # neoterm
-            toggleterm-nvim # -> auch auch aus extraLuaConfig löschen
+            toggleterm-nvim # -> auch aus extraLuaConfig löschen
 
             # highlight the current word
             vim_current_word

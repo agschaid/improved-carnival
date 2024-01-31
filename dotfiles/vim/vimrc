@@ -26,6 +26,9 @@ set incsearch
 " nicer earch colors -> just reverse. Always works
 :hi Search cterm=reverse
 
+" nicer linenumbers
+:hi LineNr cterm=italic ctermfg=37
+
 " incremental search and replace
 set inccommand=split
 nmap <leader><leader>r :%s//\0/g<Left><Left><Left><Left><Left>a<BS>
@@ -460,9 +463,9 @@ sign define QFErr texthl=QFErrMarker text=!>
 sign define QFWarn texthl=QFWarnMarker text=>>
 sign define QFInfo texthl=QFInfoMarker text=\ >
 
-:hi QFErrMarker ctermfg=160 " Solarized Red
-:hi QFWarnMarker ctermfg=125 " Solarized Magenta
-:hi QFInfoMarker ctermfg=61 " Solarized Violet
+:hi QFErrMarker  ctermfg=254 ctermbg=160 " Solarized Base2   on Red
+:hi QFWarnMarker ctermfg=136             " Solarized Yello   on Standard-Background
+:hi QFInfoMarker ctermfg=240 ctermbg=37  " Solarized Base01 on Cyan (same as LineNr)
 
 augroup qfsign
 autocmd!
