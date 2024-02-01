@@ -510,3 +510,15 @@ function! s:clear_signs() abort
   redraw!
 endfunction
 
+
+"""""""""""""""""""""""
+" HIGHLIGHT DEBUGGING "
+"""""""""""""""""""""""
+
+" taken from https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+" does not quite work when Treesitter is active
+com! CheckHighlightUnderCursor echo {l,c,n ->
+        \   'hi<'    . synIDattr(synID(l, c, 1), n)             . '> '
+        \  .'trans<' . synIDattr(synID(l, c, 0), n)             . '> '
+        \  .'lo<'    . synIDattr(synIDtrans(synID(l, c, 1)), n) . '> '
+        \ }(line("."), col("."), "name")

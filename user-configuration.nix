@@ -459,26 +459,30 @@ in
             minimap-vim
             # vim-elixir
             #nvim-treesitter.withAllGrammars
-            (nvim-treesitter.withPlugins (p: [p.bash
-                                              p.dockerfile
-                                              p.dot
-                                              p.elixir
-                                              p.erlang
-                                              p.fish
-                                              p.git_config
-                                              p.git_rebase
-                                              p.gitcommit
-                                              p.haskell
-                                              p.json
-                                              p.markdown
-                                              p.mermaid
-                                              p.nix
-                                              p.python
-                                              p.scala
-                                              p.sql
-                                              p.todotxt
-                                              p.vim
-                                             ]))
+            
+            # TODO looks like Treesitter never really worked in the first place
+
+            #(nvim-treesitter.withPlugins (p: [p.bash
+            #                                  p.dockerfile
+            #                                  p.dot
+            #                                  p.elixir
+            #                                  p.erlang
+            #                                  p.fish
+            #                                  p.git_config
+            #                                  p.git_rebase
+            #                                  p.gitcommit
+            #                                  p.haskell
+            #                                  p.json
+            #                                  p.markdown
+            #                                  p.mermaid
+            #                                  p.nix
+            #                                  p.python
+            #                                  p.scala
+            #                                  p.sql
+            #                                  p.todotxt
+            #                                  p.vim
+            #                                 ]))
+
 
             #nvim-treesitter-context # mag nicht. -> context.vim probieren!
             context-vim
