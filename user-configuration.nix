@@ -479,6 +479,11 @@ in
                                               p.todotxt
                                               p.vim
                                              ]))
+
+            #nvim-treesitter-context # mag nicht. -> context.vim probieren!
+            context-vim
+
+
             #ghcid # mache ich lieber "händisch"
             # vim-markdown
             # tabular # needed by vim-markdown
