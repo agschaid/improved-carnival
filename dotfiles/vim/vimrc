@@ -78,7 +78,7 @@ set listchars=tab:▸\ ,trail:·
 :2match BadWhitespace /\t/
 
 " fix quickfix for ghci(d)
-set errorformat=%f:(%l\\,%c)-(%e\\,%k):\ %t%*[^:]:%m,%f:%l:%c-%k:\ %t%*[^:]:%m,%f:%l:%c:\ %t%*[^:]:%m,%f:%l:%c-%k:\ %t%*[^:]:
+set errorformat=%f:(%l\\,%c)-(%e\\,%k):\ %t%*[^:]:%m,%f:%l:%c-%k:\ %t%*[^:]:%m,%f:%l:%c:\ %t%*[^:]:%m,%f:%l:%c-%k:\ %t%*[^:]:,%f:%l:%c:\ %t%*[^:]:
 
 " display sings in the number columns
 set signcolumn=number
