@@ -31,9 +31,9 @@ else
   set -g bkg_highlight $base2
   set -g background    $base3
 end
-          
+
 set -g battery_average (acpi | sed 's/^Battery.* \([0-9]\{1,3\}\)%.*$/\1/' | awk '{sum+= $1} END {print sum/ NR}')
-          
+
 set -g pb $secondary 
 set -g lb $pb
 
@@ -131,5 +131,16 @@ end
 
 set -l ze_time (date "+$secondary%H:%M$bkg_highlight:%S")
 
-echo "$bb╭─$vi_ind$bb$nix_shell_prompt$lb┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time"
+set -g global_warnings ""
+set -g new_recordings (ls ~/syncthing/recordingsFromPhone/ -p | grep -v music/ | grep -v snippets/ | count)
+
+if test "$new_recordings" != "0"
+  set -g global_warnings "$global_warnings ⧐"
+end
+
+if test -e "/home/agl/notes/diary/retrospect.txt"
+  set -g global_warnings "$global_warnings ⧠"
+end
+
+echo "$bb╭─$vi_ind$bb$nix_shell_prompt$lb┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time $bb$global_warnings"
 echo "$bb╰$lb┤"

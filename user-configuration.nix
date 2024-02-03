@@ -93,6 +93,49 @@ let
     vim +Goyo $DAY_PATH.md -c ":set linebreak | let g:bufferline_fname_mod=':.'"
   '';
 
+  # usually not used here but on rasbPi
+  create_diary_retrospect = pkgs.writeScriptBin "create_diary_retrospect" ''
+    #!${pkgs.stdenv.shell}
+    cd ~/.gitsync/plaintext/notes/diary
+
+    RETROSPECT_FILE=retrospect.txt
+    RANDOM_ENTRY=$(ls */*/* | shuf -n 1)
+
+    echo $RANDOM_ENTRY > $RETROSPECT_FILE
+
+    BACKDATES=(
+        "-7 day"
+        "-1 month"
+        "-6 month"
+        "-1 year"
+        "-2 year"
+        "-5 year"
+        "-10 year"
+        )
+
+    for di in "''${BACKDATES[@]}"; do
+        FILE_PATH=$(date --date="$di" +"%Y/%m/%d.md")
+
+        if test -f "$FILE_PATH"; then
+            echo "$FILE_PATH" >> $RETROSPECT_FILE
+        fi
+    done
+  '';
+
+  view_diary_retrospect = pkgs.writeScriptBin "view_diary_retrospect" ''
+  cd /home/agl/notes/diary/
+
+  FILES=""
+
+  while IFS= read -r line; do
+    FILES="$FILES $line"
+  done < retrospect.txt
+
+  rm retrospect.txt
+
+  vim +Goyo $FILES -c ":set linebreak | let g:bufferline_fname_mod=':.'"
+  '';
+
   cut_gif = pkgs.writeScriptBin "cut_gif" ''
     #!${pkgs.stdenv.shell}
 
@@ -267,6 +310,8 @@ in
       light_theme
       dark_theme
       diary
+      create_diary_retrospect
+      view_diary_retrospect
       oc_rsh
       oc_port_forward
       check_vehicle
