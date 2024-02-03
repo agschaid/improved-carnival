@@ -385,6 +385,8 @@
       pdfgrep
       # jetbrains.idea-community
 
+      gcc
+
       openshift
 
       processing
