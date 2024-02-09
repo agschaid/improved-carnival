@@ -142,5 +142,11 @@ if test -e "/home/agl/notes/diary/retrospect.txt"
   set -g global_warnings "$global_warnings ⧠"
 end
 
+set -g open_thoughts (cat ~/notes/00_inbox.md | grep ^! | count)
+
+if test "$open_thoughts" != "0"
+  set -g global_warnings "$global_warnings ¡"
+end
+
 echo "$bb╭─$vi_ind$bb$nix_shell_prompt$lb┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time $bb$global_warnings"
 echo "$bb╰$lb┤"

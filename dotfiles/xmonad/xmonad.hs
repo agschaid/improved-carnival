@@ -68,6 +68,7 @@ programShortcuts  = [ ((mod4Mask, xK_w), spawn "qutebrowser")
 		    , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui")
         , ((mod4Mask .|. shiftMask, xK_n), spawn "networkmanager_dmenu")
         , ((mod4Mask .|. shiftMask, xK_m), spawn "wezterm start -- mindmaps")
+        , ((mod4Mask .|. mod1Mask, xK_i), spawn "wezterm start -- tmux new-session -A -s idea 'vim ~/.gitsync/plaintext/notes/00_inbox.md'")
                     ]
 
 quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")
