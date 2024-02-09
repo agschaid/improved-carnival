@@ -62,14 +62,16 @@ keysForMoving x = [((m .|. mod4Mask, k), windows $ f i)
 programShortcuts  = [ ((mod4Mask, xK_w), spawn "qutebrowser")
                     , ((mod4Mask .|. shiftMask, xK_w), spawn "qutebrowser --target private-window")
                     , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
-		    , ((mod4Mask .|. shiftMask, xK_t), spawn "wezterm start -- add_todos") -- add new todos
 		    , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui")
         , ((mod4Mask .|. shiftMask, xK_n), spawn "networkmanager_dmenu")
+        -- quick access to my prime text files
+		    , ((mod4Mask .|. shiftMask, xK_t), spawn "wezterm start -- add_todos") -- add new todos
+		    , ((mod4Mask .|. shiftMask, xK_i), spawn "wezterm start -- add_ideas") -- add new todos
         -- my own "apps" all starting with Meta+Alt
-		    , ((mod4Mask .|. mod1Mask, xK_t), spawn "wezterm start -- tmux new-session -A -s todo 'vim ~/.gitsync/plaintext/todo/todo.txt'") -- open a todo window
+		    , ((mod4Mask .|. mod1Mask, xK_t), spawn "wezterm start -- tmux new-session -A -s todo 'vim ~/.gitsync/plaintext/todo/todo.txt'") -- same as ~/todo/todo.txt
 		    , ((mod4Mask .|. mod1Mask, xK_d), spawn "wezterm start -- tmux new-session -A -s diary 'diary'") -- open a diary window
         , ((mod4Mask .|. mod1Mask, xK_m), spawn "wezterm start -- mindmaps")
-        , ((mod4Mask .|. mod1Mask, xK_i), spawn "wezterm start -- tmux new-session -A -s idea 'vim ~/.gitsync/plaintext/notes/00_inbox.md'")
+        , ((mod4Mask .|. mod1Mask, xK_i), spawn "wezterm start -- tmux new-session -A -s idea 'vim ~/.gitsync/plaintext/notes/00_inbox.md'") -- same as ~/notes/00_inbox.md
                     ]
 
 quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")

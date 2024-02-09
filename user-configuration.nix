@@ -208,7 +208,21 @@ let
     #!${pkgs.stdenv.shell}
 
     echo "Add ToDos. End with blank line:"
-    sed '/^$/q' >> ~/todo/todo.txt
+
+    # read multiple lines end with a blank one
+    # use grep to filter the empty line
+    sed '/^$/q' | grep -v '^$' >> ~/todo/todo.txt
+  '';
+
+  add_ideas = pkgs.writeScriptBin "add_ideas" ''
+    #!${pkgs.stdenv.shell}
+
+    echo "Add ideas/thoughts. End with blank line:"
+
+    # read multiple lines end with a blank one
+    # use grep to filter the empty line
+    # prepend each line with a "!"
+    sed '/^$/q' | grep -v '^$' | sed 's/^/! /' >> ~/notes/00_inbox.md
   '';
 
   nd = pkgs.writeScriptBin "nd" ''
@@ -320,6 +334,7 @@ in
       wallabag_add
       battery_notify
       add_todos
+      add_ideas
       mindmaps
       nd
       init-tags
