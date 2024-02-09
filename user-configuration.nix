@@ -571,6 +571,9 @@ in
             # vim-airline-themes
             # vim-hier # i should try the update version at https://github.com/chengzeyi/hier.vim
             marks-nvim
+
+            # TODO that is legacey. Not sure how to install that
+            # obsidian-nvim
           ];
 
       extraLuaConfig = ''
