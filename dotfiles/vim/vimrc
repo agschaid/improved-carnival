@@ -410,7 +410,12 @@ let s:scfile_write_occured = 1
 "
 "   Cfile errors.txt
 "
-command! -nargs=1 -complete=file Cfile call s:Cfile(<f-args>)
+command! -nargs=1 -complete=file WatchCfile call s:Cfile(<f-args>)
+command! -nargs=0  StopWatchingCfile call s:CfileStop()
+
+function! s:CfileStop()
+    let s:cfile_filename = ''
+endfunction
 
 function! s:Cfile(filename)
   let s:cfile_filename = a:filename
