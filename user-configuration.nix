@@ -133,7 +133,7 @@ let
 
   rm retrospect.txt
 
-  vim +Goyo $FILES -c ":set linebreak | let g:bufferline_fname_mod=':.'"
+  vim $FILES -c ":set linebreak | let g:bufferline_fname_mod=':.'"
   '';
 
   cut_gif = pkgs.writeScriptBin "cut_gif" ''
