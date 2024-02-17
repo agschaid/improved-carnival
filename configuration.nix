@@ -142,6 +142,7 @@
         ghcid = unstable.ghcid;
         haskell-language-server = unstable.haskell-language-server;
         qutebrowser = unstable.qutebrowser;
+        khal = unstable.khal;
       };
 
       steam_overlay = self: super: 
