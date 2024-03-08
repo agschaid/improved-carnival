@@ -90,7 +90,7 @@ let
     cd ~/.gitsync/plaintext/notes/diary
 
     mkdir -p $MONTH_PATH
-    vim +Goyo $DAY_PATH.md -c ":set linebreak | let g:bufferline_fname_mod=':.'"
+    vim $DAY_PATH.md -c ":set linebreak | set statusline=%f"
   '';
 
   # usually not used here but on rasbPi
@@ -138,7 +138,7 @@ let
 
   rm retrospect.txt
 
-  vim $FILES -c ":set linebreak | let g:bufferline_fname_mod=':.'"
+  vim $FILES -c ":set linebreak | set statusline=%f"
   '';
 
   cut_gif = pkgs.writeScriptBin "cut_gif" ''
