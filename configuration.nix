@@ -394,6 +394,8 @@
       kturtle
 
       openssl_1_1
+
+      librewolf # alternative browser
     ];
 
   fonts.fonts = with pkgs; [
