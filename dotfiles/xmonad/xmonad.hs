@@ -59,8 +59,8 @@ keysForMoving x = [((m .|. mod4Mask, k), windows $ f i)
                    | (i, k) <- zip (XMonad.workspaces x) [xK_1 ..]
                    , (f, m) <- [(W.view, 0), (W.shift, shiftMask), (copy, shiftMask .|. controlMask)]]
 
-programShortcuts  = [ ((mod4Mask, xK_w), spawn "qutebrowser")
-                    , ((mod4Mask .|. shiftMask, xK_w), spawn "qutebrowser --target private-window")
+programShortcuts  = [ ((mod4Mask, xK_b), spawn "qutebrowser")
+                    , ((mod4Mask .|. shiftMask, xK_b), spawn "qutebrowser --target private-window")
                     , ((mod4Mask, xK_p), spawn "rofi -show run -matching fuzzy") -- use rofi as dmenu replacement
                     , ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui")
                     , ((mod4Mask .|. shiftMask, xK_n), spawn "networkmanager_dmenu")
