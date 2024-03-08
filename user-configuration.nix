@@ -94,14 +94,12 @@ let
   '';
 
   # usually not used here but on rasbPi
+  # TODO well . . . then maybe it should live in another repo
   create_diary_retrospect = pkgs.writeScriptBin "create_diary_retrospect" ''
     #!${pkgs.stdenv.shell}
     cd ~/.gitsync/plaintext/notes/diary
 
     RETROSPECT_FILE=retrospect.txt
-    RANDOM_ENTRY=$(ls */*/* | shuf -n 1)
-
-    echo $RANDOM_ENTRY > $RETROSPECT_FILE
 
     BACKDATES=(
         "-7 day"
@@ -111,6 +109,8 @@ let
         "-2 year"
         "-5 year"
         "-10 year"
+        "-15 year"
+        "-20 year"
         )
 
     for di in "''${BACKDATES[@]}"; do
@@ -120,6 +120,11 @@ let
             echo "$FILE_PATH" >> $RETROSPECT_FILE
         fi
     done
+
+    RANDOM_ENTRY=$(ls */*/* | shuf -n 1)
+
+    echo $RANDOM_ENTRY >> $RETROSPECT_FILE
+
   '';
 
   view_diary_retrospect = pkgs.writeScriptBin "view_diary_retrospect" ''
