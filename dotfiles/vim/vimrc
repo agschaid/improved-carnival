@@ -532,3 +532,26 @@ com! CheckHighlightUnderCursor echo {l,c,n ->
 " SPELL CHECKING "
 """"""""""""""""""
 :hi SpellBad ctermbg=NONE ctermfg=NONE cterm=underdotted
+
+" HIDE ALL
+
+let s:hidden_all=0
+function! ToggleHideAll() abort
+    if s:hidden_all==0
+        let s:hidden_all=1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+        set nonumber
+    else
+        let s:hidden_all=0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+        set number
+    endif
+endfunction
+
+nnoremap <silent> <Leader>h :call ToggleHideAll()<CR>

@@ -132,10 +132,15 @@ end
 set -l ze_time (date "+$secondary%H:%M$bkg_highlight:%S")
 
 set -g global_warnings ""
-set -g new_recordings (ls ~/syncthing/recordingsFromPhone/ -p | grep -v music/ | grep -v snippets/ | count)
+set -g new_recordings (ls ~/syncthing/recordingsFromPhone/ -p | grep -v recordings/ | count)
 
 if test "$new_recordings" != "0"
   set -g global_warnings "$global_warnings ⧐"
+else
+  set _recording_git_is_dirty (command git -C ~/syncthing/recordingsFromPhone/recordings status -s --ignore-submodules=dirty 2>/dev/null)
+  if test -n "$_recording_git_is_dirty"
+    set -g global_warnings "$global_warnings [⧐]"
+  end
 end
 
 if test -e "/home/agl/notes/diary/retrospect.txt"
