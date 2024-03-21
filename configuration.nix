@@ -380,11 +380,8 @@
 
       silver-searcher
 
-      # exercism languages 2023
-      julia-bin
       php
       pdfgrep
-      # jetbrains.idea-community
 
       gcc
 
@@ -396,6 +393,9 @@
       openssl_1_1
 
       librewolf # alternative browser
+
+      elixir
+      elixir-ls
     ];
 
   fonts.fonts = with pkgs; [
