@@ -396,6 +396,10 @@
 
       elixir
       elixir-ls
+
+      # Zeug das ich für aerc brauche
+      poppler_utils # pdftotext etc.
+      catimg
     ];
 
   fonts.fonts = with pkgs; [
