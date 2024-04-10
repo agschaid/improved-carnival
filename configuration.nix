@@ -403,6 +403,8 @@
       pandoc
       # TODO: busybox macht mir mein diary kaput (weil dessen date kein -d versteht)
       # busybox # I need/want this because its unzip supports piping
+
+      rnote # paint/draw/visual notes
     ];
 
   fonts.fonts = with pkgs; [
