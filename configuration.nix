@@ -136,6 +136,7 @@
 	# pass-otp = unstable.pass-otp;
 
 	zellij = unstable.zellij;
+  docker = unstable.docker;
 
 	glab = unstable.glab;
 
@@ -502,7 +503,6 @@
 
   virtualisation.docker = {
     enable = true;
-    
     # daemon.settings = {
     #  "dns" = ["8.8.8.8"];
     #};
