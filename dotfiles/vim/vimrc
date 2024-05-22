@@ -349,7 +349,7 @@ set statusline+=%t
 set statusline+=\ %m
 " allign center
 set statusline+=%=
-" TODO
+" show debug counts'n'stuff
 set statusline+=%{QF_counts()}
 " allign right
 set statusline+=%=
@@ -533,7 +533,10 @@ com! CheckHighlightUnderCursor echo {l,c,n ->
 """"""""""""""""""
 :hi SpellBad ctermbg=NONE ctermfg=NONE cterm=underdotted
 
-" HIDE ALL
+""""""""""""
+" HIDE ALL "
+""""""""""""
+" sollte mal ein Ersatz für Goyo werden. Hebt nicht so recht ab . . .
 
 let s:hidden_all=0
 function! ToggleHideAll() abort

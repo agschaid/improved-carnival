@@ -592,8 +592,14 @@ in
             # vim-hier # i should try the update version at https://github.com/chengzeyi/hier.vim
             marks-nvim
 
-            # TODO that is legacey. Not sure how to install that
+            # TODO that is legacey. Not sure how to install that . . . ich glaube nicht, dass legacy das Problem ist
             # obsidian-nvim
+            # telekasten-nvim
+
+
+            # https://github.com/mattn/calendar-vim
+            # macht einen Kalender auf und geht auch als Diary
+            mattn-calendar-vim
           ];
 
       extraLuaConfig = ''

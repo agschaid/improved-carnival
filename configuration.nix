@@ -49,10 +49,17 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  networking.extraHosts = let
-    hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
-    hostsFile = builtins.fetchurl hostsPath;
-  in builtins.readFile "${hostsFile}";
+
+  networking.extraHosts =
+    ''
+      127.0.0.2       tim-client
+      127.0.0.2       tim-server-1
+      127.0.0.2       tim-server-2
+    '';
+  #networking.extraHosts = let
+  #  hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
+  #  hostsFile = builtins.fetchurl hostsPath;
+  #in builtins.readFile "${hostsFile}";
 
   powerManagement.enable = true;
 
@@ -220,6 +227,7 @@
       feh
       curl
       jq
+      gnumake
       #vscode
       kitty       # terminal
       st
@@ -405,6 +413,8 @@
       # busybox # I need/want this because its unzip supports piping
 
       rnote # paint/draw/visual notes
+
+      inotifyTools
     ];
 
   fonts.fonts = with pkgs; [
@@ -492,6 +502,7 @@
 
   virtualisation.docker = {
     enable = true;
+    package = docker_24;
     # daemon.settings = {
     #  "dns" = ["8.8.8.8"];
     #};
