@@ -132,29 +132,29 @@ end
 set -l ze_time (date "+$secondary%H:%M$bkg_highlight:%S")
 
 set -g global_warnings ""
-set -g new_recordings (ls ~/syncthing/recordingsFromPhone/ -p | grep -v recordings/ | count)
+set -g new_recordings (ls ~/syncthing/recordingsFromPhone/ -p | grep -v recordings/ | grep -v todo/ | count)
 
 if test "$new_recordings" != "0"
-  set -g global_warnings "$global_warnings ⧐"
+  set -g global_warnings "$global_warnings  ⧐"
 else
   set _recording_git_is_dirty (command git -C ~/syncthing/recordingsFromPhone/recordings status -s --ignore-submodules=dirty 2>/dev/null)
   if test -n "$_recording_git_is_dirty"
-    set -g global_warnings "$global_warnings [⧐]"
+    set -g global_warnings "$global_warnings  [⧐]"
   end
 end
 
 if test -e "/home/agl/notes/diary/retrospect.txt"
-  set -g global_warnings "$global_warnings ⧠"
+  set -g global_warnings "$global_warnings  ⧠"
 end
 
 if test -e "/home/agl/notes/diary/daily-prompt.txt"
-  set -g global_warnings "$global_warnings <>"
+  set -g global_warnings "$global_warnings  <>"
 end
 
 set -g open_thoughts (cat ~/notes/00_inbox.md | grep ^! | count)
 
 if test "$open_thoughts" != "0"
-  set -g global_warnings "$global_warnings ¡"
+  set -g global_warnings "$global_warnings  ¡"
 end
 
 echo "$bb╭─$vi_ind$bb$nix_shell_prompt$lb┤$pb$cwd$git_prompt$status_prompt$duration_prompt$lb│   $ze_time $bb$global_warnings"
