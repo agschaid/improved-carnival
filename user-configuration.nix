@@ -138,7 +138,7 @@ let
 
   rm retrospect.txt
 
-  vim $FILES -c ":set linebreak | set statusline=%f"
+  vim $FILES -c ":set linebreak | set statusline=%f | :ls"
   '';
 
   daily_prompt = pkgs.writeScriptBin "daily_prompt" ''
