@@ -90,7 +90,7 @@ let
     cd ~/.gitsync/plaintext/notes/diary
 
     mkdir -p $MONTH_PATH
-    vim $DAY_PATH.md -c ":set linebreak | set statusline=%f"
+    vim $DAY_PATH.md -c ":set linebreak | :set statusline=%f"
   '';
 
   # usually not used here but on rasbPi
@@ -139,6 +139,53 @@ let
   rm retrospect.txt
 
   vim $FILES -c ":set linebreak | set statusline=%f"
+  '';
+
+  daily_prompt = pkgs.writeScriptBin "daily_prompt" ''
+
+    cd /home/agl/notes/diary/
+
+    PROMPT_FILE="daily-prompt.txt"
+
+    if [ ! -f $PROMPT_FILE ]; then
+        echo "$PROMPT_FILE not found!"
+        exit 666
+    fi
+
+    function yes_or_no_or_abort {
+        while true; do
+            read -p "$* [y/n/a]: " yna
+            case $yna in
+                [Yy]*) return 0  ;;  
+                [Nn]*) echo "Declined" ; return  1 ;;
+                [Aa]*) echo "Aborting"; exit 0;;
+            esac
+        done
+    }
+
+    function copy_and_show_prompt {
+        MONTH_PATH=$(date +"%Y/%m" )
+        DAY_PATH="$MONTH_PATH/$(date +'%d' ).md"
+
+        echo "copying $PROMPT_FILE to $DAY_PATH"
+        mkdir -p $MONTH_PATH
+
+        echo -e "\n# DAILY PROMPT\n" >> $DAY_PATH
+        cat $PROMPT_FILE | sed 's/^/> /' >> $DAY_PATH
+        echo "" >> $DAY_PATH
+
+        vim $DAY_PATH -c ":set linebreak | :set statusline=%f | :$"
+    }
+
+    echo "YOUR DAILY PROMPT:"
+    echo ""
+    cat $PROMPT_FILE
+    echo ""
+
+    yes_or_no_or_abort "Accept prompt?" && copy_and_show_prompt
+
+    echo "deleting $PROMPT_FILE"
+    rm $PROMPT_FILE
   '';
 
   cut_gif = pkgs.writeScriptBin "cut_gif" ''
@@ -331,6 +378,7 @@ in
       diary
       create_diary_retrospect
       view_diary_retrospect
+      daily_prompt
       oc_rsh
       oc_port_forward
       check_vehicle
@@ -654,7 +702,7 @@ in
     services.syncthing = {
       enable = true;
     };
-    
+
     home.file.".config/fish/completions/pass.fish".source = ./dotfiles/fish/completions/pass.fish;
     home.file.".wezterm.lua".source = ./dotfiles/wezterm/wezterm.lua;
     home.file.".config/topydo/config".source = ./dotfiles/topydo/config;

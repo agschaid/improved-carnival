@@ -73,6 +73,9 @@ programShortcuts  = [ ((mod4Mask, xK_b), spawn "qutebrowser")
                     , ((mod4Mask .|. mod1Mask, xK_k), spawn "wezterm start -- tmux new-session -A -s ikhal 'ikhal'") -- open a ikhal window
                     , ((mod4Mask .|. mod1Mask, xK_m), spawn "wezterm start -- mindmaps")
                     , ((mod4Mask .|. mod1Mask, xK_i), spawn "wezterm start -- tmux new-session -A -s idea 'vim ~/.gitsync/plaintext/notes/00_inbox.md'") -- same as ~/notes/00_inbox.md
+
+                    , ((mod4Mask .|. mod1Mask, xK_f), spawn "wezterm start -- mplayer ~/music/Huey\\ Lewis\\ \\&\\ The\\ News/Fore!/*") -- go into "recover from motivation failure" mode
+
                     ]
 
 quittingKeys  = [ ((mod4Mask .|. shiftMask, xK_q), spawn "cbpp-exit")

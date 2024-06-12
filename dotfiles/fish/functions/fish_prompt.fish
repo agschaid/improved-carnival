@@ -147,6 +147,10 @@ if test -e "/home/agl/notes/diary/retrospect.txt"
   set -g global_warnings "$global_warnings ⧠"
 end
 
+if test -e "/home/agl/notes/diary/daily-prompt.txt"
+  set -g global_warnings "$global_warnings <>"
+end
+
 set -g open_thoughts (cat ~/notes/00_inbox.md | grep ^! | count)
 
 if test "$open_thoughts" != "0"
