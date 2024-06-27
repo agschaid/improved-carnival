@@ -80,7 +80,7 @@
 
   nixpkgs.config.permittedInsecurePackages = [
                 # TODO das wieder löschen
-                "electron-22.3.27"
+                "electron-28.3.1"
                 # brauch ich für den Haskell Job.
                 "openssl-1.1.1w"
               ];
@@ -249,6 +249,7 @@
 
       ctags    # für vim. Solle ich vielleicht dort hin schieben
       
+      hydrogen    # drum machine
       ############ MUY IMPORTANTE
       sl          # eh scho wissen
       gti         # wie sl für git
