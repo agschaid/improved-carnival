@@ -284,6 +284,14 @@ let
 
   mindmaps = pkgs.writeScriptBin "mindmaps" (builtins.readFile ./dotfiles/scripts/mindmaps);
 
+  dev_docker = pkgs.writeScriptBin "dev_docker" ''
+    #!${pkgs.stdenv.shell}
+
+    REPO=$(basename "$(pwd)")
+
+    docker run --name $REPO  --net=host -v $(pwd):/home/agl/$REPO -v /home/agl/.cabal:/home/agl/.cabal -v $(pwd)/.local_bash_history:/home/agl/.bash_history -v /home/agl/.kube/config:/home/agl/.kube/config  --rm -it --privileged --init haskell-builder:latest bash -c "useradd agl; runuser agl -g agl -c 'cd /home/agl/$REPO; bash -s histappend'" --dns=10.1.7.42 --publish-all --cidfile="docker.pid" -d docker:dind --privileged
+  '';
+
   my-todo-txt-vim = pkgs.vimUtils.buildVimPlugin {
     name = "my-todo-txt-vim";
     src = pkgs.fetchFromGitHub {
@@ -391,6 +399,7 @@ in
       mindmaps
       nd
       init-tags
+      dev_docker
       ];
 
     home.file.".config/kitty/solarized-dark.conf".text = ''
