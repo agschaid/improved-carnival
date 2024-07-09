@@ -657,6 +657,8 @@ in
             # https://github.com/mattn/calendar-vim
             # macht einen Kalender auf und geht auch als Diary
             mattn-calendar-vim
+
+            zoomwintab-vim
           ];
 
       extraLuaConfig = ''

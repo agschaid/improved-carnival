@@ -557,4 +557,5 @@ function! ToggleHideAll() abort
     endif
 endfunction
 
-nnoremap <silent> <Leader>h :call ToggleHideAll()<CR>
+nnoremap <silent> <leader>h :call ToggleHideAll()<CR>
+
